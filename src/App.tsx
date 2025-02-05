@@ -1,10 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
+import { Home } from './pages/Home';
 import theme from './theme';
 
-// Placeholder components for each route
-const Home = () => <div>Home Page</div>;
+// Placeholder components for routes
 const Install = () => <div>Installation Guide</div>;
 const Documentation = () => <div>Documentation</div>;
 const CommandReference = () => <div>Command Reference</div>;

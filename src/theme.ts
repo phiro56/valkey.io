@@ -5,6 +5,112 @@ const theme = extendTheme({
     heading: 'Inter, system-ui, sans-serif',
     body: 'Inter, system-ui, sans-serif',
   },
+  components: {
+    Link: {
+      variants: {
+        logo: {
+          textDecoration: 'none',
+          _hover: {
+            textDecoration: 'none',
+          },
+        },
+        nav: {
+          fontSize: '20px',
+          color: 'rgba(32, 84, 178, 0.8)',
+          position: 'relative',
+          textDecoration: 'none',
+          transition: 'all 0.3s ease',
+          _hover: {
+            textDecoration: 'none',
+            color: '#2054B2',
+          },
+          _active: {
+            color: '#2054B2',
+          },
+          '&[aria-current="page"]': {
+            color: '#2054B2',
+            _after: {
+              content: '""',
+              position: 'absolute',
+              bottom: '-10px',
+              left: '0',
+              width: '100%',
+              height: '4px',
+              background: '#6983FF',
+            },
+          },
+        },
+      },
+    },
+    Button: {
+      baseStyle: {
+        fontWeight: '600',
+        _active: {
+          transform: 'translateY(0)',
+        },
+      },
+      variants: {
+        gradient: {
+          color: '#ffffff',
+          fontSize: '24px',
+          borderRadius: '0',
+          padding: '10px 20px',
+          bgGradient: 'linear(to-r, #2054B2, #6983FF)',
+          boxShadow: '0px 4px 10px  rgba(0, 0, 0, 0.25)',
+          height: 'auto',
+          transition: 'all 0.3s ease-in-out',
+          _hover: {
+            bgGradient: 'linear(to-r, #6983FF, #2054B2)',
+            color: '#ffffff',
+            transform: 'translateY(-2px)',
+            boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
+          },
+          _active: {
+            bgGradient: 'linear(to-r, #6983FF, #2054B2)',
+            transform: 'translateY(0)',
+            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+          },
+        },
+        solid: {
+          bg: 'blue.500',
+          color: 'white',
+          _hover: {
+            bg: 'blue.600',
+          },
+          _active: {
+            bg: 'blue.700',
+          },
+        },
+        outline: {
+          borderWidth: '2px',
+          _hover: {
+            bg: 'blue.50',
+          },
+        },
+        ghost: {
+          _hover: {
+            bg: 'blue.50',
+          },
+        },
+      },
+      sizes: {
+        lg: {
+          fontSize: 'md',
+          px: '8',
+          py: '4',
+        },
+        md: {
+          fontSize: 'sm',
+          px: '6',
+          py: '3',
+        },
+      },
+      defaultProps: {
+        size: 'md',
+        variant: 'solid',
+      },
+    },
+  },
   colors: {
     brand: {
       50: '#f0f9ff',

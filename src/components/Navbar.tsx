@@ -1,5 +1,5 @@
-import { Box, Flex, HStack, Link, useColorModeValue } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box, Flex, HStack, Link } from '@chakra-ui/react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
@@ -11,17 +11,16 @@ const NAV_ITEMS = [
 ];
 
 export const Navbar = () => {
-  const bgColor = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const location = useLocation();
 
   return (
     <Box
       as="nav"
       position="fixed"
       w="100%"
-      bg={bgColor}
+      bg="white"
       borderBottom="1px"
-      borderColor={borderColor}
+      borderColor="gray.200"
       zIndex="sticky"
     >
       <Flex
@@ -35,10 +34,9 @@ export const Navbar = () => {
         <Link
           as={RouterLink}
           to="/"
-          fontSize="xl"
-          fontWeight="bold"
-          _hover={{ textDecoration: 'none' }}
+          variant="logo"
         >
+          {/* TODO: Replace with logo image */}
           Valkey.io
         </Link>
 
@@ -48,12 +46,8 @@ export const Navbar = () => {
               key={item.label}
               as={RouterLink}
               to={item.href}
-              fontSize="sm"
-              fontWeight="500"
-              _hover={{
-                textDecoration: 'none',
-                color: useColorModeValue('blue.500', 'blue.200'),
-              }}
+              variant="nav"
+              aria-current={location.pathname === item.href ? 'page' : undefined}
             >
               {item.label}
             </Link>

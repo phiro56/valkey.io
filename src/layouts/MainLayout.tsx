@@ -10,7 +10,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <Flex minH="100vh" direction="column">
       <Navbar />
-      <Box as="main" flex="1" mt={16} px={4}>
+      <Box as="main" flex="1" mt={16}>
         {children}
       </Box>
       <Footer />

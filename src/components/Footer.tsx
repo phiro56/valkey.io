@@ -11,10 +11,9 @@ export const Footer = () => {
   return (
     <Box
       as="footer"
-      py={10}
-      borderTop="1px"
-      borderColor="gray.200"
+      py={5}
       mt="auto"
+      bg={'#353535'}
     >
       <Container maxW="7xl">
         <Stack
@@ -23,7 +22,7 @@ export const Footer = () => {
           justify="space-between"
           align="center"
         >
-          <Text>© {new Date().getFullYear()} Valkey.io. All rights reserved.</Text>
+          <Text color="white">© {new Date().getFullYear()} Valkey.io. All rights reserved.</Text>
           <Stack direction="row" spacing={6}>
             {FOOTER_ITEMS.map((item) => (
               <Link
@@ -31,8 +30,9 @@ export const Footer = () => {
                 as={RouterLink}
                 to={item.href}
                 fontSize="sm"
-                color="gray.600"
-                _hover={{ color: 'gray.900' }}
+                color="white"
+                textDecor={'underline'}
+                _hover={{ color: '#ccc' }}
               >
                 {item.label}
               </Link>
