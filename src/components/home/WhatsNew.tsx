@@ -13,6 +13,12 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
+import blogPlaceholder from '/src/assets/images/blog-placeholder.webp';
+
+interface ImageData {
+  src: string;
+  alt: string;
+}
 
 interface ReleaseNote {
   version: string;
@@ -26,7 +32,7 @@ interface ReleaseNote {
 interface BlogPost {
   title: string;
   description: string;
-  imageUrl: string;
+  imageUrl: ImageData;
 }
 
 const releaseNotes: ReleaseNote = {
@@ -72,13 +78,19 @@ const latestBlogPosts: BlogPost[] = [
     title: 'Reducing application latency and lowering Cloud bill by setting up your client library',
     description:
       'By implementing AZ affinity routing in Valkey and using GLIDE, you can achieve lower latency and cost savings by routing requests to replicas in the same AZ as the client.',
-    imageUrl: '/src/assets/images/blog-placeholder.webp',
+    imageUrl: {
+      src: blogPlaceholder,
+      alt: 'Blog post about reducing latency and cloud costs',
+    },
   },
   {
     title: '2024: The Year of Valkey',
     description:
       'The end of the calendar year is a great time to reflect, but for Valkey this particular year-end holds special meaning.',
-    imageUrl: '/src/assets/images/blog-placeholder.webp',
+    imageUrl: {
+      src: blogPlaceholder,
+      alt: '2024 Valkey year in review',
+    },
   },
 ];
 
@@ -174,8 +186,8 @@ export const WhatsNew: React.FC = () => {
                 {latestBlogPosts.map((post, index) => (
                   <Box key={index} borderRadius="20px" overflow="hidden" bg="white" boxShadow="md">
                     <Image
-                      src={post.imageUrl}
-                      alt={post.title}
+                      src={post.imageUrl.src}
+                      alt={post.imageUrl.alt}
                       width="100%"
                       height="100px"
                       objectFit="cover"
