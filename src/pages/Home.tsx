@@ -17,4 +17,4 @@ export const Home = () => {
       <Supporters />
     </Box>
   );
-}; 
+};

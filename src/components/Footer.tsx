@@ -9,12 +9,7 @@ const FOOTER_ITEMS = [
 
 export const Footer = () => {
   return (
-    <Box
-      as="footer"
-      py={5}
-      mt="auto"
-      bg={'#353535'}
-    >
+    <Box as="footer" py={5} mt="auto" bg={'#353535'}>
       <Container maxW="7xl">
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -24,7 +19,7 @@ export const Footer = () => {
         >
           <Text color="white">© {new Date().getFullYear()} Valkey.io. All rights reserved.</Text>
           <Stack direction="row" spacing={6}>
-            {FOOTER_ITEMS.map((item) => (
+            {FOOTER_ITEMS.map(item => (
               <Link
                 key={item.label}
                 as={RouterLink}
@@ -42,4 +37,4 @@ export const Footer = () => {
       </Container>
     </Box>
   );
-}; 
+};

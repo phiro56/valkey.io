@@ -51,22 +51,23 @@ const theme = extendTheme({
       },
       variants: {
         gradient: {
-          color: '#ffffff',
+          color: '#2054B2',
           fontSize: '24px',
           borderRadius: '0',
           padding: '10px 20px',
-          bgGradient: 'linear(to-r, #2054B2, #6983FF)',
+          bgGradient: 'linear(to-r, #ffffff, #B7C2F7)',
           boxShadow: '0px 4px 10px  rgba(0, 0, 0, 0.25)',
           height: 'auto',
           transition: 'all 0.3s ease-in-out',
+          minW: 'none',
           _hover: {
-            bgGradient: 'linear(to-r, #6983FF, #2054B2)',
-            color: '#ffffff',
+            bgGradient: 'linear(to-r, #B7C2F7, #ffffff)',
+            color: '#2054B2',
             transform: 'translateY(-2px)',
             boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
           },
           _active: {
-            bgGradient: 'linear(to-r, #6983FF, #2054B2)',
+            bgGradient: 'linear(to-r, #B7C2F7, #ffffff)',
             transform: 'translateY(0)',
             boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
           },
@@ -127,4 +128,4 @@ const theme = extendTheme({
   },
 });
 
-export default theme; 
+export default theme;
