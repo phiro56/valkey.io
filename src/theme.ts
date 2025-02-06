@@ -22,13 +22,13 @@ const theme = extendTheme({
           transition: 'all 0.3s ease',
           _hover: {
             textDecoration: 'none',
-            color: '#2054B2',
+            color: '#6983FF',
           },
           _active: {
-            color: '#2054B2',
+            color: '#6983FF',
           },
           '&[aria-current="page"]': {
-            color: '#2054B2',
+            color: '#6983FF',
             _after: {
               content: '""',
               position: 'absolute',
@@ -51,7 +51,7 @@ const theme = extendTheme({
       },
       variants: {
         gradient: {
-          color: '#2054B2',
+          color: '#6983FF',
           fontSize: '24px',
           borderRadius: '0',
           padding: '10px 20px',
@@ -62,7 +62,7 @@ const theme = extendTheme({
           minW: 'none',
           _hover: {
             bgGradient: 'linear(to-r, #B7C2F7, #ffffff)',
-            color: '#2054B2',
+            color: '#6983FF',
             transform: 'translateY(-2px)',
             boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
           },
@@ -113,6 +113,32 @@ const theme = extendTheme({
     },
   },
   colors: {
+    primary: {
+      main: '#6983FF', // HEX: #6983FF
+      text: '#E7E4F4', // Text color overlay
+    },
+    secondary: {
+      burgundy: {
+        500: '#642637', // HEX: #642637
+        text: '#E7E4F4', // Text color overlay
+      },
+      purple: {
+        500: '#30176E', // HEX: #30176E
+        text: '#E7E4F4', // Text color overlay
+      },
+      pink: {
+        500: '#E0A2AF', // HEX: #E0A2AF
+        text: '#1A2026', // Text color overlay
+      },
+      lavender: {
+        500: '#BCB5E7', // HEX: #BCB5E7
+        text: '#30176E', // Text color overlay
+      },
+    },
+    text: {
+      primary: '#1A2026', // Primary text color
+      secondary: '#E7E4F4', // Secondary text color for dark backgrounds
+    },
     brand: {
       50: '#f0f9ff',
       100: '#e0f2fe',
