@@ -33,10 +33,10 @@ const docCategories: DocCategory[] = [
     linkLabel: 'See Installation Guide',
   },
   {
-    title: 'The Language',
+    title: 'Modules',
     description:
       'Detailed documentation on the language used within Valkey, including syntax, commands, and examples.',
-    list: ['Supported Data Types', 'Commands Syntax', 'Examples'],
+    list: ['JSON', 'Bloom Filters', 'Vector Search'],
     link: '/docs/api',
     linkLabel: 'See Command References',
   },
@@ -46,18 +46,18 @@ const docCategories: DocCategory[] = [
       'A detailed section covering commands, data types, pipelining, Pub/Sub, memory optimization, and more.',
     list: ['Full Command List', 'Pipelining', 'Pub/Sub Messaging', 'And more'],
     link: '/docs/guides',
-    linkLabel: 'Learn More',
+    linkLabel: 'Command Reference',
   },
   {
-    title: 'Server-side Scripting',
-    description: 'An introduction to programmability within Valkey including:',
+    title: 'Clients',
+    description: 'Sed ut perspiciatis unde omnis iste natus error sit::',
     list: [
-      'Programmability Overview',
-      'Valkey Lua API',
-      'Using Eval Scripts',
-      'Debugging Lua Scripts',
+      'voluptatem accusantium doloremque',
+      'Nemo enim ipsam voluptatem',
+      'Eius modi tempora',
+      'Voluptas nulla pariatur',
     ],
-    link: '/docs/best-practices',
+    link: '/docs/clients',
     linkLabel: 'Learn More',
   },
 ];
@@ -67,7 +67,7 @@ export const Documentation = () => {
     <Box
       as="section"
       py={{ base: '4rem', md: '8rem' }}
-      bgGradient="linear(to-b, #2054B2, #52B4EC)"
+      bgGradient="linear(to-b, #6983FF, #52B4EC)"
       pos={'relative'}
     >
       <Image
@@ -112,10 +112,10 @@ export const Documentation = () => {
                     h="100%"
                     size="lg"
                     borderRightRadius="full"
-                    bg="#4CAF50"
-                    color="black"
+                    bg="secondary.burgundy.500"
+                    color="white"
                     width="100px"
-                    _hover={{ bg: '#45a049' }}
+                    _hover={{ bg: '#792C41' }}
                   >
                     Search
                   </Button>
@@ -155,7 +155,7 @@ export const Documentation = () => {
                     mt={'auto'}
                     mx={'auto'}
                     _hover={{
-                      color: '#2054B2',
+                      color: '#6983FF',
                       borderColor: '#ffffff',
                       background: '#ffffff',
                     }}

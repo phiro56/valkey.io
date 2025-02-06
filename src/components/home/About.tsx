@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Stack, Text, SimpleGrid, Flex } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, SimpleGrid, Stack, Text } from '@chakra-ui/react';
 
 export const About = () => {
   return (
@@ -6,7 +6,7 @@ export const About = () => {
       <Container maxW="7xl">
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
-            <Heading as="h2" fontSize="60px" color={'#2054B2'}>
+            <Heading as="h2" fontSize="60px" color={'#6983FF'}>
               About
             </Heading>
           </Stack>
