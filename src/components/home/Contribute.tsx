@@ -10,7 +10,16 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
-import { FiGithub } from 'react-icons/fi';
+import { BiSolidBookBookmark } from 'react-icons/bi';
+import {
+  BsBugFill,
+  BsFillLightbulbFill,
+  BsFillQuestionCircleFill,
+  BsShieldLockFill,
+} from 'react-icons/bs';
+import { FaPeopleGroup } from 'react-icons/fa6';
+import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+
 import ValkeyIcon from '/src/assets/images/valkey-icon-black.svg';
 
 interface ContributeWay {
@@ -20,54 +29,56 @@ interface ContributeWay {
   buttons?: {
     label: string;
     href: string;
-    icon: IconType;
+    icon?: IconType;
   }[];
 }
 
 const contributeWays: ContributeWay[] = [
   {
-    icon: FiGithub,
+    icon: BsFillQuestionCircleFill,
     title: 'Ask Questions',
     description:
       'If you have any inquiries about Valkey, feel free to join the conversation on our GitHub discussions or chat with us on Matrix.',
     buttons: [
-      { label: 'Learn more →', href: '#', icon: FiGithub },
-      { label: 'Learn more →', href: '#', icon: FiGithub },
+      { label: 'GitHub Repository', href: '#', icon: FiGithub },
+      { label: 'Matrix', href: '#' },
     ],
   },
   {
-    icon: FiGithub,
+    icon: BsBugFill,
     title: 'Report Bugs',
     description:
       'If you encounter any issues while using Valkey, please help us improve the project by filing a bug report at our GitHub repository.',
-    buttons: [{ label: 'Learn more →', href: '#', icon: FiGithub }],
+    buttons: [{ label: 'GitHub Repository', href: '#', icon: FiGithub }],
   },
   {
-    icon: FiGithub,
+    icon: FaPeopleGroup,
     title: 'Connect on Social Media',
     description: 'Stay updated and connect with us on our social media platforms.',
     buttons: [
-      { label: 'Learn more →', href: '#', icon: FiGithub },
-      { label: 'Learn more →', href: '#', icon: FiGithub },
+      { label: 'Linked In', href: '#', icon: FiLinkedin },
+      { label: 'Twitter', href: '#', icon: FiTwitter },
     ],
   },
   {
-    icon: FiGithub,
+    icon: BsFillLightbulbFill,
     title: 'Suggest Features',
     description:
       'We value your ideas! If you have a suggestion for a new feature, please submit a feature request on our GitHub.',
-    buttons: [{ label: 'Learn more →', href: '#', icon: FiGithub }],
+    buttons: [{ label: 'Github', href: '#', icon: FiGithub }],
   },
   {
-    icon: FiGithub,
+    icon: BsShieldLockFill,
     title: 'Security Concerns',
     description: 'For any potential security issues, please refer to our Security Policy.',
+    buttons: [{ label: 'Learn more →', href: '#' }],
   },
   {
-    icon: FiGithub,
+    icon: BiSolidBookBookmark,
     title: 'Community Conduct',
     description:
       'If you experience any issues with community members behavior, kindly check our Code of Conduct for guidance.',
+    buttons: [{ label: 'Learn more →', href: '#' }],
   },
 ];
 
@@ -115,7 +126,7 @@ export const Contribute = () => {
                 background={'white'}
                 color="#072150"
               >
-                <Icon as={way.icon} boxSize={6} />
+                <Icon as={way.icon} boxSize={'48px'} mb={'1'} color={'#BCB5E7'} />
                 <Heading as="h3" size="md" textAlign="center">
                   {way.title}
                 </Heading>
@@ -147,7 +158,7 @@ export const Contribute = () => {
                           background: '#072150',
                         }}
                       >
-                        <Icon as={button.icon} mr={1} />
+                        {button.icon && <Icon as={button.icon} mr={1} />}
                         {button.label}
                       </Button>
                     ))}
