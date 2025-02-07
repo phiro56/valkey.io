@@ -1,10 +1,22 @@
-import { Box, Container, Stack, Text, Link } from '@chakra-ui/react';
+import { Box, Container, Icon, Link, Stack, Text } from '@chakra-ui/react';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { IoMdMail } from 'react-icons/io';
+import { SiMatrix } from 'react-icons/si';
 import { Link as RouterLink } from 'react-router-dom';
 
 const FOOTER_ITEMS = [
   { label: 'Code of Conduct', href: '/code-of-conduct' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'FAQ', href: '/faq' },
+];
+
+const SOCIAL_LINKS = [
+  { label: 'Matrix', href: '#', icon: SiMatrix },
+  { label: 'GitHub', href: '#', icon: FaGithub },
+  { label: 'LinkedIn', href: '#', icon: FaLinkedin },
+  { label: 'Twitter', href: '#', icon: FaTwitter },
+  { label: 'Connect', href: '#', icon: IoMdMail },
 ];
 
 export const Footer = () => {
@@ -17,7 +29,24 @@ export const Footer = () => {
           justify="space-between"
           align="center"
         >
-          <Text color="white">© {new Date().getFullYear()} Valkey.io. All rights reserved.</Text>
+          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            {SOCIAL_LINKS.map(item => (
+              <Link
+                key={item.label}
+                href={item.href}
+                isExternal
+                color="white"
+                _hover={{ color: '#ccc' }}
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                fontSize="sm"
+              >
+                <Icon as={item.icon} boxSize={5} />
+                <Text>{item.label}</Text>
+              </Link>
+            ))}
+          </Stack>
           <Stack direction="row" spacing={6}>
             {FOOTER_ITEMS.map(item => (
               <Link
