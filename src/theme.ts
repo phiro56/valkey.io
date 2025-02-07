@@ -115,6 +115,7 @@ const theme = extendTheme({
   colors: {
     primary: {
       main: '#6983FF', // HEX: #6983FF
+      dark: '#4B66E6', // Darker variation of main
       text: '#E7E4F4', // Text color overlay
     },
     secondary: {

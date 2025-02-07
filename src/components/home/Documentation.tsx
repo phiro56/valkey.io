@@ -67,7 +67,7 @@ export const Documentation = () => {
     <Box
       as="section"
       py={{ base: '4rem', md: '8rem' }}
-      bgGradient="linear(to-b, #6983FF, #52B4EC)"
+      bgGradient="linear(to-b, #30176E, #4F62BF)"
       pos={'relative'}
     >
       <Image
@@ -112,10 +112,10 @@ export const Documentation = () => {
                     h="100%"
                     size="lg"
                     borderRightRadius="full"
-                    bg="secondary.burgundy.500"
+                    bg="primary.main"
                     color="white"
                     width="100px"
-                    _hover={{ bg: '#792C41' }}
+                    _hover={{ bg: 'primary.dark' }}
                   >
                     Search
                   </Button>
@@ -130,7 +130,7 @@ export const Documentation = () => {
                 p={8}
                 borderRadius="20px"
                 color={'#ffffff'}
-                bgGradient="linear(to-b, rgba(195, 188, 188, 0.2), rgba(255, 255, 255, 0.2))"
+                bgGradient="linear(to-b, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.15))"
               >
                 <Heading as="h3" size="md" textAlign={'center'} mb={'2'}>
                   {category.title}

@@ -47,7 +47,12 @@ export const Hero = () => {
             maxW="md"
             justify="center"
           >
-            <Button as={RouterLink} to="/install" variant="gradient">
+            <Button
+              as={RouterLink}
+              to="/install"
+              variant="gradient"
+              minW={{ base: 'auto', sm: '380px' }}
+            >
               GET STARTED
             </Button>
           </Stack>

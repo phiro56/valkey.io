@@ -50,10 +50,25 @@ export const Supporters = () => {
         },
       },
     ],
+    dotsClass: 'slick-dots custom-dots',
   };
 
   return (
-    <Box as="section" pb={{ base: '4rem', md: '8rem' }} bgGradient="linear(to-b, #6983FF, #52B4EC)">
+    <Box
+      as="section"
+      pb={{ base: '4rem', md: '8rem' }}
+      bgGradient="linear(to-b, #6983FF, #30176E)"
+      sx={{
+        '.custom-dots li button:before': {
+          color: 'white',
+          opacity: 0.5,
+        },
+        '.custom-dots li.slick-active button:before': {
+          color: 'white',
+          opacity: 1,
+        },
+      }}
+    >
       <Container maxW="7xl">
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">

@@ -96,7 +96,7 @@ const latestBlogPosts: BlogPost[] = [
 
 export const WhatsNew: React.FC = () => {
   return (
-    <Box as="section" pb={{ base: '4rem', md: '8rem' }} bgGradient="linear(to-b, #52B4EC, #6983FF)">
+    <Box as="section" pb={{ base: '4rem', md: '8rem' }} bgGradient="linear(to-b, #4F62BF, #6983FF)">
       <Container maxW={'7xl'}>
         <Heading textAlign={'center'} fontSize={'5xl'} py={10} fontWeight={'bold'} color={'white'}>
           What is New?

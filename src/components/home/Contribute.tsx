@@ -90,6 +90,7 @@ export const Contribute = () => {
       bgGradient="linear(to-b, #6983FF, #6983FF)"
       pos={'relative'}
       id="how-to-contribute"
+      overflowX={'hidden'}
     >
       <Image
         pos={'absolute'}
