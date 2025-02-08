@@ -50,6 +50,21 @@ const theme = extendTheme({
         },
       },
       variants: {
+        violet: {
+          bg: 'primary.main',
+          color: 'white',
+          transition: 'all 0.2s ease-in-out',
+          borderRadius: '2px',
+          _hover: {
+            bg: 'primary.dark',
+            transform: 'translateY(-2px)',
+            boxShadow: '0px 4px 8px rgba(105, 131, 255, 0.25)',
+          },
+          _active: {
+            bg: 'primary.dark',
+            transform: 'translateY(0)',
+          },
+        },
         gradient: {
           color: '#6983FF',
           fontSize: '24px',
