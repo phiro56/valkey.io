@@ -51,17 +51,17 @@ const theme = extendTheme({
       },
       variants: {
         violet: {
-          bg: 'primary.main',
+          bg: 'primary.500',
           color: 'white',
           transition: 'all 0.2s ease-in-out',
           borderRadius: '2px',
           _hover: {
-            bg: 'primary.dark',
+            bg: 'primary.600',
             transform: 'translateY(-2px)',
             boxShadow: '0px 4px 8px rgba(105, 131, 255, 0.25)',
           },
           _active: {
-            bg: 'primary.dark',
+            bg: 'primary.600',
             transform: 'translateY(0)',
           },
         },
@@ -129,9 +129,16 @@ const theme = extendTheme({
   },
   colors: {
     primary: {
-      main: '#6983FF', // HEX: #6983FF
-      dark: '#4B66E6', // Darker variation of main
-      text: '#E7E4F4', // Text color overlay
+      50: '#f0f3ff',
+      100: '#d1d9ff',
+      200: '#bac6ff',
+      300: '#9bacff',
+      400: '#879cff',
+      500: '#6983ff',
+      600: '#6077e8',
+      700: '#4b5db5',
+      800: '#3a488c',
+      900: '#2c376b',
     },
     secondary: {
       burgundy: {
@@ -148,6 +155,7 @@ const theme = extendTheme({
       },
       lavender: {
         500: '#BCB5E7', // HEX: #BCB5E7
+        100: 'rgba(188, 181, 231, 0.2);',
         text: '#30176E', // Text color overlay
       },
     },
