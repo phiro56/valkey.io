@@ -29,7 +29,7 @@ const docCategories: DocCategory[] = [
     title: 'Install',
     description:
       'Step-by-step instructions on how to install and configure Valkey for first-time users.',
-    link: '/docs/getting-started',
+    link: '/documentation/getting-started',
     linkLabel: 'See Installation Guide',
   },
   {
@@ -37,7 +37,7 @@ const docCategories: DocCategory[] = [
     description:
       'Detailed documentation on the language used within Valkey, including syntax, commands, and examples.',
     list: ['JSON', 'Bloom Filters', 'Vector Search'],
-    link: '/docs/api',
+    link: '/documentation/api',
     linkLabel: 'See Command References',
   },
   {
@@ -45,7 +45,7 @@ const docCategories: DocCategory[] = [
     description:
       'A detailed section covering commands, data types, pipelining, Pub/Sub, memory optimization, and more.',
     list: ['Full Command List', 'Pipelining', 'Pub/Sub Messaging', 'And more'],
-    link: '/docs/guides',
+    link: '/documentation/guides',
     linkLabel: 'Command Reference',
   },
   {
@@ -57,7 +57,7 @@ const docCategories: DocCategory[] = [
       'Eius modi tempora',
       'Voluptas nulla pariatur',
     ],
-    link: '/docs/clients',
+    link: '/documentation/clients',
     linkLabel: 'Learn More',
   },
 ];
@@ -112,10 +112,10 @@ export const Documentation = () => {
                     h="100%"
                     size="lg"
                     borderRightRadius="full"
-                    bg="primary.main"
+                    bg="primary.500"
                     color="white"
                     width="100px"
-                    _hover={{ bg: 'primary.dark' }}
+                    _hover={{ bg: 'primary.600' }}
                   >
                     Search
                   </Button>

@@ -5,7 +5,7 @@ import ValkeyHorLogo from '/src/assets/images/valkey-horizontal-color.svg';
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'Install', href: '/install' },
-  { label: 'Documentation', href: '/docs' },
+  { label: 'Documentation', href: '/documentation' },
   { label: 'Command Reference', href: '/commands' },
   { label: 'Blog', href: '/blog' },
   { label: 'Community', href: '/community' },
