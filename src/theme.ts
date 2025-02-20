@@ -68,7 +68,7 @@ const theme = extendTheme({
         gradient: {
           color: '#6983FF',
           fontSize: '24px',
-          borderRadius: '0',
+          borderRadius: '30px',
           padding: '10px 20px',
           bgGradient: 'linear(to-r, #ffffff, #B7C2F7)',
           boxShadow: '0px 4px 10px  rgba(0, 0, 0, 0.25)',

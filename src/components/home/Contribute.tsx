@@ -87,7 +87,7 @@ export const Contribute = () => {
     <Box
       as="section"
       pb={{ base: '4rem', md: '8rem' }}
-      bgGradient="linear(to-b, #6983FF, #6983FF)"
+      bgGradient="linear(to-b, #30176E, #6983FF)"
       pos={'relative'}
       id="how-to-contribute"
       overflowX={'hidden'}

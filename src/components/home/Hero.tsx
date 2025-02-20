@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Stack } from '@chakra-ui/react';
+import { Box, Button, Container, Heading, Link, Stack } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import HeroBg from '/src/assets/images/hero-bg.webp';
 
@@ -10,6 +10,7 @@ export const Hero = () => {
       pb={{ base: '6rem', md: '12rem' }}
       backgroundImage={HeroBg}
       backgroundSize={'cover'}
+      backgroundPosition={'center bottom'}
       backgroundColor={'#6983FF'}
     >
       <Container maxW="7xl">
@@ -17,18 +18,23 @@ export const Hero = () => {
           <Stack>
             <Heading
               as="h1"
-              fontSize="34px"
+              fontSize={{ base: '32px', md: '60px', lg: '80px' }}
               fontWeight="bold"
               lineHeight="1.2"
               letterSpacing="tight"
               color={'#ffffff'}
+              textTransform={'uppercase'}
             >
-              Lightning fast. Massively Scalable. Truly Open Source
+              Lightning fast.
+              <br />
+              Massively Scalable.
+              <br />
+              Truly Open Source
             </Heading>
             <Heading
               as="h2"
               fontSize="18px"
-              fontWeight="400"
+              fontWeight="800"
               lineHeight="1.4"
               letterSpacing="tight"
               color={'#ffffff'}
@@ -41,7 +47,7 @@ export const Hero = () => {
             </Heading>
           </Stack>
           <Stack
-            direction={{ base: 'column', sm: 'row' }}
+            direction={{ base: 'column', sm: 'column' }}
             spacing={4}
             w="100%"
             maxW="md"
@@ -55,6 +61,20 @@ export const Hero = () => {
             >
               GET STARTED
             </Button>
+            <Link
+              href="#documentation"
+              color="white"
+              fontSize="lg"
+              textDecoration="underline"
+              _hover={{ color: 'primary.100' }}
+              onClick={e => {
+                e.preventDefault();
+                const element = document.getElementById('documentation');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              See Documentation
+            </Link>
           </Stack>
         </Stack>
       </Container>

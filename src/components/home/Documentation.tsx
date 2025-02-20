@@ -67,8 +67,9 @@ export const Documentation = () => {
     <Box
       as="section"
       py={{ base: '4rem', md: '8rem' }}
-      bgGradient="linear(to-b, #30176E, #4F62BF)"
+      bgGradient="linear(to-b, #30176E, #6983FF)"
       pos={'relative'}
+      id="documentation"
     >
       <Image
         pos={'absolute'}
@@ -125,13 +126,7 @@ export const Documentation = () => {
           </Stack>
           <SimpleGrid columns={{ base: 1, md: 4 }} spacing={8} mt={'4'}>
             {docCategories.map((category, index) => (
-              <Stack
-                key={index}
-                p={8}
-                borderRadius="20px"
-                color={'#ffffff'}
-                bgGradient="linear(to-b, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.15))"
-              >
+              <Stack key={index} p={8} borderRadius="20px" color={'#ffffff'} bg={'#2D2471'}>
                 <Heading as="h3" size="md" textAlign={'center'} mb={'2'}>
                   {category.title}
                 </Heading>
