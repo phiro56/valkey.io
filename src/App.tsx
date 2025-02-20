@@ -1,13 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
+import { CommandReference } from './pages/CommandReference';
 import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
 import { Install } from './pages/Install';
 import theme from './theme';
 
 // Placeholder components for routes
-const CommandReference = () => <div>Command Reference</div>;
 const FAQ = () => <div>Frequently Asked Questions</div>;
 const Blog = () => <div>Blog</div>;
 const Community = () => <div>Community</div>;
@@ -26,7 +26,7 @@ function App() {
             <Route path="/documentation" element={<Documentation />} />
             <Route path="/documentation/:section" element={<Documentation />} />
             <Route path="/documentation/:section/:subsection" element={<Documentation />} />
-            <Route path="/commands" element={<CommandReference />} />
+            <Route path="/command-reference" element={<CommandReference />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/community" element={<Community />} />

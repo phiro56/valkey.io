@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'Install', href: '/install' },
   { label: 'Documentation', href: '/documentation' },
-  { label: 'Command Reference', href: '/commands' },
+  { label: 'Command Reference', href: '/command-reference' },
   { label: 'Blog', href: '/blog' },
   { label: 'Community', href: '/community' },
 ];
