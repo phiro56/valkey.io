@@ -1,78 +1,57 @@
-import { Box, Link, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
+import { blogDigest } from './BlogContent';
 
-interface NavItem {
-  title: string;
-  items: {
-    name: string;
-    description: string;
-    path: string;
-  }[];
-}
-
-const navigationItems: NavItem[] = [
-  {
-    title: 'LATEST POSTS',
-    items: [
-      {
-        name: 'Getting Started with Valkey',
-        description: "A beginner's guide to using Valkey",
-        path: '/blog/getting-started',
-      },
-      {
-        name: 'Performance Tips',
-        description: 'Optimize your Valkey implementation',
-        path: '/blog/performance-tips',
-      },
-    ],
-  },
-  {
-    title: 'CATEGORIES',
-    items: [
-      {
-        name: 'Tutorials',
-        description: 'Step-by-step guides and how-tos',
-        path: '/blog/category/tutorials',
-      },
-      {
-        name: 'News',
-        description: 'Latest updates and announcements',
-        path: '/blog/category/news',
-      },
-      {
-        name: 'Case Studies',
-        description: 'Real-world implementation stories',
-        path: '/blog/category/case-studies',
-      },
-    ],
-  },
-];
+// Get only trending posts
+const trendingPosts = blogDigest.filter(post => post.isTrending);
 
 export const BlogSidebar = () => {
   return (
-    <VStack align="stretch" spacing={6} mt={'6'}>
-      <Box>
-        {navigationItems.map(section => (
-          <Box key={section.title} mb={4}>
-            <Text color="purple.700" fontWeight="semibold" mb={2}>
-              {section.title}
-            </Text>
-            <VStack align="stretch">
-              {section.items.map(item => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  p={2}
-                  background={'primary.100'}
-                  _hover={{ bg: 'primary.200' }}
-                >
-                  <Text fontWeight="medium">{item.name}</Text>
-                  <Text fontSize="sm">{item.description}</Text>
+    <VStack align="stretch" mt={'6'}>
+      <Text color="purple.700" fontWeight="semibold" mb={0}>
+        TRENDING
+      </Text>
+
+      <VStack align="stretch" spacing={6}>
+        <VStack align="stretch" spacing={4}>
+          {trendingPosts.map(post => (
+            <Flex key={post.slug} background="white" borderRadius="lg" overflow="hidden">
+              <Image
+                src={post.imageUrl}
+                alt={post.title}
+                height="auto"
+                width="50%"
+                objectFit="cover"
+                fallbackSrc="https://via.placeholder.com/600x400/4E51BF/FFFFFF?text=Valkey"
+              />
+              <Box p={4}>
+                <Text fontSize="lg" fontWeight="bold" mb={2} noOfLines={2}>
+                  {post.title}
+                </Text>
+                <Text color="gray.600" fontSize="sm" mb={4} noOfLines={2}>
+                  {post.excerpt}
+                </Text>
+                <Link href={`/blog/${post.slug}`} _hover={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="outline"
+                    borderWidth={'1px'}
+                    size="md"
+                    borderRadius={'50px'}
+                    alignSelf={'flex-end'}
+                    marginLeft={'auto'}
+                    _hover={{
+                      borderColor: '#072150',
+                      color: 'white',
+                      background: '#072150',
+                    }}
+                  >
+                    Read More
+                  </Button>
                 </Link>
-              ))}
-            </VStack>
-          </Box>
-        ))}
-      </Box>
+              </Box>
+            </Flex>
+          ))}
+        </VStack>
+      </VStack>
     </VStack>
   );
 };

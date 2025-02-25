@@ -1,4 +1,4 @@
-import { Box, Link, Text } from '@chakra-ui/react';
+import { Box, Flex, Link, Text } from '@chakra-ui/react';
 
 export interface BlogPost {
   title: string;
@@ -6,6 +6,8 @@ export interface BlogPost {
   excerpt: string;
   slug: string;
   category: 'tutorials' | 'news' | 'case-studies';
+  imageUrl: string;
+  isTrending?: boolean;
 }
 
 export const blogDigest: BlogPost[] = [
@@ -16,6 +18,9 @@ export const blogDigest: BlogPost[] = [
       'By implementing AZ affinity routing in Valkey and using GLIDE, you can achieve lower latency and cost savings by routing requests to replicas in the same AZ as the client.',
     slug: 'reducing-application-latency',
     category: 'tutorials',
+    imageUrl:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop',
+    isTrending: true,
   },
   {
     title: '2024: The Year of Valkey',
@@ -24,6 +29,8 @@ export const blogDigest: BlogPost[] = [
       'The end of the calendar year is a great time to reflect, but for Valkey this particular year-end holds special meaning.',
     slug: 'year-of-valkey-2024',
     category: 'news',
+    imageUrl:
+      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop',
   },
   {
     title: 'Pushing the limits of Valkey on a Raspberry Pi',
@@ -32,6 +39,8 @@ export const blogDigest: BlogPost[] = [
       "While most people won't go to production on a Raspberry Pi, we'll cover how to thoroughly performance test Valkey to understand how it works in production.",
     slug: 'valkey-on-raspberry-pi',
     category: 'case-studies',
+    imageUrl:
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop',
   },
   {
     title: 'Scaling Valkey in High-Traffic Environments',
@@ -40,6 +49,8 @@ export const blogDigest: BlogPost[] = [
       'Discover strategies to optimize Valkey performance under heavy loads, including caching, parallel processing, and load balancing techniques.',
     slug: 'scaling-valkey-high-traffic',
     category: 'tutorials',
+    imageUrl:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop',
   },
   {
     title: "Introducing Valkey's New Security Features",
@@ -48,6 +59,8 @@ export const blogDigest: BlogPost[] = [
       'Learn about the latest encryption, authentication, and role-based access enhancements that keep your Valkey deployment secure.',
     slug: 'valkey-security-features-2025',
     category: 'news',
+    imageUrl:
+      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
   },
   {
     title: "A Deep Dive Into Valkey's Plugin Ecosystem",
@@ -56,6 +69,8 @@ export const blogDigest: BlogPost[] = [
       'From custom data transformations to real-time analytics, explore how Valkeys plugin system helps you tailor the platform to your specific needs.',
     slug: 'valkey-plugin-ecosystem',
     category: 'tutorials',
+    imageUrl:
+      'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=2070&auto=format&fit=crop',
   },
 ];
 
@@ -100,28 +115,32 @@ export const BlogContent = ({ searchQuery, selectedCategory, selectedDate }: Blo
             {filteredPosts.map((post, index) => (
               <Box
                 key={post.slug}
-                mb={index < filteredPosts.length - 1 ? 2 : 0}
+                mb={index < filteredPosts.length - 1 ? 4 : 0}
                 background={'white'}
                 borderRadius={'2px'}
-                p={4}
+                overflow="hidden"
               >
-                <Link href={`/blog/${post.slug}`}>
-                  <Text fontSize="1xl" fontWeight="bold" color="secondary.purple.500" mb={0}>
-                    {post.title}
-                  </Text>
-                </Link>
-                <Text fontSize="sm" color="gray.600" mb={0}>
-                  {post.date}
-                </Text>
-                <Text mb={3}>{post.excerpt}</Text>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  color="primary.500"
-                  fontWeight="medium"
-                  textDecor={'underline'}
-                >
-                  Read More
-                </Link>
+                <Flex>
+                  <Box p={4} flex="1">
+                    <Link href={`/blog/${post.slug}`}>
+                      <Text fontSize="1xl" fontWeight="bold" color="secondary.purple.500" mb={2}>
+                        {post.title}
+                      </Text>
+                    </Link>
+                    <Text fontSize="sm" color="gray.600" mb={2}>
+                      {post.date}
+                    </Text>
+                    <Text mb={4}>{post.excerpt}</Text>
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      color="primary.500"
+                      fontWeight="medium"
+                      textDecor={'underline'}
+                    >
+                      Read More
+                    </Link>
+                  </Box>
+                </Flex>
               </Box>
             ))}
           </Box>
