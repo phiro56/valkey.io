@@ -30,25 +30,25 @@ const blogDigest: BlogPost[] = [
     slug: 'valkey-on-raspberry-pi',
   },
   {
-    title: 'Reducing application latency and lowering Cloud bill by setting up your client library',
-    date: 'Wednesday January 8, 2025',
+    title: 'Scaling Valkey in High-Traffic Environments',
+    date: 'Tuesday March 4, 2025',
     excerpt:
-      'By implementing AZ affinity routing in Valkey and using GLIDE, you can achieve lower latency and cost savings by routing requests to replicas in the same AZ as the client.',
-    slug: 'reducing-application-latency',
+      'Discover strategies to optimize Valkey performance under heavy loads, including caching, parallel processing, and load balancing techniques.',
+    slug: 'scaling-valkey-high-traffic',
   },
   {
-    title: '2024: The Year of Valkey',
-    date: 'Friday December 20, 2024',
+    title: 'Introducing Valkey’s New Security Features',
+    date: 'Monday May 12, 2025',
     excerpt:
-      'The end of the calendar year is a great time to reflect, but for Valkey this particular year-end holds special meaning.',
-    slug: 'year-of-valkey-2024',
+      'Learn about the latest encryption, authentication, and role-based access enhancements that keep your Valkey deployment secure.',
+    slug: 'valkey-security-features-2025',
   },
   {
-    title: 'Pushing the limits of Valkey on a Raspberry Pi',
-    date: 'Thursday November 21, 2024',
+    title: 'A Deep Dive Into Valkey’s Plugin Ecosystem',
+    date: 'Wednesday July 16, 2025',
     excerpt:
-      "While most people won't go to production on a Raspberry Pi, we'll cover how to thoroughly performance test Valkey to understand how it works in production.",
-    slug: 'valkey-on-raspberry-pi',
+      'From custom data transformations to real-time analytics, explore how Valkey’s plugin system helps you tailor the platform to your specific needs.',
+    slug: 'valkey-plugin-ecosystem',
   },
 ];
 
@@ -57,9 +57,18 @@ interface BlogContentProps {
 }
 
 export const BlogContent = ({ searchQuery }: BlogContentProps) => {
+  const filteredPosts = blogDigest.filter(post => {
+    const searchLower = searchQuery.toLowerCase();
+    return (
+      post.title.toLowerCase().includes(searchLower) ||
+      post.excerpt.toLowerCase().includes(searchLower) ||
+      post.date.toLowerCase().includes(searchLower)
+    );
+  });
+
   return (
     <Box p={4}>
-      {searchQuery ? (
+      {searchQuery && filteredPosts.length === 0 ? (
         <Box borderRadius={'2px'} p={8} textAlign="center">
           <Text fontWeight="800" color="secondary.purple.500" mb={1} fontSize={'60px'}>
             &lt;/&gt;
@@ -72,10 +81,10 @@ export const BlogContent = ({ searchQuery }: BlogContentProps) => {
       ) : (
         <>
           <Box>
-            {blogDigest.map((post, index) => (
+            {filteredPosts.map((post, index) => (
               <Box
                 key={post.slug}
-                mb={index < blogDigest.length - 1 ? 2 : 0}
+                mb={index < filteredPosts.length - 1 ? 2 : 0}
                 background={'white'}
                 borderRadius={'2px'}
                 p={4}
