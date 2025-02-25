@@ -1,6 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
+import { Blog } from './pages/Blog';
 import { CommandReference } from './pages/CommandReference';
 import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
@@ -9,7 +10,6 @@ import theme from './theme';
 
 // Placeholder components for routes
 const FAQ = () => <div>Frequently Asked Questions</div>;
-const Blog = () => <div>Blog</div>;
 const Community = () => <div>Community</div>;
 const CodeOfConduct = () => <div>Code of Conduct</div>;
 const PrivacyPolicy = () => <div>Privacy Policy</div>;
