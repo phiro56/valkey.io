@@ -49,11 +49,8 @@ const navigationItems: NavItem[] = [
 
 export const BlogSidebar = () => {
   return (
-    <VStack align="stretch" spacing={6}>
+    <VStack align="stretch" spacing={6} mt={'6'}>
       <Box>
-        <Text color={'secondary.purple.500'} mb={2}>
-          Browse by category
-        </Text>
         {navigationItems.map(section => (
           <Box key={section.title} mb={4}>
             <Text color="purple.700" fontWeight="semibold" mb={2}>
