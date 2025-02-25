@@ -9,24 +9,24 @@ import upcloudLogo from '/src/assets/images/upcloud.svg';
 
 const supporters = [
   {
-    name: 'Pepercona',
-    desc: 'Provides Valkey expertise whenever you need it, offering day-to-day operational support and hands-on assistance for complex projects.',
-    logo: perconaLogo,
-  },
-  {
     name: 'Aiven',
     desc: 'In-memory NoSQL database with a small footprint and big performance. It is built on open source Valkey and compatible with legacy Redis®',
     logo: aivenLogo,
   },
   {
-    name: 'UpCloud',
-    desc: 'With UpClouds global reach, Valkey guarantees reliability and scalability, allowing developers to focus on building outstanding applications.',
-    logo: upcloudLogo,
-  },
-  {
     name: 'Amazon Web Services',
     desc: 'It merges Valkeys speed and versatility with Amazons manageability, perfect for data-driven applications.',
     logo: awsLogo,
+  },
+  {
+    name: 'Pepercona',
+    desc: 'Provides Valkey expertise whenever you need it, offering day-to-day operational support and hands-on assistance for complex projects.',
+    logo: perconaLogo,
+  },
+  {
+    name: 'UpCloud',
+    desc: 'With UpClouds global reach, Valkey guarantees reliability and scalability, allowing developers to focus on building outstanding applications.',
+    logo: upcloudLogo,
   },
 ];
 
@@ -73,7 +73,7 @@ export const Supporters = () => {
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
             <Heading as="h2" fontSize="60px" color={'#ffffff'}>
-              Supporters
+              Participants
             </Heading>
             <Text fontSize="lg" color="white" maxW="3xl" mx="auto">
               The Valkey project participants are a diverse group of organizations that have come
