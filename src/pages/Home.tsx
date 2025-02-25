@@ -3,7 +3,7 @@ import { About } from '../components/home/About';
 import { Contribute } from '../components/home/Contribute';
 import { Documentation } from '../components/home/Documentation';
 import { Hero } from '../components/home/Hero';
-import { Supporters } from '../components/home/Supporters';
+import { Participants } from '../components/home/Participants';
 import { WhatsNew } from '../components/home/WhatsNew';
 
 export const Home = () => {
@@ -14,7 +14,7 @@ export const Home = () => {
       <Documentation />
       <WhatsNew />
       <Contribute />
-      <Supporters />
+      <Participants />
     </Box>
   );
 };

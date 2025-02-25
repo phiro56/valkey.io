@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, Image, Link } from '@chakra-ui/react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import ValkeyHorLogo from '/src/assets/images/valkey-horizontal-color.svg';
 
 const NAV_ITEMS = [
@@ -9,10 +9,35 @@ const NAV_ITEMS = [
   { label: 'Command Reference', href: '/command-reference' },
   { label: 'Blog', href: '/blog' },
   { label: 'Community', href: '/community' },
+  { label: 'Participants', href: '#Participants', isHashLink: true },
 ];
 
 export const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleHashLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.substring(1); // Remove the # from the href
+
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If we're already on the home page, just scroll
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <Box
@@ -30,18 +55,30 @@ export const Navbar = () => {
         </Link>
 
         <HStack spacing={8} display={{ base: 'none', md: 'flex' }}>
-          {NAV_ITEMS.map(item => (
-            <Link
-              key={item.label}
-              as={RouterLink}
-              to={item.href}
-              variant="nav"
-              aria-current={location.pathname === item.href ? 'page' : undefined}
-              fontSize={'16px'}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV_ITEMS.map(item =>
+            item.isHashLink ? (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={e => handleHashLinkClick(e, item.href)}
+                variant="nav"
+                fontSize={'16px'}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <Link
+                key={item.label}
+                as={RouterLink}
+                to={item.href}
+                variant="nav"
+                aria-current={location.pathname === item.href ? 'page' : undefined}
+                fontSize={'16px'}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </HStack>
       </Flex>
     </Box>

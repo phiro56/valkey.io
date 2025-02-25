@@ -7,7 +7,7 @@ import awsLogo from '/src/assets/images/aws.svg';
 import perconaLogo from '/src/assets/images/percona.svg';
 import upcloudLogo from '/src/assets/images/upcloud.svg';
 
-const supporters = [
+const participants = [
   {
     name: 'Aiven',
     desc: 'In-memory NoSQL database with a small footprint and big performance. It is built on open source Valkey and compatible with legacy Redis®',
@@ -30,7 +30,7 @@ const supporters = [
   },
 ];
 
-export const Supporters = () => {
+export const Participants = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -69,7 +69,7 @@ export const Supporters = () => {
         },
       }}
     >
-      <Container maxW="7xl">
+      <Container maxW="7xl" id="Participants">
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
             <Heading as="h2" fontSize="60px" color={'#ffffff'}>
@@ -88,21 +88,21 @@ export const Supporters = () => {
 
           <Box pt={6} bg="white" borderRadius={'20px'} px={4}>
             <Slider {...settings}>
-              {supporters.map(supporter => (
-                <Box key={supporter.name} p={6} textAlign={'center'}>
+              {participants.map(participant => (
+                <Box key={participant.name} p={6} textAlign={'center'}>
                   <Image
-                    src={supporter.logo}
-                    alt={supporter.name}
+                    src={participant.logo}
+                    alt={participant.name}
                     maxH="40px"
                     mx={'auto'}
                     mb={'6'}
                     objectFit="contain"
                   />
                   <Text color={'#072150'} fontSize={'16px'} fontWeight={'bold'} mb={'1'}>
-                    {supporter.name}
+                    {participant.name}
                   </Text>
                   <Text color={'#353535'} fontSize={'14px'} fontWeight={'400'}>
-                    {supporter.desc}
+                    {participant.desc}
                   </Text>
                 </Box>
               ))}
