@@ -19,6 +19,10 @@ const navigationItems: NavItem[] = [
         path: '#',
       },
       {
+        name: 'ACL DELUSER',
+        path: '#',
+      },
+      {
         name: 'ACL DRYRUN',
         path: '#',
       },
@@ -31,6 +35,10 @@ const navigationItems: NavItem[] = [
         path: '#',
       },
       {
+        name: 'ACL HELP',
+        path: '#',
+      },
+      {
         name: 'ACL LIST',
         path: '#',
       },
@@ -38,7 +46,34 @@ const navigationItems: NavItem[] = [
         name: 'ACL LOAD',
         path: '#',
       },
-      // Add more items as needed
+      {
+        name: 'ACL LOG',
+        path: '#',
+      },
+      {
+        name: 'ACL SAVE',
+        path: '#',
+      },
+      {
+        name: 'ACL SETUSER',
+        path: '#',
+      },
+      {
+        name: 'ACL USERS',
+        path: '#',
+      },
+      {
+        name: 'ACL WHOAMI',
+        path: '#',
+      },
+      {
+        name: 'APPEND',
+        path: '#',
+      },
+      {
+        name: 'ASKING',
+        path: '#',
+      },
     ],
   },
 ];
@@ -48,7 +83,18 @@ interface CommandReferenceSidebarProps {
 }
 
 export const CommandReferenceSidebar = ({ searchQuery }: CommandReferenceSidebarProps) => {
-  if (searchQuery) {
+  // Trim the search query to handle whitespace
+  const trimmedQuery = searchQuery.trim();
+
+  // Filter items if there's a search query
+  const filteredItems = trimmedQuery
+    ? navigationItems[0].items.filter(item =>
+        item.name.toLowerCase().includes(trimmedQuery.toLowerCase())
+      )
+    : navigationItems[0].items;
+
+  // Only show no results message if we have a non-empty search query AND no results
+  if (trimmedQuery !== '' && filteredItems.length === 0) {
     return (
       <Box borderRadius={'2px'} p={8} textAlign="center">
         <Text fontWeight="800" color="secondary.purple.500" mb={1} fontSize={'60px'}>
@@ -62,26 +108,25 @@ export const CommandReferenceSidebar = ({ searchQuery }: CommandReferenceSidebar
     );
   }
 
+  // Show filtered results
   return (
     <VStack align="stretch" spacing={6}>
       <Box>
-        {navigationItems.map((section, index) => (
-          <Box key={`section-${index}`} mb={4}>
-            <VStack align="stretch">
-              {section.items.map(item => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  p={2}
-                  background={'primary.100'}
-                  _hover={{ bg: 'primary.200' }}
-                >
-                  <Text fontWeight="medium">{item.name}</Text>
-                </Link>
-              ))}
-            </VStack>
-          </Box>
-        ))}
+        <Box mb={4}>
+          <VStack align="stretch">
+            {filteredItems.map(item => (
+              <Link
+                key={item.name}
+                href={item.path}
+                p={2}
+                background={'primary.100'}
+                _hover={{ bg: 'primary.200' }}
+              >
+                <Text fontWeight="medium">{item.name}</Text>
+              </Link>
+            ))}
+          </VStack>
+        </Box>
       </Box>
     </VStack>
   );
