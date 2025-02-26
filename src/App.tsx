@@ -2,6 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
 import { CommandReference } from './pages/CommandReference';
 import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
@@ -29,6 +30,7 @@ function App() {
             <Route path="/command-reference" element={<CommandReference />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/community" element={<Community />} />
             <Route path="/code-of-conduct" element={<CodeOfConduct />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
