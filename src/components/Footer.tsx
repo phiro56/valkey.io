@@ -21,7 +21,7 @@ const SOCIAL_LINKS = [
 
 export const Footer = () => {
   return (
-    <Box as="footer" py={5} mt="auto" bg={'#1A2026'}>
+    <Box as="footer" py={5} mt="auto" bg={'#1A2026'} position="sticky" bottom={0} width="100%">
       <Container maxW="none">
         <Stack
           direction={{ base: 'column', md: 'row' }}
