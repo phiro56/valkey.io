@@ -137,3 +137,132 @@ export const blogDigest: BlogPost[] = [
    - Use descriptive, keyword-rich titles
    - Write compelling excerpts
    - Create SEO-friendly slugs
+
+## Individual Blog Post Page
+
+The individual blog post page (`BlogPost.tsx`) displays a full blog post with the following sections:
+
+### Page Structure
+
+```typescript
+{
+  "title": string,          // Post title
+  "date": string,          // Post date
+  "content": string,       // Full post content
+  "imageUrl": string,      // Featured image URL
+  "category": string,      // Post category
+  "author": Author,        // Author information
+}
+```
+
+### Author Information
+
+Each blog post requires author information with the following structure:
+
+```typescript
+{
+  "name": string,          // Author's full name
+  "username": string,      // Author's username (without @)
+  "bio": string,          // Author's biography
+  "imageUrl": string      // Author's profile image URL
+}
+```
+
+Example author object:
+
+```json
+{
+  "name": "Kyle Davis",
+  "username": "stockholmux",
+  "bio": "Kyle is the Senior Developer Advocate on the Valkey project...",
+  "imageUrl": "https://example.com/path/to/author-image.jpg"
+}
+```
+
+### Related Posts
+
+Related posts are automatically generated based on the following criteria:
+
+- Posts with the same category as the current post
+- Excluding the current post
+- Limited to 3 posts maximum
+- Displayed in card format with:
+  - Featured image (50% width)
+  - Title (max 2 lines)
+  - Excerpt (max 2 lines)
+  - "Read More" button
+
+### Navigation Elements
+
+#### Breadcrumbs
+
+The breadcrumb navigation appears at the top of the page with:
+
+- Background color: #FAFAFD
+- Height: 44px
+- Format: "Blog > {Post Title}"
+- "Blog" links back to the main blog page
+- Current post title is non-clickable
+
+### Page Layout
+
+1. **Header Section**
+
+   - Breadcrumb navigation
+   - Featured image (400px height)
+   - Post title
+   - Publication date
+
+2. **Main Content Area**
+
+   - Background: white
+   - Padding: 16px
+   - Full post content
+   - Responsive layout
+
+3. **Sidebar (33% width)**
+   - Background: #F2F0FA
+   - Author section
+   - Related posts section
+
+### Best Practices
+
+1. **Author Information**
+
+   - Keep author bios concise and professional
+   - Use high-quality profile images (recommended: 120x120px)
+   - Maintain consistent username format
+
+2. **Related Posts**
+
+   - Ensure posts within the same category have similar themes
+   - Use high-quality featured images for cards
+   - Keep titles and excerpts clear and concise
+
+3. **Content Formatting**
+
+   - Use appropriate heading hierarchy
+   - Include high-quality images
+   - Maintain consistent spacing
+   - Ensure content is mobile-responsive
+
+4. **Performance**
+   - Optimize all images (featured, author, related posts)
+   - Lazy load images where appropriate
+   - Consider implementing pagination for very long posts
+
+### URL Structure
+
+Individual blog posts follow the URL pattern:
+
+```
+/blog/{slug}
+```
+
+Where `slug` is the unique identifier from the blog post object.
+
+### Error Handling
+
+- Invalid or non-existent slugs redirect to the main blog page
+- Missing images use a fallback placeholder
+- Missing author information displays defaults where appropriate
