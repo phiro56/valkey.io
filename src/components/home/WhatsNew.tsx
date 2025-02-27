@@ -51,7 +51,7 @@ export const WhatsNew: React.FC = () => {
                 </Box>
                 <Button
                   as="a"
-                  href="#"
+                  href="/install"
                   size="lg"
                   colorScheme="blue"
                   variant="outline"
