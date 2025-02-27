@@ -84,12 +84,14 @@ export const BlogPostPage = () => {
               ABOUT THE AUTHOR
             </Text>
 
-            <Flex gap={4} mb={4}>
+            <Flex gap={2} mb={4}>
               <Image
                 src={post.author.imageUrl}
                 alt={post.author.name}
-                boxSize="60px"
                 objectFit="cover"
+                w={'60px'}
+                h={'60px'}
+                flex={'0 0 auto'}
               />
               <Box>
                 <Text fontSize="16px">{post.author.name}</Text>

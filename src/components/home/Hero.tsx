@@ -7,7 +7,7 @@ export const Hero = () => {
     <Box
       as="section"
       pt={{ base: '4rem', md: '12rem' }}
-      pb={{ base: '6rem', md: '12rem' }}
+      pb={{ base: '2rem', md: '4rem' }}
       backgroundImage={HeroBg}
       backgroundSize={'cover'}
       backgroundPosition={'center bottom'}
