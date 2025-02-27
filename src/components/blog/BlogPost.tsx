@@ -1,6 +1,7 @@
 import { Box, Button, Container, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
 import { blogDigest, BlogPost } from '../../data/blogPosts';
+import { Breadcrumbs } from '../common/Breadcrumbs';
 
 // Get related posts (posts with same category)
 const getRelatedPosts = (category: BlogPost['category'], currentSlug: string) => {
@@ -27,20 +28,14 @@ export const BlogPostPage = () => {
 
   const relatedPosts = getRelatedPosts(post.category, slug);
 
+  const breadcrumbItems = [
+    { label: 'Blog', href: '/blog' },
+    { label: post.title }
+  ];
+
   return (
     <Container maxW="none" p={0} background={'#E9EBF8'}>
-      {/* Breadcrumbs */}
-      <Flex alignItems={'center'} background="#FAFAFD" h={'44px'}>
-        <Container maxW="container.xl">
-          <Flex align="center" gap={2}>
-            <Link href="/blog" color="text.link" fontWeight="medium">
-              Blog
-            </Link>
-            <Text color="gray.500">&gt;</Text>
-            <Text color="gray.700">{post.title}</Text>
-          </Flex>
-        </Container>
-      </Flex>
+      <Breadcrumbs items={breadcrumbItems} />
 
       <Flex gap={0} minH={'100%'}>
         {/* Main Content */}

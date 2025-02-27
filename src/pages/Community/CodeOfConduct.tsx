@@ -1,22 +1,16 @@
-import { Box, Container, Flex, Heading, Link, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react';
+import { Breadcrumbs } from '../../components/common/Breadcrumbs';
 import SbHero from '/src/assets/images/code-of-conduct-image.webp';
 
 export default function CodeOfConduct() {
-  return (
+  const breadcrumbItems = [
+    { label: 'Community', href: '/community' },
+    { label: 'Code of Conduct' }
+  ];
 
+  return (
     <Container maxW="none" p={0} background={'#E9EBF8'}>
-      {/* Breadcrumbs */}
-      <Flex alignItems={'center'} background="#FAFAFD" h={'44px'}>
-        <Container maxW="container.xl">
-          <Flex align="center" gap={2}>
-            <Link href="/community" color="text.link" fontWeight="medium">
-              Community
-            </Link>
-            <Text color="gray.500">&gt;</Text>
-            <Text color="gray.700">Code of Conduct</Text>
-          </Flex>
-        </Container>
-      </Flex>
+      <Breadcrumbs items={breadcrumbItems} />
 
       <Flex 
         gap={0} 
