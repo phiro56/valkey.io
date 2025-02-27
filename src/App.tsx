@@ -7,6 +7,7 @@ import { CommandReference } from './pages/CommandReference';
 import Community from './pages/Community';
 import CodeOfConduct from './pages/Community/CodeOfConduct';
 import FAQ from './pages/Community/FAQ';
+import ShowCasePage from './pages/Community/show-case/[slug]';
 import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
 import { Install } from './pages/Install';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/community/faq" element={<FAQ />} />
             <Route path="/community/code-of-conduct" element={<CodeOfConduct />} />
+            <Route path="/community/show-case/:slug" element={<ShowCasePage />} />
             <Route path="/participants" element={<ParticipantsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />

@@ -130,11 +130,11 @@ The ShowCase component (`src/components/community/ShowCase.tsx`) includes:
 To use the showcase section in your components:
 
 ```typescript
-import { showCaseDigest, ShowCase } from '@/data/showCase';
+import { mockShowCases, ShowCase } from '@/data/showCase';
 import { ShowCase as ShowCaseComponent } from '@/components/community/ShowCase';
 
 // Use in your component
-<ShowCaseComponent latestShowCase={showCaseDigest} />
+<ShowCaseComponent latestShowCase={mockShowCases} />
 ```
 
 ### Best Practices

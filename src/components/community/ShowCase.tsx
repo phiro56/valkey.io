@@ -7,7 +7,7 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { ShowCase as ShowCaseType } from '../../data/showCase';
 
 interface ShowCaseProps {
@@ -22,10 +22,9 @@ export const ShowCase: React.FC<ShowCaseProps> = ({ latestShowCase }) => {
           Community Highlights
         </Heading>
         <Text textAlign="center">
-          Lorem ipsum dolor sit, amet.Lorem ipsum dolor sit, amet. Lorem ipsum dolor sit, amet.Lorem ipsum dolor sit, amet.
+          Explore the latest updates, tutorials, and case studies from our community.
         </Text>
       </Stack>
-
 
       <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={8} w="100%" mb={'120px'}>
         {latestShowCase.map((showCase, index) => (
@@ -44,10 +43,11 @@ export const ShowCase: React.FC<ShowCaseProps> = ({ latestShowCase }) => {
               <Text mb={4} fontSize={'16px'} noOfLines={2}>
                 {showCase.excerpt}
               </Text>
+              
               <Box textAlign={'right'}>
                 <Button
-                  as="a"
-                  href={`/show-case/${showCase.slug}`}
+                  as={Link}
+                  to={`/community/show-case/${showCase.slug}`}
                   variant="outline"
                   borderWidth={'1px'}
                   borderColor={'#072150'}
