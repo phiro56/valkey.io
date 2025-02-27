@@ -152,3 +152,67 @@ interface BlogPost {
    - Update release notes in `releaseNotes.ts`
    - Keep blog posts current in `blogPosts.ts`
    - Regularly review and update documentation
+
+## Contribute Component
+
+The Contribute section displays various ways users can contribute to the Valkey project. This component uses data from `src/data/contributeWays.ts`.
+
+### Data Structure
+
+```typescript
+interface ContributeWay {
+  title: string;
+  description: string;
+  icon: IconType;
+  buttons?: {
+    label: string;
+    href: string;
+    icon?: IconType;
+  }[];
+}
+```
+
+### Available Contribution Ways
+
+1. **Ask Questions**
+
+   - GitHub Discussions
+   - Matrix Chat
+
+2. **Report Bugs**
+
+   - GitHub Issues
+
+3. **Connect on Social Media**
+
+   - LinkedIn
+   - Twitter
+
+4. **Suggest Features**
+
+   - GitHub Issues
+
+5. **Security Concerns**
+
+   - Security Policy
+
+6. **Community Conduct**
+   - Code of Conduct
+
+### Component Features
+
+- Icon-based cards for each contribution method
+- Descriptive text explaining each way to contribute
+- Action buttons linking to relevant platforms
+- Responsive layout
+- Integration with React Icons for visual elements
+
+### Routes and Endpoints
+
+- Security Policy: `/security-policy`
+- Code of Conduct: `/community/code-of-conduct`
+- GitHub Repository: `https://github.com/valkey-xyz/valkey`
+- Matrix Chat: `https://matrix.to/#/#valkey:matrix.org`
+- Social Media:
+  - LinkedIn: `https://linkedin.com/company/valkey`
+  - Twitter: `https://twitter.com/valkeyxyz`
