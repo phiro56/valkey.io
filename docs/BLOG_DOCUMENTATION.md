@@ -31,6 +31,7 @@ interface BlogPost {
   title: string; // The title of the blog post
   date: string; // Date in format "Day Month DD, YYYY"
   excerpt: string; // A brief summary of the post
+  content: string; // HTML-formatted content of the post
   slug: string; // URL-friendly identifier
   category: string; // Post category (matches Category.value)
   imageUrl: string; // URL to the post's featured image
@@ -112,7 +113,14 @@ Individual blog post page layout:
 2. **Main Content Area**
 
    - Background: white
-   - Full post content
+   - Full post content in HTML format
+   - Styled HTML elements:
+     - h2: 20px, bold, purple
+     - h3: 18px, bold, purple
+     - h4: 16px, bold, purple
+     - Paragraphs: 16px with 1.6 line height
+     - Lists: Properly indented with 24px padding
+     - Images: Full width with proper spacing
    - Responsive layout
 
 3. **Sidebar (33% width)**
@@ -148,6 +156,9 @@ Individual blog post page layout:
 
    - Keep titles concise and descriptive
    - Write engaging excerpts (150-200 characters)
+   - Format main content in HTML with proper semantic structure
+   - Use appropriate heading hierarchy (h2, h3, h4)
+   - Include proper spacing and formatting for lists and paragraphs
    - Use SEO-friendly slugs
    - Maintain consistent date format: "Day Month DD, YYYY"
 

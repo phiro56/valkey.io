@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Image, Link, Text, VStack } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
 import { blogDigest, BlogPost } from '../../data/blogPosts';
 import { Breadcrumbs } from '../common/Breadcrumbs';
@@ -57,17 +57,57 @@ export const BlogPostPage = () => {
               mb={2}
             />
 
-            <Text fontSize="20px" fontWeight="bold" mb={0} color={'secondary.purple.500'}>
+            <Heading as="h1" fontSize="28px" fontWeight="bold" mb={0} color={'secondary.purple.500'}>
               {post.title}
-            </Text>
+            </Heading>
 
             <Text color="gray.500" mb={8}>
               {post.date}
             </Text>
 
-            <Text whiteSpace="pre-line" mb={8}>
-              {post.excerpt}
-            </Text>
+            <Box
+              className="blog-content"
+              sx={{
+                'h2': {
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                  marginTop: '24px',
+                  marginBottom: '16px',
+                  color: 'secondary.purple.500'
+                },
+                'h3': {
+                  fontSize: '18px',
+                  fontWeight: 'bold',
+                  marginTop: '24px',
+                  marginBottom: '16px',
+                  color: 'secondary.purple.500'
+                },
+                'h4': {
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  marginTop: '24px',
+                  marginBottom: '16px',
+                  color: 'secondary.purple.500'
+                },
+                'p': {
+                  marginBottom: '16px',
+                  lineHeight: '1.6'
+                },
+                'ul, ol': {
+                  marginBottom: '16px',
+                  paddingLeft: '24px'
+                },
+                'li': {
+                  marginBottom: '8px'
+                },
+                'img': {
+                  width: '100%',
+                  height: 'auto',
+                  marginBottom: '8px'
+                }
+              }}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </Box>
         </Box>
 
