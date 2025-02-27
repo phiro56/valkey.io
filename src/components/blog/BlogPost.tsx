@@ -1,22 +1,6 @@
 import { Box, Button, Container, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
-import { blogDigest, BlogPost } from './BlogContent';
-
-interface Author {
-  name: string;
-  username: string;
-  bio: string;
-  imageUrl: string;
-}
-
-interface BlogPostContent {
-  title: string;
-  date: string;
-  author: Author;
-  content: string;
-  imageUrl: string;
-  category: BlogPost['category'];
-}
+import { blogDigest, BlogPost } from '../../data/blogPosts';
 
 // Get related posts (posts with same category)
 const getRelatedPosts = (category: BlogPost['category'], currentSlug: string) => {
@@ -26,24 +10,11 @@ const getRelatedPosts = (category: BlogPost['category'], currentSlug: string) =>
 };
 
 // Get blog post by slug
-const getBlogPost = (slug: string): BlogPostContent | undefined => {
+const getBlogPost = (slug: string): BlogPost | undefined => {
   const post = blogDigest.find(p => p.slug === slug);
   if (!post) return undefined;
 
-  return {
-    title: post.title,
-    date: post.date,
-    content: post.excerpt, // In a real app, you'd have full content
-    imageUrl: post.imageUrl,
-    category: post.category,
-    author: {
-      name: 'Kyle Davis',
-      username: 'stockholmux',
-      bio: 'Kyle is the Senior Developer Advocate on the Valkey project. He has a long history with open source software development; he was a founding contributor to the OpenSearch project and most recently worked to build a community around Betterrocket OS. When not working, Kyle enjoys 3D printing and getting his hands dirty in his Edmonton, Alberta-based home garden.',
-      imageUrl:
-        'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop',
-    },
-  };
+  return post;
 };
 
 export const BlogPostPage = () => {
@@ -100,7 +71,7 @@ export const BlogPostPage = () => {
             </Text>
 
             <Text whiteSpace="pre-line" mb={8}>
-              {post.content}
+              {post.excerpt}
             </Text>
           </Box>
         </Box>

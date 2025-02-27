@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Image, Link, Text, VStack } from '@chakra-ui/react';
-import { blogDigest } from './BlogContent';
+import { blogDigest } from '../../data/blogPosts';
 
 // Get only trending posts
 const trendingPosts = blogDigest.filter(post => post.isTrending);

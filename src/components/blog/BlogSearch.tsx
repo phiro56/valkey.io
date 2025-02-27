@@ -1,9 +1,8 @@
 import { Box, Button, Input, Select } from '@chakra-ui/react';
 import { FormEvent } from 'react';
-import { blogDigest, BlogPost } from './BlogContent';
+import { BlogPost, categories } from '../../data/blogPosts';
 
 type Category = BlogPost['category'];
-const categories: Category[] = Array.from(new Set(blogDigest.map(post => post.category)));
 
 interface BlogSearchProps {
   searchQuery: string;
@@ -71,8 +70,8 @@ export const BlogSearch = ({
         >
           <option value="">All Categories</option>
           {categories.map(category => (
-            <option key={category} value={category}>
-              {category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')}
+            <option key={category.value} value={category.value}>
+              {category.label}
             </option>
           ))}
         </Select>

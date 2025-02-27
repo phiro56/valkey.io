@@ -1,214 +1,110 @@
 # Blog Content Documentation
 
-## Adding Blog Posts
+## Data Structure
 
-Blog posts are stored in the `blogDigest` array in `src/components/blog/BlogContent.tsx`. Each post follows this JSON structure:
+### Author Interface
 
 ```typescript
-{
-  "title": string,          // The title of the blog post
-  "date": string,          // Date in format "Day Month DD, YYYY"
-  "excerpt": string,       // A brief summary of the post (displayed in listings)
-  "slug": string,         // URL-friendly identifier (used in links)
-  "category": "tutorials" | "news" | "case-studies",  // Post category
-  "imageUrl": string,     // URL to the post's featured image
-  "isTrending": boolean   // Optional: Mark post as trending (will appear in sidebar)
+interface Author {
+  name: string; // Author's full name
+  username: string; // Author's username (without @)
+  bio: string; // Author's biography
+  imageUrl: string; // Author's profile image URL
+  role: string; // Author's role/position
 }
 ```
 
-### Example Post
+### Category Interface
 
-```json
-{
-  "title": "Reducing application latency and lowering Cloud bill",
-  "date": "Wednesday January 8, 2025",
-  "excerpt": "By implementing AZ affinity routing in Valkey and using GLIDE, you can achieve lower latency and cost savings by routing requests to replicas in the same AZ as the client.",
-  "slug": "reducing-application-latency",
-  "category": "tutorials",
-  "imageUrl": "https://example.com/path/to/image.jpg",
-  "isTrending": true
+```typescript
+interface Category {
+  value: string; // Category identifier
+  label: string; // Display name
+  description: string; // Category description
 }
 ```
 
-### Field Guidelines
-
-1. **title**
-
-   - Should be descriptive and engaging
-   - No character limit, but recommended to keep under 60 characters
-   - Can include special characters
-
-2. **date**
-
-   - Format: "Day Month DD, YYYY"
-   - Example: "Wednesday January 8, 2025"
-   - Used for sorting and filtering
-
-3. **excerpt**
-
-   - Brief summary of the post
-   - Recommended length: 150-200 characters
-   - Should give readers a clear idea of the post content
-
-4. **slug**
-
-   - URL-friendly version of the title
-   - Use lowercase letters, numbers, and hyphens only
-   - Must be unique across all posts
-   - Example: "reducing-application-latency"
-
-5. **category**
-
-   - Must be one of: "tutorials", "news", "case-studies"
-   - Used for filtering and navigation
-   - Categories are predefined in the system
-
-6. **imageUrl**
-
-   - Full URL to the post's featured image
-   - Recommended image dimensions: 1200x800 pixels
-   - Supported formats: JPG, PNG
-   - Images should be optimized for web
-
-7. **isTrending** (optional)
-   - Boolean value: true/false
-   - If true, post will appear in the Trending sidebar
-   - Default is false if not specified
-
-### Adding a New Post
-
-To add a new post:
-
-1. Open `src/components/blog/BlogContent.tsx`
-2. Locate the `blogDigest` array
-3. Add your new post object at the beginning of the array for newest-first ordering
-4. Follow the JSON structure above
-5. Ensure all required fields are included
-6. Verify the slug is unique
-
-### Example of Adding Multiple Posts
+### Blog Post Interface
 
 ```typescript
-export const blogDigest: BlogPost[] = [
+interface BlogPost {
+  title: string; // The title of the blog post
+  date: string; // Date in format "Day Month DD, YYYY"
+  excerpt: string; // A brief summary of the post
+  slug: string; // URL-friendly identifier
+  category: string; // Post category (matches Category.value)
+  imageUrl: string; // URL to the post's featured image
+  isTrending?: boolean; // Optional: Mark post as trending
+  author: Author; // Author information
+}
+```
+
+## Categories
+
+The blog system has predefined categories stored in the `categories` array:
+
+```typescript
+export const categories: Category[] = [
   {
-    title: 'New Feature Release: Advanced Monitoring',
-    date: 'Monday March 15, 2025',
-    excerpt:
-      'Introducing our new monitoring dashboard with real-time metrics and customizable alerts.',
-    slug: 'advanced-monitoring-release',
-    category: 'news',
-    imageUrl: 'https://example.com/monitoring-dashboard.jpg',
-    isTrending: true,
+    value: 'tutorials',
+    label: 'Tutorials',
+    description: 'Step-by-step guides and technical walkthroughs',
   },
   {
-    title: 'Optimizing Database Performance',
-    date: 'Friday March 12, 2025',
-    excerpt:
-      'Learn best practices for optimizing your database queries and improving overall system performance.',
-    slug: 'database-optimization-guide',
-    category: 'tutorials',
-    imageUrl: 'https://example.com/database-optimization.jpg',
+    value: 'news',
+    label: 'News',
+    description: 'Latest updates and announcements from Valkey',
   },
-  // ... existing posts ...
+  {
+    value: 'case-studies',
+    label: 'Case Studies',
+    description: 'Real-world examples and implementation stories',
+  },
 ];
 ```
 
-## Best Practices
+## Blog Components
 
-1. **Image Optimization**
+### BlogContent
 
-   - Compress images before uploading
-   - Use appropriate aspect ratios (16:9 or 4:3 recommended)
-   - Provide fallback images when possible
+The main component that displays the list of blog posts. Features:
 
-2. **Content Organization**
+- Filters posts based on:
+  - Search query (title, excerpt, date)
+  - Category
+  - Date
+- Displays posts in a card format with:
+  - Title
+  - Date
+  - Excerpt
+  - Read More link
 
-   - Keep newest posts at the top of the array
-   - Limit trending posts to 3-4 at a time
-   - Maintain a good balance between categories
+### BlogSearch
 
-3. **Maintenance**
+Search and filter interface component that includes:
 
-   - Regularly review and update trending status
-   - Remove outdated content
-   - Verify all image URLs are still valid
+- Search input for articles
+- Category dropdown filter
+- Date picker filter
 
-4. **SEO Considerations**
-   - Use descriptive, keyword-rich titles
-   - Write compelling excerpts
-   - Create SEO-friendly slugs
+### BlogSidebar
 
-## Individual Blog Post Page
+Displays trending posts in a sidebar format. Features:
 
-The individual blog post page (`BlogPost.tsx`) displays a full blog post with the following sections:
-
-### Page Structure
-
-```typescript
-{
-  "title": string,          // Post title
-  "date": string,          // Post date
-  "content": string,       // Full post content
-  "imageUrl": string,      // Featured image URL
-  "category": string,      // Post category
-  "author": Author,        // Author information
-}
-```
-
-### Author Information
-
-Each blog post requires author information with the following structure:
-
-```typescript
-{
-  "name": string,          // Author's full name
-  "username": string,      // Author's username (without @)
-  "bio": string,          // Author's biography
-  "imageUrl": string      // Author's profile image URL
-}
-```
-
-Example author object:
-
-```json
-{
-  "name": "Kyle Davis",
-  "username": "stockholmux",
-  "bio": "Kyle is the Senior Developer Advocate on the Valkey project...",
-  "imageUrl": "https://example.com/path/to/author-image.jpg"
-}
-```
-
-### Related Posts
-
-Related posts are automatically generated based on the following criteria:
-
-- Posts with the same category as the current post
-- Excluding the current post
-- Limited to 3 posts maximum
-- Displayed in card format with:
+- Shows posts marked with `isTrending: true`
+- Each trending post displays:
   - Featured image (50% width)
   - Title (max 2 lines)
   - Excerpt (max 2 lines)
-  - "Read More" button
+  - Read More button
 
-### Navigation Elements
+### BlogPost Page
 
-#### Breadcrumbs
-
-The breadcrumb navigation appears at the top of the page with:
-
-- Background color: #FAFAFD
-- Height: 44px
-- Format: "Blog > {Post Title}"
-- "Blog" links back to the main blog page
-- Current post title is non-clickable
-
-### Page Layout
+Individual blog post page layout:
 
 1. **Header Section**
 
-   - Breadcrumb navigation
+   - Breadcrumb navigation (Blog > Post Title)
    - Featured image (400px height)
    - Post title
    - Publication date
@@ -216,53 +112,65 @@ The breadcrumb navigation appears at the top of the page with:
 2. **Main Content Area**
 
    - Background: white
-   - Padding: 16px
    - Full post content
    - Responsive layout
 
 3. **Sidebar (33% width)**
-   - Background: #F2F0FA
-   - Author section
+   - Author information
+     - Profile image
+     - Name
+     - Username
+     - Role
+     - Bio
    - Related posts section
+     - Shows up to 3 posts from the same category
+     - Each related post shows:
+       - Featured image (50% width)
+       - Title (max 2 lines)
+       - Excerpt (max 2 lines)
+       - Read More button
 
-### Best Practices
+## URL Structure
 
-1. **Author Information**
+- Blog listing: `/blog`
+- Individual posts: `/blog/{slug}`
 
-   - Keep author bios concise and professional
-   - Use high-quality profile images (recommended: 120x120px)
-   - Maintain consistent username format
+## Best Practices
 
-2. **Related Posts**
+1. **Images**
 
-   - Ensure posts within the same category have similar themes
-   - Use high-quality featured images for cards
-   - Keep titles and excerpts clear and concise
+   - Use high-quality images optimized for web
+   - Featured images: recommended 1200x800 pixels
+   - Author profile images: 120x120 pixels
+   - Include fallback images where appropriate
 
-3. **Content Formatting**
+2. **Content**
 
-   - Use appropriate heading hierarchy
-   - Include high-quality images
-   - Maintain consistent spacing
-   - Ensure content is mobile-responsive
+   - Keep titles concise and descriptive
+   - Write engaging excerpts (150-200 characters)
+   - Use SEO-friendly slugs
+   - Maintain consistent date format: "Day Month DD, YYYY"
 
-4. **Performance**
-   - Optimize all images (featured, author, related posts)
-   - Lazy load images where appropriate
-   - Consider implementing pagination for very long posts
+3. **Categories**
 
-### URL Structure
+   - Use predefined categories only
+   - Ensure posts are properly categorized
+   - Maintain a good balance of content across categories
 
-Individual blog posts follow the URL pattern:
+4. **Trending Posts**
 
-```
-/blog/{slug}
-```
+   - Limit number of trending posts
+   - Regularly review and update trending status
+   - Use high-quality featured images for trending posts
 
-Where `slug` is the unique identifier from the blog post object.
+5. **Author Information**
 
-### Error Handling
+   - Keep bios professional and concise
+   - Include relevant role information
+   - Use consistent username format
+   - Provide high-quality profile images
 
-- Invalid or non-existent slugs redirect to the main blog page
-- Missing images use a fallback placeholder
-- Missing author information displays defaults where appropriate
+6. **Performance**
+   - Optimize all images
+   - Use lazy loading for images where appropriate
+   - Consider mobile responsiveness
