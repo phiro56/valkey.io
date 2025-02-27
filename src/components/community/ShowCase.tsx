@@ -19,7 +19,7 @@ export const ShowCase: React.FC<ShowCaseProps> = ({ latestShowCase }) => {
     <>
       <Stack mt={'70px'} py={'10'} color={'secondary.purple.500'} maxW="7xl">
         <Heading as="h2" size="lg" textAlign="center">
-          Show Case
+          Community Highlights
         </Heading>
         <Text textAlign="center">
           Lorem ipsum dolor sit, amet.Lorem ipsum dolor sit, amet. Lorem ipsum dolor sit, amet.Lorem ipsum dolor sit, amet.

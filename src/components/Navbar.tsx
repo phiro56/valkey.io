@@ -2,14 +2,20 @@ import { Box, Flex, HStack, Image, Link } from '@chakra-ui/react';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import ValkeyHorLogo from '/src/assets/images/valkey-horizontal-color.svg';
 
-const NAV_ITEMS = [
+interface NavItem {
+  label: string;
+  href: string;
+  isHashLink?: boolean;
+}
+
+const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Install', href: '/install' },
   { label: 'Documentation', href: '/documentation' },
   { label: 'Command Reference', href: '/command-reference' },
   { label: 'Blog', href: '/blog' },
   { label: 'Community', href: '/community' },
-  { label: 'Participants', href: '#Participants', isHashLink: true },
+  { label: 'Participants', href: '/participants' },
 ];
 
 export const Navbar = () => {

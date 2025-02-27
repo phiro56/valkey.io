@@ -10,6 +10,7 @@ import FAQ from './pages/Community/FAQ';
 import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
 import { Install } from './pages/Install';
+import { ParticipantsPage } from './pages/Participants';
 import theme from './theme';
 
 // Placeholder components for routes
@@ -33,6 +34,7 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/community/faq" element={<FAQ />} />
             <Route path="/community/code-of-conduct" element={<CodeOfConduct />} />
+            <Route path="/participants" element={<ParticipantsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
