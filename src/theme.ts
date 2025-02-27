@@ -162,6 +162,7 @@ const theme = extendTheme({
     text: {
       primary: '#1A2026', // Primary text color
       secondary: '#E7E4F4', // Secondary text color for dark backgrounds
+      link: '#6983FF'
     },
     brand: {
       50: '#f0f9ff',

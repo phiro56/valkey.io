@@ -33,7 +33,7 @@ export const BlogPostPage = () => {
       <Flex alignItems={'center'} background="#FAFAFD" h={'44px'}>
         <Container maxW="container.xl">
           <Flex align="center" gap={2}>
-            <Link href="/blog" color="secondary.purple.500" fontWeight="medium">
+            <Link href="/blog" color="text.link" fontWeight="medium">
               Blog
             </Link>
             <Text color="gray.500">&gt;</Text>

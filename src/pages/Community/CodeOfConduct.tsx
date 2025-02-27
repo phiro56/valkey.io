@@ -1,81 +1,128 @@
-import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
-
-const sections = [
-  {
-    title: 'Our Pledge',
-    content:
-      'In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.',
-  },
-  {
-    title: 'Our Standards',
-    content:
-      'Examples of behavior that contributes to creating a positive environment include:\n\n• Using welcoming and inclusive language\n• Being respectful of differing viewpoints and experiences\n• Gracefully accepting constructive criticism\n• Focusing on what is best for the community\n• Showing empathy towards other community members',
-  },
-  {
-    title: 'Our Responsibilities',
-    content:
-      'Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.',
-  },
-  {
-    title: 'Scope',
-    content:
-      'This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community.',
-  },
-  {
-    title: 'Enforcement',
-    content:
-      'Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team. All complaints will be reviewed and investigated promptly and fairly.',
-  },
-];
+import { Box, Container, Flex, Heading, Link, ListItem, Stack, Text, UnorderedList } from '@chakra-ui/react';
+import SbHero from '/src/assets/images/code-of-conduct-image.webp';
 
 export default function CodeOfConduct() {
   return (
-    <Container maxW="container.xl" py={16}>
-      <Stack spacing={8} align="center">
-        <Heading as="h1" size="2xl" textAlign="center">
-          Code of Conduct
-        </Heading>
 
-        <Text textAlign="center" maxW="container.md">
-          We are committed to providing a friendly, safe and welcoming environment for all,
-          regardless of level of experience, gender identity and expression, sexual orientation,
-          disability, personal appearance, body size, race, ethnicity, age, religion, nationality,
-          or other similar characteristic.
-        </Text>
+    <Container maxW="none" p={0} background={'#E9EBF8'}>
+      {/* Breadcrumbs */}
+      <Flex alignItems={'center'} background="#FAFAFD" h={'44px'}>
+        <Container maxW="container.xl">
+          <Flex align="center" gap={2}>
+            <Link href="/community" color="text.link" fontWeight="medium">
+              Community
+            </Link>
+            <Text color="gray.500">&gt;</Text>
+            <Text color="gray.700">Code of Conduct</Text>
+          </Flex>
+        </Container>
+      </Flex>
 
-        {sections.map((section, index) => (
-          <Box
-            key={index}
-            w="100%"
-            p={8}
-            borderWidth="1px"
-            borderRadius="lg"
-            bg="white"
-            shadow="sm"
-          >
-            <Stack spacing={4}>
-              <Heading as="h2" size="lg">
-                {section.title}
-              </Heading>
-              <Text whiteSpace="pre-line">{section.content}</Text>
+      <Flex 
+        gap={0} 
+        minH={'100%'} 
+        direction={{ base: 'column-reverse', md: 'row' }}
+      >
+        {/* Main Content */}
+        <Box
+          flex="1"
+          background={'#E2E8F0'}
+          padding={'4'}
+          h={'calc(100vh - 185px)'}
+          overflowX={'auto'}
+        >
+          <Box flex="1" background={'white'} padding={'6'}>
+            <Heading as="h1" fontSize="20px" color="secondary.purple.500" mb={'6'}>
+              Contributor Covenant Code of Conduct
+            </Heading>
+
+            <Stack spacing={8}>
+              <Box>
+                <Heading as="h2" fontSize="16px" color="secondary.purple.500" mb={1}>
+                  Our Pledge
+                </Heading>
+                <Text>
+                  We as members, contributors, and leaders pledge to make participation in our community a harassment-free 
+                  experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex 
+                  characteristics, gender identity and expression, level of experience, education, socio-economic status, 
+                  nationality, personal appearance, race, religion, or sexual identity and orientation. We pledge to act and 
+                  interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+                </Text>
+              </Box>
+
+              <Box>
+                <Heading as="h2" fontSize="16px" color="secondary.purple.500" mb={1}>
+                  Our Standards
+                </Heading>
+                <Text mb={4}>Examples of behavior that contributes to a positive environment for our community include:</Text>
+                <UnorderedList spacing={2} pl={5} mb={6}>
+                  <ListItem>Demonstrating empathy and kindness toward other people</ListItem>
+                  <ListItem>Being respectful of differing opinions, viewpoints, and experiences</ListItem>
+                  <ListItem>Giving and gracefully accepting constructive feedback</ListItem>
+                  <ListItem>Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience</ListItem>
+                  <ListItem>Focusing on what is best not just for us as individuals, but for the overall community</ListItem>
+                </UnorderedList>
+
+                <Text mb={4}>Examples of unacceptable behavior include:</Text>
+                <UnorderedList spacing={2} pl={5}>
+                  <ListItem>The use of sexualized language or imagery, and sexual attention or advances of any kind</ListItem>
+                  <ListItem>Trolling, insulting or derogatory comments, and personal or political attacks</ListItem>
+                  <ListItem>Public or private harassment</ListItem>
+                  <ListItem>Publishing others' private information, such as a physical or email address, without their explicit permission</ListItem>
+                  <ListItem>Other conduct which could reasonably be considered inappropriate in a professional setting</ListItem>
+                </UnorderedList>
+              </Box>
+
+              <Box>
+                <Heading as="h2" fontSize="16px" color="secondary.purple.500" mb={1}>
+                  Enforcement Responsibilities
+                </Heading>
+                <Text>
+                  Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and 
+                  will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, 
+                  threatening, offensive, or harmful. Community leaders have the right and responsibility to remove, edit, or 
+                  reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code 
+                  of Conduct, and will communicate reasons for moderation decisions when appropriate.
+                </Text>
+              </Box>
+
+              <Box>
+                <Heading as="h2" fontSize="16px" color="secondary.purple.500" mb={1}>
+                  Scope
+                </Heading>
+                <Text>
+                  This Code of Conduct applies within all community spaces, and also applies when an individual is officially 
+                  representing the community in public spaces. Examples of representing our community include using an 
+                  official e-mail address, posting via an official social media account, or acting as an appointed 
+                  representative at an online or offline event.
+                </Text>
+              </Box>
+
+              <Box>
+                <Heading as="h2" fontSize="16px" color="secondary.purple.500" mb={1}>
+                  Enforcement
+                </Heading>
+                <Text>
+                  Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community 
+                  leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and fairly.
+                </Text>
+              </Box>
             </Stack>
           </Box>
-        ))}
-
-        <Box w="100%" mt={12}>
-          <Stack spacing={4}>
-            <Heading as="h2" size="lg">
-              Contact Information
-            </Heading>
-            <Text>If you have questions about this Code of Conduct, please contact us:</Text>
-            <Stack as="ul" spacing={2} pl={5}>
-              <Text as="li">Via email at conduct@valkey.io</Text>
-              <Text as="li">Through our Matrix channel</Text>
-              <Text as="li">By creating a GitHub issue</Text>
-            </Stack>
-          </Stack>
         </Box>
-      </Stack>
+
+        {/* Sidebar */}
+        <Box 
+          w={{ base: '100%', md: '33%' }}
+          h={{ base: '250px', md: 'calc(100vh - 185px)' }}
+          overflowX={'auto'} 
+          backgroundColor={'#F2F0FA'}
+          backgroundImage={SbHero}
+          backgroundSize={'cover'}
+          backgroundPosition={'center bottom'}
+          p={4}>          
+        </Box>
+      </Flex>
     </Container>
   );
 }
