@@ -5,10 +5,10 @@ import { SiMatrix } from 'react-icons/si';
 import { Link as RouterLink } from 'react-router-dom';
 
 const FOOTER_ITEMS = [
-  { label: 'Code of Conduct', href: '/code-of-conduct' },
+  { label: 'Code of Conduct', href: '/community/code-of-conduct' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Terms of Service', href: '/terms-of-service' },
-  { label: 'FAQ', href: '/faq' },
+  { label: 'FAQ', href: '/community/faq' },
 ];
 
 const SOCIAL_LINKS = [
