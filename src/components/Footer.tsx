@@ -29,7 +29,10 @@ export const Footer = () => {
       py={5} 
       mt="auto" 
       bg={'#1A2026'} 
-      position={isHomePage ? "relative" : "sticky"} 
+      position={{ 
+        base: 'relative',
+        lg: isHomePage ? "relative" : "sticky"
+      }}
       bottom={0} 
       width="100%"
     >
