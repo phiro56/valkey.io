@@ -36,8 +36,7 @@ export const BlogPostPage = () => {
   return (
     <Container maxW="none" p={0} background={'#E9EBF8'}>
       <Breadcrumbs items={breadcrumbItems} />
-
-      <Flex gap={0} minH={'100%'}>
+      <Box display="flex" flexDirection={{base: "column", lg: "row"}} gap={0} py={0}>
         {/* Main Content */}
         <Box
           flex="1"
@@ -112,7 +111,7 @@ export const BlogPostPage = () => {
         </Box>
 
         {/* Sidebar */}
-        <Box w="33%" h={'calc(100vh - 185px)'} overflowX={'auto'} backgroundColor={'#F2F0FA'} p={4}>
+        <Box w={{base: "100%", lg: "33%"}} h={'calc(100vh - 185px)'} overflowX={'auto'} backgroundColor={'#F2F0FA'} p={4}>
           {/* Author Section */}
           <Box mb={8}>
             <Text color="purple.700" fontWeight="semibold" mb={4}>
@@ -185,7 +184,7 @@ export const BlogPostPage = () => {
             </VStack>
           </Box>
         </Box>
-      </Flex>
+      </Box>
     </Container>
   );
 };

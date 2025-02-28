@@ -22,7 +22,7 @@ export const ParticipantsPage = () => {
       <Flex 
         gap={0} 
         minH={'100%'} 
-        direction={{ base: 'column-reverse', md: 'row' }}
+        direction={{ base: 'column-reverse', lg: 'row' }}
       >
         {/* Main Content */}
         <Box
@@ -40,10 +40,10 @@ export const ParticipantsPage = () => {
                 <Flex align="start" gap={4} alignItems={'center'} flexDirection={{ base: 'column', md: 'row' }}>
                   <Box 
                   flex={'0 0 auto'} 
-                  width={{ base: '80%', md: '30%' }}
+                  width={{ base: '100%', lg: '30%' }}
                   maxW={'200px'}
                   textAlign={'center'} 
-                  padding={{ base: '30px 15px 0', md: '15px 15px 0' }}
+                  padding={{ base: '30px 15px 0', lg: '15px 15px 0' }}
                   >
                     <Image
                       src={participant.logo}
@@ -92,14 +92,14 @@ export const ParticipantsPage = () => {
 
         {/* Sidebar */}
         <Box 
-          w={{ base: '100%', md: '33%' }}
-          h={{ base: '250px', md: 'calc(100vh - 60px)' }}
+          w={{ base: '100%', lg: '33%' }}
+          h={{ base: '250px', lg: 'calc(100vh - 60px)' }}
           overflowX={'auto'} 
           backgroundColor={'#F2F0FA'}
           backgroundImage={SbHero}
           backgroundSize={'cover'}
           backgroundPosition={'center bottom'}
-          position={{ base: 'static', md: 'sticky' }}
+          position={{ base: 'static', lg: 'sticky' }}
           top={0}
           p={4}>          
         </Box>
