@@ -8,10 +8,13 @@ export const Hero = () => {
       as="section"
       pt={{ base: '4rem', md: '12rem' }}
       pb={{ base: '2rem', md: '4rem' }}
-      backgroundImage={HeroBg}
       backgroundSize={'cover'}
       backgroundPosition={'center bottom'}
-      backgroundColor={'#6983FF'}
+      backgroundColor={'#30186e'}
+      backgroundImage={{ 
+        base: `linear-gradient(to bottom, rgba(48, 24, 110, 0.65), rgba(48, 24, 110, 0.75)), url(${HeroBg})`,
+        md: `url(${HeroBg})`
+      }}
     >
       <Container maxW="7xl">
         <Stack spacing={8} alignItems="center" textAlign="center">
