@@ -1,97 +1,26 @@
 import { Box, Link, Text, VStack } from '@chakra-ui/react';
-
-interface NavItem {
-  items: {
-    name: string;
-    path: string;
-  }[];
-}
-
-const navigationItems: NavItem[] = [
-  {
-    items: [
-      {
-        name: 'ACL',
-        path: '#',
-      },
-      {
-        name: 'ACL CAT',
-        path: '#',
-      },
-      {
-        name: 'ACL DELUSER',
-        path: '#',
-      },
-      {
-        name: 'ACL DRYRUN',
-        path: '#',
-      },
-      {
-        name: 'ACL GENPASS',
-        path: '#',
-      },
-      {
-        name: 'ACL GETUSER',
-        path: '#',
-      },
-      {
-        name: 'ACL HELP',
-        path: '#',
-      },
-      {
-        name: 'ACL LIST',
-        path: '#',
-      },
-      {
-        name: 'ACL LOAD',
-        path: '#',
-      },
-      {
-        name: 'ACL LOG',
-        path: '#',
-      },
-      {
-        name: 'ACL SAVE',
-        path: '#',
-      },
-      {
-        name: 'ACL SETUSER',
-        path: '#',
-      },
-      {
-        name: 'ACL USERS',
-        path: '#',
-      },
-      {
-        name: 'ACL WHOAMI',
-        path: '#',
-      },
-      {
-        name: 'APPEND',
-        path: '#',
-      },
-      {
-        name: 'ASKING',
-        path: '#',
-      },
-    ],
-  },
-];
+import { commandReferences } from '../../data/commandReference';
 
 interface CommandReferenceSidebarProps {
   searchQuery: string;
+  selectedCommand: typeof commandReferences[0] | null;
+  onCommandSelect: (command: typeof commandReferences[0]) => void;
 }
 
-export const CommandReferenceSidebar = ({ searchQuery }: CommandReferenceSidebarProps) => {
+export const CommandReferenceSidebar = ({ 
+  searchQuery, 
+  selectedCommand, 
+  onCommandSelect 
+}: CommandReferenceSidebarProps) => {
   // Trim the search query to handle whitespace
   const trimmedQuery = searchQuery.trim();
 
   // Filter items if there's a search query
   const filteredItems = trimmedQuery
-    ? navigationItems[0].items.filter(item =>
-        item.name.toLowerCase().includes(trimmedQuery.toLowerCase())
+    ? commandReferences.filter(item =>
+        item.command.toLowerCase().includes(trimmedQuery.toLowerCase())
       )
-    : navigationItems[0].items;
+    : commandReferences;
 
   // Only show no results message if we have a non-empty search query AND no results
   if (trimmedQuery !== '' && filteredItems.length === 0) {
@@ -110,19 +39,24 @@ export const CommandReferenceSidebar = ({ searchQuery }: CommandReferenceSidebar
 
   // Show filtered results
   return (
-    <VStack align="stretch" spacing={6}>
+    <VStack
+      align="stretch" spacing={6}
+      h={'calc(100vh - 234px)'}
+      overflowX={'auto'}
+    >
       <Box>
         <Box mb={4}>
           <VStack align="stretch">
             {filteredItems.map(item => (
               <Link
-                key={item.name}
-                href={item.path}
+                key={item.command}
+                onClick={() => onCommandSelect(item)}
                 p={2}
-                background={'primary.100'}
+                background={selectedCommand?.command === item.command ? 'primary.200' : 'primary.100'}
                 _hover={{ bg: 'primary.200' }}
+                cursor="pointer"
               >
-                <Text fontWeight="medium">{item.name}</Text>
+                <Text fontWeight="medium">{item.command}</Text>
               </Link>
             ))}
           </VStack>
