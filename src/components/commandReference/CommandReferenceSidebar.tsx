@@ -40,9 +40,10 @@ export const CommandReferenceSidebar = ({
   // Show filtered results
   return (
     <VStack
-      align="stretch" spacing={6}
-      h={'calc(100vh - 234px)'}
-      overflowX={'auto'}
+      align="stretch" 
+      spacing={6}
+      h={{base: 'auto', md: 'calc(100vh - 234px)'}}
+      overflowX={{base: 'visible', md: 'auto'}}
     >
       <Box>
         <Box mb={4}>
