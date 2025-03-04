@@ -11,8 +11,24 @@ interface CommandReferenceContentProps {
 export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSelect }: CommandReferenceContentProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
+  // Debug: Inspect string contents
+  const inspectString = (str: string) => {
+    return str.split('').map(char => char.charCodeAt(0)).join(',');
+  };
+
+  // Sort categories alphabetically (case-insensitive)
+  const sortedCategories = [...commandCategories].sort((a, b) => {
+    const aName = a.categoryName.toLowerCase().trim();
+    const bName = b.categoryName.toLowerCase().trim();
+    console.log(`Comparing "${aName}" (${inspectString(aName)}) with "${bName}" (${inspectString(bName)})`);
+    return aName.localeCompare(bName, undefined, { sensitivity: 'base' });
+  });
+
+  // Debug: Log sorted categories
+  console.log('Sorted categories:', sortedCategories);
+
   // Group commands by category
-  const commandsByCategory = commandCategories.map(category => ({
+  const commandsByCategory = sortedCategories.map(category => ({
     ...category,
     commands: commandReferences.filter(cmd => 
       selectedCategory === 'all' 
@@ -63,11 +79,14 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
                 onChange={handleCategoryChange}
               >
                 <option value="all">All</option>
-                {commandCategories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.categoryName.charAt(0).toUpperCase() + category.categoryName.slice(1)}
-                  </option>
-                ))}
+                {[...sortedCategories].map((category) => {
+                  console.log(`Rendering category: ${category.categoryName}`);
+                  return (
+                    <option key={category.id} value={category.id}>
+                      {category.categoryName.charAt(0).toUpperCase() + category.categoryName.slice(1)}
+                    </option>
+                  );
+                })}
               </Select>
             </Flex>
 
