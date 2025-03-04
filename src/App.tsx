@@ -12,11 +12,9 @@ import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
 import { Install } from './pages/Install';
 import { ParticipantsPage } from './pages/Participants';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
 import theme from './theme';
-
-// Placeholder components for routes
-const PrivacyPolicy = () => <div>Privacy Policy</div>;
-const TermsOfService = () => <div>Terms of Service</div>;
 
 function App() {
   return (
