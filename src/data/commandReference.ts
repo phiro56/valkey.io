@@ -184,7 +184,7 @@ export const commandReferences: CommandReference[] = [
     for instance it is possible to determine what users are good targets of beta features.</p>
     
     <h3>RESP2/RESP3 Reply</h3>
-    <p><a href="/topics/protocol#integers">Integer reply</a>: the number of bits set to 1.</p>
+    <p><a href="/documentation/protocol#integers">Integer reply</a>: the number of bits set to 1.</p>
     
     <h3>History</h3>
     <table>

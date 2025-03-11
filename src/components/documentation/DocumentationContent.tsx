@@ -1,57 +1,91 @@
-import { Box, Heading, Link, Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { Link as RouterLink, useParams } from 'react-router-dom';
+import { documentationData } from '../../data/documentation';
+import { topics } from '../../data/topics';
 
-interface DocumentationContentProps {
-  searchQuery: string;
-}
+export const DocumentationContent = () => {
+  const { topicId } = useParams();
+  const [selectedTopic, setSelectedTopic] = useState(topics.find(t => t.id === topicId));
 
-export const DocumentationContent = ({ searchQuery }: DocumentationContentProps) => {
+  useEffect(() => {
+    if (topicId) {
+      const topic = topics.find(t => t.id === topicId);
+      setSelectedTopic(topic);
+    } else {
+      setSelectedTopic(undefined);
+    }
+  }, [topicId]);
+
+  const content = selectedTopic 
+    ? selectedTopic.htmlContent 
+    : documentationData.introduction.content || '';
+
   return (
     <Box p={4}>
-      {searchQuery ? (
-        <Box borderRadius={'2px'} p={8} textAlign="center">
-          <Text fontWeight="800" color="secondary.purple.500" mb={1} fontSize={'60px'}>
-            &lt;/&gt;
+      {selectedTopic && (
+        <Box mb={4} background={'white'} borderRadius={'50px'} px={4} py={2}>
+          <Text color="gray.600" fontSize="sm">
+            <RouterLink to="/documentation" style={{ color: '#646cff', textDecoration: 'underline' }}>
+              Documentation
+            </RouterLink>
+            {' / '}
+            <Text as="span" color="gray.600">
+              {selectedTopic.topicName}
+            </Text>
           </Text>
-          <Text fontWeight="medium" color="secondary.purple.500" mb={1}>
-            We couldn't find any results matching your search
-          </Text>
-          <Text color="secondary.purple.500">Check your spelling or try different keywords</Text>
         </Box>
-      ) : (
-        <>
-          <Box mb={4} background={'white'} borderRadius={'50px'} px={4} py={2}>
-            <Text color="gray.600" fontSize="sm">
-              <Link color={'primary.500'} textDecoration={'underline'}>
-                Documentation
-              </Link>{' '}
-              /{' '}
-              <Link color={'primary.500'} textDecoration={'underline'}>
-                Install
-              </Link>{' '}
-              / Install
-            </Text>
-          </Box>
-
-          <Box background={'white'} borderRadius={'2px'} p={4}>
-            <Text mb={4}>
-              This is a an installation guide. You'll learn how to install, run, and experiment with
-              the Valkey server process. The download page valkey.io/download lists the latest
-              releases.
-            </Text>
-
-            <Heading as="h2" size="lg" mb={4}>
-              Install Valkey
-            </Heading>
-
-            <Text mb={4}>
-              These are some ways to install Valkey. Refer to Valkey Administration for detailed
-              setup tips.
-            </Text>
-
-            {/* Add more content sections as needed */}
-          </Box>
-        </>
       )}
+
+      <Box background={'white'} borderRadius={'2px'} p={'4'}>
+        <Box
+          className="blog-content"
+          sx={{
+            'h2': {
+              fontSize: '20px',
+              fontWeight: 'bold',
+              marginTop: '24px',
+              marginBottom: '16px',
+              color: 'secondary.purple.500'
+            },
+            'h3': {
+              fontSize: '18px',
+              fontWeight: 'bold',
+              marginTop: '24px',
+              marginBottom: '16px',
+              color: 'secondary.purple.500'
+            },
+            'h4': {
+              fontSize: '16px',
+              fontWeight: 'bold',
+              marginTop: '24px',
+              marginBottom: '16px',
+              color: 'secondary.purple.500'
+            },
+            'p': {
+              marginBottom: '16px',
+              lineHeight: '1.6'
+            },
+            'ul, ol': {
+              marginBottom: '16px',
+              paddingLeft: '24px'
+            },
+            'li': {
+              marginBottom: '8px'
+            },
+            'img': {
+              width: '100%',
+              height: 'auto',
+              marginBottom: '8px'
+            },
+            'a': {
+              color: '#646cff'
+            }
+          }}
+        >
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </Box>
+      </Box>
     </Box>
   );
 };

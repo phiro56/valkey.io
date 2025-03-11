@@ -1,68 +1,75 @@
-import { Box, Link, Text, VStack } from '@chakra-ui/react';
+import { Box, Text, VStack } from '@chakra-ui/react';
+import { useMemo } from 'react';
+import { Link as RouterLink, useParams } from 'react-router-dom';
+import { categories } from '../../data/topics';
 
-interface NavItem {
-  title: string;
-  items: {
-    name: string;
-    description: string;
-    path: string;
-  }[];
+interface DocumentationSidebarProps {
+  searchQuery: string;
 }
 
-const navigationItems: NavItem[] = [
-  {
-    title: 'CONFIGURATION',
-    items: [
-      {
-        name: 'ACL',
-        description: 'Valkey Access Control List',
-        path: '/documentation/acl',
-      },
-      {
-        name: 'CLI',
-        description: 'Valkey command line interface',
-        path: '/documentation/cli',
-      },
-      // Add more items as needed
-    ],
-  },
-  {
-    title: 'CLIENT HANDLING',
-    items: [
-      {
-        name: 'Administration',
-        description: 'Advice for configuring and managing Valkey in production',
-        path: '/documentation/administration',
-      },
-      // Add more items as needed
-    ],
-  },
-];
+export const DocumentationSidebar = ({ searchQuery }: DocumentationSidebarProps) => {
+  const { topicId } = useParams();
 
-export const DocumentationSidebar = () => {
+  const filteredCategories = useMemo(() => {
+    if (!searchQuery) return categories;
+
+    const query = searchQuery.toLowerCase();
+    return categories.map(category => ({
+      ...category,
+      items: category.items.filter(
+        item =>
+          item.topicName.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+      ),
+    })).filter(category => category.items.length > 0);
+  }, [searchQuery]);
+
+  if (filteredCategories.length === 0) {
+    return (
+      <Box p={8} textAlign="center">
+        <Text fontWeight="800" color="secondary.purple.500" mb={1} fontSize={'60px'}>
+          &lt;/&gt;
+        </Text>
+        <Text fontWeight="medium" color="secondary.purple.500" mb={1}>
+          We couldn't find any results matching your search
+        </Text>
+        <Text color="secondary.purple.500">Check your spelling or try different keywords</Text>
+      </Box>
+    );
+  }
+
   return (
-    <VStack align="stretch" spacing={6}>
+    <VStack
+      align="stretch" 
+      spacing={6}
+      h={{base: 'auto', md: 'calc(100vh - 220px)'}}
+      overflowX={{base: 'visible', md: 'auto'}}
+    >
       <Box>
         <Text color={'secondary.purple.500'} mb={2}>
           Browse by task
         </Text>
-        {navigationItems.map(section => (
+        {filteredCategories.map(section => (
           <Box key={section.title} mb={4}>
             <Text color="purple.700" fontWeight="semibold" mb={2}>
               {section.title}
             </Text>
             <VStack align="stretch">
               {section.items.map(item => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  p={2}
-                  background={'primary.100'}
-                  _hover={{ bg: 'primary.200' }}
+                <RouterLink
+                  key={item.id}
+                  to={`/documentation/${item.id}`}
+                  style={{ textDecoration: 'none' }}
                 >
-                  <Text fontWeight="medium">{item.name}</Text>
-                  <Text fontSize="sm">{item.description}</Text>
-                </Link>
+                  <Box
+                    p={2}
+                    background={topicId === item.id ? 'primary.200' : 'primary.100'}
+                    _hover={{ bg: 'primary.200' }}
+                  >
+                    <Text fontWeight="medium">{item.topicName}</Text>
+                    <Text fontSize="sm">{item.description}</Text>
+                  </Box>
+                </RouterLink>
               ))}
             </VStack>
           </Box>
