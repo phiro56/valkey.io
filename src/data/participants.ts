@@ -39,7 +39,7 @@ export const participants: Participant[] = [
     `,
   },
   {
-    name: 'Pepercona',
+    name: 'Percona',
     desc: 'Provides Valkey expertise whenever you need it, offering day-to-day operational support and hands-on assistance for complex projects.',
     logo: perconaLogo,
     content: `
