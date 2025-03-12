@@ -1,10 +1,10 @@
 import {
-    Button,
-    Heading,
-    Icon,
-    SimpleGrid,
-    Stack,
-    Text,
+  Button,
+  Heading,
+  Icon,
+  SimpleGrid,
+  Stack,
+  Text,
 } from '@chakra-ui/react';
 import { ContributeWay } from '../../data/contributeWays';
 
@@ -37,7 +37,7 @@ export const ContributeGrid = ({ contributeWays }: ContributeGridProps) => {
               spacing={4}
               mt={'auto'}
               width={'100%'}
-              justifyContent={'flex-end'}
+              justifyContent={'center'}
             >
               {way.buttons.map((button, index) => (
                 <Button
