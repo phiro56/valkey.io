@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Image, Text, VStack } from '@chakra-ui/react';
 import { participants } from '../data/participants';
 import SbHero from '/src/assets/images/code-of-conduct-image.webp';
 
@@ -16,6 +16,17 @@ export const ParticipantsPage = () => {
           <Text fontSize="xl" textAlign="center" maxW="800px">
             The diverse Valkey project participants are committed to maintaining and enhancing the project's long-term viability for all. Since its inception, Valkey has seen steady adoption, reflecting the industry's interest in an open, community-driven database solution. We anticipate further growth in participation from additional companies.
           </Text>
+            <Button
+              as="a"
+              href="https://github.com/valkey-io/valkey-io.github.io/issues/new?assignees=&labels=participant%2C+untriaged&projects=&template=add_participant_form_template.md&title=%5BPARTICIPANT%5D"
+              variant="gradient"
+              minW={{ base: 'auto', sm: '380px' }}
+              marginTop={6}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              BECOME A PARTICIPANT
+            </Button>
         </Container>
       </Box>
 

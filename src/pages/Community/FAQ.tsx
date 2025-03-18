@@ -14,7 +14,7 @@ export default function FAQ() {
   return (
     <Container maxW="100%" p={0}>
       <Box display="flex" gap={0} py={0}>
-        <Box w="600px" p={4} background="secondary.lavender.100"
+        <Box w="420px" p={4} background="secondary.lavender.100"
           h={'calc(100vh - 140px)'}
           overflowX={'auto'}
         >

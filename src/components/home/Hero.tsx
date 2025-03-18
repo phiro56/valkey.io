@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Link, Stack } from '@chakra-ui/react';
+import { Box, Button, Container, Heading, Stack } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import HeroBg from '/src/assets/images/hero-bg.webp';
 
@@ -64,20 +64,6 @@ export const Hero = () => {
             >
               GET STARTED
             </Button>
-            <Link
-              href="#documentation"
-              color="white"
-              fontSize="lg"
-              textDecoration="underline"
-              _hover={{ color: 'primary.100' }}
-              onClick={e => {
-                e.preventDefault();
-                const element = document.getElementById('documentation');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              See Documentation
-            </Link>
           </Stack>
         </Stack>
       </Container>

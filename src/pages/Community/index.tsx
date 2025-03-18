@@ -5,10 +5,8 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
-import { CommunityCards } from '../../components/community/CommunityCards';
 import { ShowCase } from '../../components/community/ShowCase';
 import { ContributeGrid } from '../../components/home/ContributeGrid';
-import { communityCards } from '../../data/communityCards';
 import { contributeWays } from '../../data/contributeWays';
 import { mockShowCases } from '../../data/showCase';
 
@@ -36,7 +34,6 @@ const CommunityPage = () => {
           </Stack>
         
           <ContributeGrid contributeWays={contributeWays}/>
-          <CommunityCards cards={communityCards} />
           <ShowCase latestShowCase={mockShowCases} />
 
         </Container>
