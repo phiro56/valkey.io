@@ -1,11 +1,12 @@
 import {
   Box,
   Button,
+  Flex,
   Grid,
   Heading,
   Image,
   Stack,
-  Text
+  Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { ShowCase as ShowCaseType } from '../../data/showCase';
@@ -36,7 +37,7 @@ export const ShowCase: React.FC<ShowCaseProps> = ({ latestShowCase }) => {
               height="100px"
               objectFit="cover"
             />
-            <Box p={6}>
+            <Flex p={6} minH={'calc(100% - 100px)'} flexDir={'column'}>
               <Heading as="h3" lineHeight={'1.4'} fontSize={'16px'} mb={2}>
                 {showCase.title}
               </Heading>
@@ -44,7 +45,7 @@ export const ShowCase: React.FC<ShowCaseProps> = ({ latestShowCase }) => {
                 {showCase.excerpt}
               </Text>
               
-              <Box textAlign={'right'}>
+              <Box textAlign={'right'} marginTop={'auto'}>
                 <Button
                   as={Link}
                   to={`/community/show-case/${showCase.slug}`}
@@ -62,7 +63,7 @@ export const ShowCase: React.FC<ShowCaseProps> = ({ latestShowCase }) => {
                   Read More
                 </Button>
               </Box>
-            </Box>
+            </Flex>
           </Box>
         ))}
       </Grid>
