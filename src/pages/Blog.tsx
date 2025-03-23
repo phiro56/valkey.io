@@ -1,7 +1,7 @@
 import { Box, Container } from '@chakra-ui/react';
 import { useState } from 'react';
 import { BlogContent } from '../components/blog/BlogContent';
-import { BlogPost } from '../data/blogPosts';
+import { BlogPost } from '../data/types';
 
 import { BlogHeader } from '../components/blog/BlogHeader';
 import { BlogSearch } from '../components/blog/BlogSearch';

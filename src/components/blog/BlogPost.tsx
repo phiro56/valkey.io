@@ -1,7 +1,11 @@
 import { Box, Button, Container, Flex, Heading, Image, Link, Text, VStack } from '@chakra-ui/react';
 import { Navigate, useParams } from 'react-router-dom';
-import { blogDigest, BlogPost } from '../../data/blogPosts';
+import { blogDigest, blogPosts } from '../../data/blogPosts';
+import { BlogPost } from '../../data/types';
 import { Breadcrumbs } from '../common/Breadcrumbs';
+
+// Import all author images
+const authorImages = import.meta.glob<{ default: string }>('/src/assets/media/authors/*.{jpeg,jpg,png}', { eager: true });
 
 // Get related posts (posts with same category)
 const getRelatedPosts = (category: BlogPost['category'], currentSlug: string) => {
@@ -12,10 +16,17 @@ const getRelatedPosts = (category: BlogPost['category'], currentSlug: string) =>
 
 // Get blog post by slug
 const getBlogPost = (slug: string): BlogPost | undefined => {
-  const post = blogDigest.find(p => p.slug === slug);
+  const post = blogPosts.find(p => p.slug === slug);
   if (!post) return undefined;
 
   return post;
+};
+
+// Get author image URL
+const getAuthorImageUrl = (imageUrl: string) => {
+  // Convert the URL path to match the glob pattern
+  const imagePath = imageUrl.replace('/assets/media/authors/', '/src/assets/media/authors/');
+  return authorImages[imagePath]?.default || '/assets/media/authors/default.jpg';
 };
 
 export const BlogPostPage = () => {
@@ -102,6 +113,7 @@ export const BlogPostPage = () => {
                 'img': {
                   width: '100%',
                   height: 'auto',
+                  maxWidth: '600px',
                   marginBottom: '8px'
                 }
               }}
@@ -115,26 +127,41 @@ export const BlogPostPage = () => {
           {/* Author Section */}
           <Box mb={8}>
             <Text color="purple.700" fontWeight="semibold" mb={4}>
-              ABOUT THE AUTHOR
+              ABOUT THE {post.authors.length > 1 ? 'AUTHORS' : 'AUTHOR'}
             </Text>
 
-            <Flex gap={2} mb={4}>
-              <Image
-                src={post.author.imageUrl}
-                alt={post.author.name}
-                objectFit="cover"
-                w={'60px'}
-                h={'60px'}
-                flex={'0 0 auto'}
-              />
-              <Box>
-                <Text fontSize="16px">{post.author.name}</Text>
-                <Text color="secondary.purple.500">@{post.author.username}</Text>
-                <Text fontSize="sm" color="gray.600" mt={2}>
-                  {post.author.bio}
-                </Text>
-              </Box>
-            </Flex>
+            <VStack spacing={6} align="stretch">
+              {post.authors.map((author, index) => (
+                <Flex 
+                  key={author.username} 
+                  gap={2} 
+                  pb={4} 
+                  borderBottom={index !== post.authors.length - 1 ? '1px solid rgba(0,0,0,5%)' : 'none'}
+                >
+                  <Image
+                    src={getAuthorImageUrl(author.imageUrl)}
+                    alt={author.name}
+                    objectFit="cover"
+                    w={'60px'}
+                    h={'60px'}
+                    flex={'0 0 auto'}
+                  />
+                  <Box>
+                    <Text fontSize="16px">{author.name}</Text>
+                    <Link 
+                      href={`https://github.com/${author.githubUser || author.username}`}
+                      color="secondary.purple.500"
+                      isExternal
+                    >
+                      @{author.username}
+                    </Link>
+                    <Text fontSize="sm" color="gray.600" mt={2}>
+                      {author.bio}
+                    </Text>
+                  </Box>
+                </Flex>
+              ))}
+            </VStack>
           </Box>
 
           {/* Related Posts Section */}
@@ -151,7 +178,7 @@ export const BlogPostPage = () => {
                     height="auto"
                     width="50%"
                     objectFit="cover"
-                    fallbackSrc="https://via.placeholder.com/600x400/4E51BF/FFFFFF?text=Valkey"
+                    fallbackSrc="/src/assets/media/blog/default.png"
                   />
                   <Box p={4}>
                     <Text fontSize="lg" fontWeight="bold" mb={2} noOfLines={2}>
