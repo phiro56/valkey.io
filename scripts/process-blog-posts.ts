@@ -137,7 +137,7 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
     excerpt: data.excerpt || data.description || markdownContent.slice(0, 200) + '...',
     content: marked.parse(markdownContent) as string,
     slug,
-    category: (data.category as BlogPost['category']) || 'news',
+    category: (data.category || 'news') as 'tutorials' | 'news' | 'case-studies',
     imageUrl: data.image || '/src/assets/media/blog/default.png',
     authorUsernames,
     trending: data.trending === 'true'

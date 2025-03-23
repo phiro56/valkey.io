@@ -1,6 +1,6 @@
 // This file is auto-generated. Do not edit manually.
-import { authors } from './authors';
 import { BlogPost, Category } from './types';
+import { authors } from './authors';
 
 export const categories: Category[] = [
   {
