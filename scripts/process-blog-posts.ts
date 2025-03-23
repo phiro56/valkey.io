@@ -172,10 +172,11 @@ import { authors } from './authors';
 
 export const categories: Category[] = ${JSON.stringify(categories, null, 2)};
 
-export const blogPostsRaw = ${JSON.stringify(posts, null, 2)};
+export const blogPostsRaw = ${JSON.stringify(posts, null, 2)} as const;
 
 export const blogPosts: BlogPost[] = blogPostsRaw.map(post => ({
   ...post,
+  category: post.category as 'tutorials' | 'news' | 'case-studies',
   authors: post.authorUsernames.map(username => 
     authors.find(a => a.username === username) || {
       name: 'Unknown Author',
