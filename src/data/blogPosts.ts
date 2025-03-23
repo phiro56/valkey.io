@@ -94,7 +94,7 @@ export const blogPostsRaw = [
     "authorUsernames": [
       "hpatro"
     ],
-    "trending": false
+    "trending": true
   },
   {
     "title": "Unlock 1 Million RPS: Experience Triple the Speed with Valkey",
@@ -188,19 +188,6 @@ export const blogPostsRaw = [
       "kyledvs"
     ],
     "trending": false
-  },
-  {
-    "title": "Getting Started with Valkey",
-    "date": "2024-03-23T00:00:00.000Z",
-    "excerpt": "Learn how to get started with Valkey in this comprehensive tutorial that covers installation, basic usage, and best practices.",
-    "content": "<h1>Getting Started with Valkey</h1>\n<p>Welcome to this comprehensive guide on getting started with Valkey. In this tutorial, we&#39;ll walk through everything you need to know to begin using Valkey effectively.</p>\n<h2>Installation</h2>\n<p>First, let&#39;s install Valkey. You can do this using npm:</p>\n<pre><code class=\"language-bash\">npm install valkey\n</code></pre>\n<p>Or if you prefer using yarn:</p>\n<pre><code class=\"language-bash\">yarn add valkey\n</code></pre>\n<h2>Basic Usage</h2>\n<p>Once installed, you can start using Valkey in your project:</p>\n<pre><code class=\"language-typescript\">import { Valkey } from &#39;valkey&#39;;\n\nconst valkey = new Valkey({\n  // your configuration options here\n});\n</code></pre>\n<h2>Next Steps</h2>\n<p>Stay tuned for more tutorials and guides on using Valkey effectively in your projects. We&#39;ll cover:</p>\n<ul>\n<li>Advanced configuration options</li>\n<li>Best practices</li>\n<li>Common use cases</li>\n<li>Troubleshooting tips</li>\n</ul>\n<p>Feel free to reach out to our community if you have any questions! </p>\n",
-    "slug": "getting-started-with-valkey",
-    "category": "tutorials",
-    "imageUrl": "/images/blog/getting-started.jpg",
-    "authorUsernames": [
-      "stockholmux"
-    ],
-    "trending": true
   }
 ] as const;
 
