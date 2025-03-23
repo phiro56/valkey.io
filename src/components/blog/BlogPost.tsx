@@ -178,7 +178,7 @@ export const BlogPostPage = () => {
                     height="auto"
                     width="50%"
                     objectFit="cover"
-                    fallbackSrc="https://via.placeholder.com/600x400/4E51BF/FFFFFF?text=Valkey"
+                    fallbackSrc="/src/assets/media/blog/default.png"
                   />
                   <Box p={4}>
                     <Text fontSize="lg" fontWeight="bold" mb={2} noOfLines={2}>

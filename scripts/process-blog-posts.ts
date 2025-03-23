@@ -133,8 +133,8 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
   marked.use({
     renderer: {
       image(href, title, text) {
-        // Add /src prefix to image paths if they start with /assets
-        const imagePath = href?.startsWith('/assets') ? `/src${href}` : href;
+        // Always use paths without /src prefix
+        const imagePath = href?.replace(/^\/src/, '');
         return `<img src="${imagePath}" alt="${text}"${title ? ` title="${title}"` : ''} />`;
       }
     }
@@ -147,7 +147,7 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
     content: marked.parse(markdownContent) as string,
     slug,
     category,
-    imageUrl: data.image || '/src/assets/media/blog/default.png',
+    imageUrl: data.image?.replace(/^\/src/, '') || '/assets/media/blog/default.png',
     authorUsernames,
     trending: data.trending === 'true'
   };
@@ -170,12 +170,22 @@ function processBlogPosts() {
 import { BlogPost, Category } from './types';
 import { authors } from './authors';
 
+// Helper function to handle image paths based on environment
+const getImagePath = (path: string) => {
+  if (import.meta.env.PROD) {
+    return path.replace(/^\\/\\/src/, '');
+  }
+  return path;
+};
+
 export const categories: Category[] = ${JSON.stringify(categories, null, 2)};
 
 export const blogPostsRaw = ${JSON.stringify(posts, null, 2)} as const;
 
 export const blogPosts: BlogPost[] = blogPostsRaw.map(post => ({
   ...post,
+  imageUrl: getImagePath(post.imageUrl),
+  content: import.meta.env.PROD ? post.content.replace(/src="\\/\\/src\\//g, 'src="/') : post.content,
   category: post.category as 'tutorials' | 'news' | 'case-studies',
   authors: post.authorUsernames.map(username => 
     authors.find(a => a.username === username) || {
