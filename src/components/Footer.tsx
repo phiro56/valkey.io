@@ -1,7 +1,7 @@
 import { Box, Container, Icon, Link, Stack, Text } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
-import { SiMatrix } from 'react-icons/si';
+import { SiSlack } from "react-icons/si";
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const FOOTER_ITEMS = [
@@ -12,11 +12,11 @@ const FOOTER_ITEMS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'Matrix', href: '#', icon: SiMatrix },
-  { label: 'GitHub', href: '#', icon: FaGithub },
-  { label: 'LinkedIn', href: '#', icon: FaLinkedin },
-  { label: 'Twitter', href: '#', icon: FaTwitter },
-  { label: 'Connect', href: '#', icon: IoMdMail },
+  { label: 'Slack', href: 'https://valkey-oss-developer.slack.com/join/shared_invite/zt-2nxs51chx-EB9hu9Qdch3GMfRcztTSkQ#/shared-invite/email', icon: SiSlack, isExternal: true },
+  { label: 'GitHub', href: 'https://github.com/orgs/valkey-io/discussions', icon: FaGithub, isExternal: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/valkey/', icon: FaLinkedin, isExternal: true },
+  { label: 'Twitter', href: 'https://x.com/valkey_io', icon: FaTwitter, isExternal: true },
+  { label: 'Connect', href: '/connect', icon: IoMdMail, isExternal: false },
 ];
 
 export const Footer = () => {
@@ -45,20 +45,37 @@ export const Footer = () => {
         >
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             {SOCIAL_LINKS.map(item => (
-              <Link
-                key={item.label}
-                href={item.href}
-                isExternal
-                color="white"
-                _hover={{ color: '#ccc' }}
-                display="inline-flex"
-                alignItems="center"
-                gap={2}
-                fontSize="sm"
-              >
-                <Icon as={item.icon} boxSize={5} />
-                <Text>{item.label}</Text>
-              </Link>
+              item.isExternal ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  isExternal
+                  color="white"
+                  _hover={{ color: '#ccc' }}
+                  display="inline-flex"
+                  alignItems="center"
+                  gap={2}
+                  fontSize="sm"
+                >
+                  <Icon as={item.icon} boxSize={5} />
+                  <Text>{item.label}</Text>
+                </Link>
+              ) : (
+                <Link
+                  key={item.label}
+                  as={RouterLink}
+                  to={item.href}
+                  color="white"
+                  _hover={{ color: '#ccc' }}
+                  display="inline-flex"
+                  alignItems="center"
+                  gap={2}
+                  fontSize="sm"
+                >
+                  <Icon as={item.icon} boxSize={5} />
+                  <Text>{item.label}</Text>
+                </Link>
+              )
             ))}
           </Stack>
           <Stack direction="row" spacing={6}>

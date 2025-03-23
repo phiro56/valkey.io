@@ -8,6 +8,7 @@ import Community from './pages/Community';
 import CodeOfConduct from './pages/Community/CodeOfConduct';
 import FAQ from './pages/Community/FAQ';
 import ShowCasePage from './pages/Community/show-case/[slug]';
+import { Connect } from './pages/Connect';
 import { Documentation } from './pages/Documentation';
 import { Home } from './pages/Home';
 import { Install } from './pages/Install';
@@ -35,6 +36,7 @@ function App() {
             <Route path="/participants" element={<ParticipantsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/connect" element={<Connect />} />
           </Routes>
         </MainLayout>
       </Router>
