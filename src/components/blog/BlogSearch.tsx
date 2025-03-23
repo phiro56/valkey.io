@@ -1,6 +1,7 @@
 import { Box, Button, Input, Select } from '@chakra-ui/react';
 import { FormEvent } from 'react';
-import { BlogPost, categories } from '../../data/blogPosts';
+import { categories } from '../../data/blogPosts';
+import { BlogPost } from '../../data/types';
 
 type Category = BlogPost['category'];
 
@@ -48,27 +49,14 @@ export const BlogSearch = ({
         Filters
       </Box>
 
-      <Box
-        background={'white'}
-        padding={'2'}
-        borderRadius={'10px'}
-        display={'flex'}
-        alignItems={'center'}
-        gap={'2'}
-      >
-        <Box as="label" ml={'2'}>
-          Category:
-        </Box>
+      <Box mb={4}>
         <Select
-          bg="white"
-          borderRadius="10px"
-          borderLeftRadius={'10px'}
-          borderRightRadius={'10px'}
           value={selectedCategory}
           onChange={e => setSelectedCategory(e.target.value as Category | '')}
-          defaultValue=""
+          bg="white"
+          borderRadius="md"
+          placeholder="All Categories"
         >
-          <option value="">All Categories</option>
           {categories.map(category => (
             <option key={category.value} value={category.value}>
               {category.label}
@@ -77,28 +65,13 @@ export const BlogSearch = ({
         </Select>
       </Box>
 
-      <Box
-        mt={2}
-        background={'white'}
-        padding={'2'}
-        borderRadius={'10px'}
-        display={'flex'}
-        alignItems={'center'}
-        gap={'2'}
-      >
-        <Box as="label" ml={'2'}>
-          Date:
-        </Box>
+      <Box mb={4}>
         <Input
           type="date"
-          placeholder="Select Date"
-          bg="white"
-          borderRadius="10px"
-          borderLeftRadius={'10px'}
-          borderRightRadius={'10px'}
-          aria-label="Filter by date"
           value={selectedDate}
           onChange={e => setSelectedDate(e.target.value)}
+          bg="white"
+          borderRadius="md"
         />
       </Box>
     </>

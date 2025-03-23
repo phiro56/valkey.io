@@ -1,5 +1,25 @@
 # Blog Content Documentation
 
+## Data Pipeline
+
+The blog content is processed through an automated pipeline that runs on development startup:
+
+1. **Author Processing** (`scripts/process-authors.ts`)
+
+   - Processes author data from `public/content/authors/*.md`
+   - Generates `src/data/authors.ts`
+
+2. **Blog Post Processing** (`scripts/process-blog-posts.ts`)
+
+   - Processes blog posts from `public/content/blog/*.md`
+   - Handles frontmatter in both `+++` and `---` formats
+   - Processes markdown content with custom image path handling
+   - Generates `src/data/blogPosts.ts`
+
+3. **Development Integration**
+   - The pipeline runs automatically on `pnpm dev`
+   - Ensures content is always up-to-date during development
+
 ## Data Structure
 
 ### Author Interface
@@ -11,6 +31,7 @@ interface Author {
   bio: string; // Author's biography
   imageUrl: string; // Author's profile image URL
   role: string; // Author's role/position
+  githubUser?: string; // Optional: GitHub username for profile link
 }
 ```
 
@@ -29,14 +50,14 @@ interface Category {
 ```typescript
 interface BlogPost {
   title: string; // The title of the blog post
-  date: string; // Date in format "Day Month DD, YYYY"
+  date: string; // ISO date string
   excerpt: string; // A brief summary of the post
   content: string; // HTML-formatted content of the post
-  slug: string; // URL-friendly identifier
+  slug: string; // URL-friendly identifier (without date prefix)
   category: string; // Post category (matches Category.value)
   imageUrl: string; // URL to the post's featured image
-  isTrending?: boolean; // Optional: Mark post as trending
-  author: Author; // Author information
+  trending?: boolean; // Optional: Mark post as trending
+  authors: Author[]; // Array of authors
 }
 ```
 
@@ -92,7 +113,7 @@ Search and filter interface component that includes:
 
 Displays trending posts in a sidebar format. Features:
 
-- Shows posts marked with `isTrending: true`
+- Shows posts marked with `trending: true`
 - Each trending post displays:
   - Featured image (50% width)
   - Title (max 2 lines)
@@ -123,13 +144,19 @@ Individual blog post page layout:
      - Images: Full width with proper spacing
    - Responsive layout
 
-3. **Sidebar (33% width)**
-   - Author information
+3. **Author Section**
+
+   - Displays all authors in a vertical stack
+   - Each author card shows:
      - Profile image
      - Name
-     - Username
+     - Username (with GitHub link)
      - Role
      - Bio
+   - Cards are separated by subtle borders
+   - Last author card has no border
+
+4. **Sidebar (33% width)**
    - Related posts section
      - Shows up to 3 posts from the same category
      - Each related post shows:
@@ -141,7 +168,7 @@ Individual blog post page layout:
 ## URL Structure
 
 - Blog listing: `/blog`
-- Individual posts: `/blog/{slug}`
+- Individual posts: `/blog/{slug}` (slug is filename without date prefix)
 
 ## Best Practices
 
@@ -151,6 +178,7 @@ Individual blog post page layout:
    - Featured images: recommended 1200x800 pixels
    - Author profile images: 120x120 pixels
    - Include fallback images where appropriate
+   - Use `/assets/` prefix for blog post images (automatically converted to `/src/assets/`)
 
 2. **Content**
 
@@ -159,8 +187,8 @@ Individual blog post page layout:
    - Format main content in HTML with proper semantic structure
    - Use appropriate heading hierarchy (h2, h3, h4)
    - Include proper spacing and formatting for lists and paragraphs
-   - Use SEO-friendly slugs
-   - Maintain consistent date format: "Day Month DD, YYYY"
+   - Use SEO-friendly slugs (without date prefix)
+   - Maintain consistent date format in frontmatter
 
 3. **Categories**
 
@@ -180,8 +208,17 @@ Individual blog post page layout:
    - Include relevant role information
    - Use consistent username format
    - Provide high-quality profile images
+   - Support multiple authors per post using the `authors` array in frontmatter
 
-6. **Performance**
+6. **Frontmatter**
+
+   - Support both `+++` and `---` delimiters
+   - Use either `:` or `=` for key-value pairs
+   - Support both single author (`author`) and multiple authors (`authors`)
+   - Include all required fields: title, date, excerpt, category, image
+   - Optional fields: trending, description
+
+7. **Performance**
    - Optimize all images
    - Use lazy loading for images where appropriate
    - Consider mobile responsiveness

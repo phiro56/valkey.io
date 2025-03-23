@@ -1,5 +1,6 @@
 import { Box, Flex, Link, Text } from '@chakra-ui/react';
-import { BlogPost, blogDigest } from '../../data/blogPosts';
+import { blogDigest } from '../../data/blogPosts';
+import { BlogPost } from '../../data/types';
 
 interface BlogContentProps {
   searchQuery: string;
@@ -9,16 +10,18 @@ interface BlogContentProps {
 
 export const BlogContent = ({ searchQuery, selectedCategory, selectedDate }: BlogContentProps) => {
   const filteredPosts = blogDigest.filter(post => {
-    const searchLower = searchQuery.toLowerCase();
+    // Handle search query
+    const searchLower = (searchQuery || '').toLowerCase();
     const matchesSearch =
-      post.title.toLowerCase().includes(searchLower) ||
-      post.excerpt.toLowerCase().includes(searchLower) ||
-      post.date.toLowerCase().includes(searchLower);
+      (post.title || '').toLowerCase().includes(searchLower) ||
+      (post.excerpt || '').toLowerCase().includes(searchLower) ||
+      (post.date || '').toLowerCase().includes(searchLower);
 
+    // Handle category filter
     const matchesCategory = !selectedCategory || post.category === selectedCategory;
 
-    // Convert the post date to YYYY-MM-DD format for comparison
-    const postDate = new Date(post.date).toISOString().split('T')[0];
+    // Handle date filter
+    const postDate = post.date ? new Date(post.date).toISOString().split('T')[0] : '';
     const matchesDate = !selectedDate || postDate === selectedDate;
 
     return matchesSearch && matchesCategory && matchesDate;
