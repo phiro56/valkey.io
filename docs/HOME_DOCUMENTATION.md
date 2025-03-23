@@ -177,7 +177,7 @@ interface ContributeWay {
 1. **Ask Questions**
 
    - GitHub Discussions
-   - Matrix Chat
+   - Slack Community
 
 2. **Report Bugs**
 
@@ -211,8 +211,8 @@ interface ContributeWay {
 
 - Security Policy: `/security-policy`
 - Code of Conduct: `/community/code-of-conduct`
-- GitHub Repository: `https://github.com/valkey-xyz/valkey`
-- Matrix Chat: `https://matrix.to/#/#valkey:matrix.org`
+- GitHub Repository: `https://github.com/valkey-io`
+- Slack Community: `https://valkey-oss-developer.slack.com/join/shared_invite/zt-2nxs51chx-EB9hu9Qdch3GMfRcztTSkQ#/shared-invite/email`
 - Social Media:
   - LinkedIn: `https://linkedin.com/company/valkey`
   - Twitter: `https://twitter.com/valkeyxyz`

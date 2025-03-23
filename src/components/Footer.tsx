@@ -1,7 +1,7 @@
 import { Box, Container, Icon, Link, Stack, Text } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
-import { SiMatrix } from 'react-icons/si';
+import { SiSlack } from "react-icons/si";
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const FOOTER_ITEMS = [
@@ -12,10 +12,10 @@ const FOOTER_ITEMS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'Matrix', href: '#', icon: SiMatrix },
-  { label: 'GitHub', href: '#', icon: FaGithub },
-  { label: 'LinkedIn', href: '#', icon: FaLinkedin },
-  { label: 'Twitter', href: '#', icon: FaTwitter },
+  { label: 'Slack', href: 'https://valkey-oss-developer.slack.com/join/shared_invite/zt-2nxs51chx-EB9hu9Qdch3GMfRcztTSkQ#/shared-invite/email', icon: SiSlack },
+  { label: 'GitHub', href: 'https://github.com/orgs/valkey-io/discussions', icon: FaGithub },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/valkey/', icon: FaLinkedin },
+  { label: 'Twitter', href: 'https://x.com/valkey_io', icon: FaTwitter },
   { label: 'Connect', href: '#', icon: IoMdMail },
 ];
 

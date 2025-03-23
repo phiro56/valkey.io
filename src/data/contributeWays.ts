@@ -28,7 +28,7 @@ export const contributeWays: ContributeWay[] = [
       'If you have any inquiries about Valkey, feel free to join the conversation on our GitHub discussions or chat with us on Matrix.',
     buttons: [
       { label: 'GitHub Repository', href: 'https://github.com/valkey-xyz/valkey', icon: FiGithub },
-      { label: 'Matrix', href: 'https://matrix.to/#/#valkey:matrix.org' },
+      { label: 'Slack', href: 'https://valkey-oss-developer.slack.com/join/shared_invite/zt-2nxs51chx-EB9hu9Qdch3GMfRcztTSkQ#/shared-invite/email' },
     ],
   },
   {
