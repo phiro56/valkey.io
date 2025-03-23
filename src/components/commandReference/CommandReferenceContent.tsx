@@ -182,6 +182,7 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
                     },
                     'pre': {
                       backgroundColor: '#2b303b',
+                      color: '#ffffff',
                       padding: '1rem',
                       borderRadius: '0.5rem',
                       marginBottom: '1rem',

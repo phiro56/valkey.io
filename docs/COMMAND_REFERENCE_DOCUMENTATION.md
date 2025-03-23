@@ -1,6 +1,53 @@
 # Command Reference Documentation
 
-## Data Structures
+## Overview
+
+The command reference documentation is automatically generated from the Valkey documentation repository. This ensures that our documentation stays in sync with the official Valkey documentation.
+
+## Data Sources
+
+The command reference data is sourced from the following files in the [valkey-io/valkey-doc](https://github.com/valkey-io/valkey-doc) repository:
+
+- `groups.json`: Contains command categories and their descriptions
+- `commands.json`: Contains command metadata and specifications
+- `commands/*.md`: Individual markdown files for each command's detailed documentation
+
+## Data Pipeline
+
+The command reference data is generated using the following pipeline:
+
+1. **Data Fetching**
+
+   - Fetches `groups.json` and `commands.json` from the Valkey documentation repository
+   - Retrieves individual markdown files for each command
+
+2. **Data Processing**
+
+   - Transforms command categories from the groups data
+   - Processes each command:
+     - Converts command names to proper filenames
+     - Handles special cases (prefixes, suffixes)
+     - Converts markdown content to HTML
+     - Generates unique IDs for each command
+
+3. **Data Generation**
+   - Creates a TypeScript file (`src/data/commandReference.ts`) containing:
+     - Command categories
+     - Command references with descriptions and HTML content
+
+## Usage
+
+The command reference data is automatically generated as part of the content processing pipeline. To update the command reference data:
+
+```bash
+# Update all content including command reference
+pnpm process-content
+
+# Update only command reference
+pnpm generate-command-reference
+```
+
+## Data Structure
 
 ### CommandCategory Interface
 
@@ -152,3 +199,40 @@ const bitmapCommands = commandReferences.filter(cmd => cmd.categories.includes('
 // Getting a specific command
 const bitCountCommand = commandReferences.find(cmd => cmd.command === 'BITCOUNT');
 ```
+
+## Special Cases
+
+The command reference generator handles several special cases:
+
+1. **Command Prefixes**
+
+   - Commands starting with "CLUSTER" use "cluster-" prefix
+   - Commands starting with "COMMAND" use "command-" prefix
+   - Commands starting with "CONFIG" use "config-" prefix
+   - Commands starting with "ACL" use "acl-" prefix
+
+2. **Command Suffixes**
+
+   - Commands ending with "\_RO" use "\_ro" suffix (e.g., "evalsha_ro.md")
+
+3. **Filename Generation**
+   - Spaces are converted to hyphens
+   - Special characters are removed
+   - Duplicate prefixes are prevented
+
+## Maintenance
+
+The command reference data is maintained through the following process:
+
+1. Changes to the Valkey documentation repository are automatically reflected when running the content processing pipeline
+2. The generated TypeScript file is version controlled but should not be edited manually
+3. Any issues with command processing are logged during generation
+
+## Troubleshooting
+
+If you encounter issues with the command reference generation:
+
+1. Check the console output for any warnings or errors
+2. Verify that the command names in `commands.json` match the markdown filenames
+3. Ensure all required dependencies are installed
+4. Check the network connection to the Valkey documentation repository
