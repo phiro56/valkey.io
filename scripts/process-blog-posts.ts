@@ -34,6 +34,9 @@ const categories: Category[] = [
   },
 ];
 
+// Add type for valid categories
+type ValidCategory = 'tutorials' | 'news' | 'case-studies';
+
 // Parse custom frontmatter format
 function parseCustomFrontmatter(content: string): { data: FrontmatterData; content: string } {
   const lines = content.split('\n');
@@ -120,6 +123,12 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
   // Format the date to ISO string
   const date = data.date ? new Date(data.date).toISOString() : new Date().toISOString();
 
+  // Validate and cast category
+  const category = (data.category || 'news') as ValidCategory;
+  if (!['tutorials', 'news', 'case-studies'].includes(category)) {
+    console.warn(`Warning: Invalid category "${category}" in ${filePath}, defaulting to "news"`);
+  }
+
   // Configure marked with custom renderer for images
   marked.use({
     renderer: {
@@ -137,7 +146,7 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
     excerpt: data.excerpt || data.description || markdownContent.slice(0, 200) + '...',
     content: marked.parse(markdownContent) as string,
     slug,
-    category: (data.category || 'news') as 'tutorials' | 'news' | 'case-studies',
+    category,
     imageUrl: data.image || '/src/assets/media/blog/default.png',
     authorUsernames,
     trending: data.trending === 'true'
