@@ -1,17 +1,17 @@
 import { Alert, AlertIcon, Box, Container, Flex, Heading, Spinner, VStack } from '@chakra-ui/react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import {
-  StyledH1,
-  StyledH2,
-  StyledLink,
-  StyledList,
-  StyledListItem,
-  StyledParagraph
+    StyledH1,
+    StyledH2,
+    StyledLink,
+    StyledList,
+    StyledListItem,
+    StyledParagraph
 } from '../components/common/MarkdownComponents';
-import { useTermsOfService } from '../hooks/useTermsOfService';
+import { useConnect } from '../hooks/useConnect';
 
-export const TermsOfService = () => {
-  const { content, isLoading, error } = useTermsOfService();
+export const Connect = () => {
+  const { content, isLoading, error } = useConnect();
 
   const components: Components = {
     h1: StyledH1,
@@ -38,7 +38,7 @@ export const TermsOfService = () => {
           <Box bgGradient="linear(to-b, #3B2A66, #4E51BF)" color="white" py={16} textAlign="center">
             <Container maxW="container.xl">
               <Heading as="h1" size="2xl" mb={4}>
-                Terms of Service
+                Connect
               </Heading>
             </Container>
           </Box>
