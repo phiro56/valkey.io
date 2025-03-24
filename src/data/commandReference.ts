@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-import { CommandCategory, CommandReference } from '../src/types/commandReference';
+import { CommandCategory, CommandReference } from '../types/commandReference';
 
 export const commandCategories: CommandCategory[] = [
   {

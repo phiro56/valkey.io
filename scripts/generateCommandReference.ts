@@ -173,7 +173,7 @@ async function generateCommandReference() {
 
     // Generate TypeScript file content
     const tsContent = `// This file is auto-generated. Do not edit manually.
-import { CommandCategory, CommandReference } from '../src/types/commandReference';
+import { CommandCategory, CommandReference } from '../types/commandReference';
 
 export const commandCategories: CommandCategory[] = ${JSON.stringify(commandCategories, null, 2)};
 

@@ -1,6 +1,7 @@
 import { Box, Flex, Link, Select, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { commandCategories, commandReferences } from '../../data/commandReference';
+import { CommandReference } from '../../types/commandReference';
 
 interface CommandReferenceContentProps {
   selectedCommand: typeof commandReferences[0] | null;
@@ -108,7 +109,7 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
                     </Flex>
 
                     <Box>
-                      {category.commands.map((command) => (
+                      {category.commands.map((command: CommandReference) => (
                         <Flex
                           key={command.unid}
                           mb={4}
