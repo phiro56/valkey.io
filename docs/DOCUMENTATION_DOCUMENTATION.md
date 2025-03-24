@@ -77,6 +77,57 @@ interface DocumentationData {
 }
 ```
 
+## Content Generation Pipeline
+
+The documentation content is automatically generated through a series of scripts that run as part of the development process.
+
+### Scripts
+
+The content generation pipeline consists of the following scripts:
+
+```json
+{
+  "scripts": {
+    "process-content": "pnpm process-authors && pnpm process-blog && pnpm generate-command-reference && pnpm generate-topics",
+    "process-authors": "tsx scripts/process-authors.ts",
+    "process-blog": "tsx scripts/process-blog-posts.ts",
+    "generate-command-reference": "tsx scripts/generateCommandReference.ts",
+    "generate-topics": "tsx scripts/generate-topics.ts"
+  }
+}
+```
+
+### Topics Generation (`scripts/generate-topics.ts`)
+
+The topics generator:
+
+1. Clones/updates the valkey-doc repository from GitHub
+2. Processes markdown files from the topics directory
+3. Converts markdown content to HTML using marked
+4. Organizes topics into predefined categories
+5. Generates the `topics.ts` file
+
+Configuration:
+
+```typescript
+marked.setOptions({
+  gfm: true, // GitHub Flavored Markdown
+  breaks: true, // Convert line breaks to <br>
+});
+```
+
+### Development Workflow
+
+When running the development server:
+
+1. Run `pnpm dev` which:
+   - Executes the content generation pipeline (`process-content`)
+   - Processes authors
+   - Processes blog posts
+   - Generates command reference
+   - Generates topics from valkey-doc
+   - Starts the Vite development server
+
 ## Features
 
 ### Search Functionality
@@ -108,10 +159,10 @@ The documentation system is fully responsive with:
 
 ## Recent Changes
 
-1. Added comprehensive topic categorization
-2. Implemented real-time search filtering
-3. Enhanced content styling with consistent typography
-4. Added support for HTML content in documentation
+1. Added automatic topic generation from valkey-doc repository
+2. Integrated markdown to HTML conversion
+3. Added content generation to development pipeline
+4. Enhanced content styling with consistent typography
 5. Improved mobile responsiveness
 6. Added breadcrumb navigation
 7. Enhanced code block styling
@@ -122,38 +173,30 @@ The documentation system is fully responsive with:
 
 To add a new topic:
 
-1. Add the topic to the `topics` array in `src/data/topics.ts`:
+1. Create a new markdown file in the valkey-doc repository under the topics directory:
 
-```typescript
-{
-  id: "unique-id",
-  topicName: "Topic Name",
-  description: "Topic description",
-  htmlContent: `<p>HTML content here</p>`
-}
+```markdown
+---
+title: 'Topic Name'
+description: 'Topic description'
+---
+
+Content in markdown format
 ```
 
-2. Add the topic to appropriate category in the `categories` array:
-
-```typescript
-{
-  title: 'CATEGORY_NAME',
-  items: topics.filter(topic =>
-    ['topic-id-1', 'topic-id-2'].includes(topic.id)
-  )
-}
-```
+2. The topic will be automatically processed and added to the appropriate category based on its ID (filename without .md extension).
 
 ### Styling Content
 
-Use the following HTML elements with appropriate classes:
+Use standard markdown syntax in your topic files:
 
-- `<h2>` for main sections
-- `<h3>` for subsections
-- `<pre><code>` for code blocks
-- `<p>` for paragraphs
-- `<ul>` and `<ol>` for lists
-- `<a>` for links
+- `##` for main sections
+- `###` for subsections
+- ` ``` ` for code blocks
+- Regular paragraphs
+- `*` or `-` for unordered lists
+- `1.` for ordered lists
+- `[text](url)` for links
 
 ### Search Implementation
 
