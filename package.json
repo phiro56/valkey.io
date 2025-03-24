@@ -13,23 +13,25 @@
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "process-blog": "tsx scripts/process-blog-posts.ts",
     "process-authors": "tsx scripts/process-authors.ts",
-    "process-content": "pnpm process-authors && pnpm process-blog && pnpm generate-command-reference",
-    "generate-command-reference": "tsx scripts/generateCommandReference.ts"
+    "process-content": "pnpm process-authors && pnpm process-blog && pnpm generate-command-reference && pnpm generate-topics",
+    "generate-command-reference": "tsx scripts/generateCommandReference.ts",
+    "generate-topics": "tsx scripts/generate-topics.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "2.8.2",
     "@emotion/react": "11",
     "@emotion/styled": "11",
+    "axios": "^1.6.7",
     "framer-motion": "6",
+    "gray-matter": "^4.0.3",
+    "marked": "^12.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.1.5",
     "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1",
-    "axios": "^1.6.7",
-    "marked": "^12.0.0"
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -42,8 +44,8 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
-    "gray-matter": "^4.0.3",
     "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
     "tsx": "^4.7.1",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",

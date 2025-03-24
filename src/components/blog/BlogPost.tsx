@@ -115,6 +115,14 @@ export const BlogPostPage = () => {
                   height: 'auto',
                   maxWidth: '600px',
                   marginBottom: '8px'
+                },
+                'pre': {
+                  background: '#2b303b',
+                  color: '#fff',
+                  padding: '16px',
+                  borderRadius: '4px',
+                  overflowX: 'auto',
+                  marginBottom: '16px'
                 }
               }}
               dangerouslySetInnerHTML={{ __html: post.content }}

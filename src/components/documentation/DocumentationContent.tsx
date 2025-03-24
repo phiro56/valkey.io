@@ -81,6 +81,15 @@ export const DocumentationContent = () => {
             'a': {
               color: '#646cff'
             }
+            ,
+            'pre': {
+              background: '#2b303b',
+              color: '#fff',
+              padding: '16px',
+              borderRadius: '4px',
+              overflowX: 'auto',
+              marginBottom: '16px'
+            }
           }}
         >
           <div dangerouslySetInnerHTML={{ __html: content }} />

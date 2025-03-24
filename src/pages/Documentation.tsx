@@ -16,6 +16,7 @@ export const Documentation = () => {
         <Box display="flex" flexDirection={{base: "column", lg: "row"}} gap={0} py={0}>
           <Box
             w={{base: "100%", lg: "420px"}}
+            flex={{base: "1", lg: "0 0 420px"}}
             p={4}
             background="secondary.lavender.100"
             position={{base: 'static', lg: 'sticky'}}
