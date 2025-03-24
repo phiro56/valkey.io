@@ -222,6 +222,12 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
                       backgroundColor: 'gray.50',
                       fontWeight: 'bold',
                     },
+                    'ol': {
+                      paddingLeft: '25px',
+                    },
+                    'ul': {
+                      paddingLeft: '25px',
+                    },
                   }}
                 />
               )}

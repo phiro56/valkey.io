@@ -23,4 +23,16 @@ export interface Category {
   value: string;
   label: string;
   description: string;
+}
+
+export interface CommandCategory {
+  id: string;
+  topicName: string;
+  description: string;
+  htmlContent: string;
+}
+
+export interface TopicCategory {
+  title: string;
+  items: CommandCategory[];
 } 
