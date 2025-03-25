@@ -101,7 +101,7 @@ export const documentationData: DocumentationData = {
       <li><a href="/documentation/ARM">ARM and Raspberry Pi</a>: ARM and the Raspberry Pi are supported platforms. This page contains general information and benchmarks.</li>
       <li><a href="/documentation/twitter-clone">Writing a simple Twitter clone with PHP and Valkey</a></li>
       <li><a href="/documentation/problems">Troubleshooting</a>: Problems? Bugs? High latency? Other issues? Use our problems troubleshooting page as a starting point to find more information.</li>
-      <li><a href="/documentation/faq">FAQ</a>: Frequently asked questions.</li>
+      <li><a href="/community/faq">FAQ</a>: Frequently asked questions.</li>
       </ul>
       <h2 id="command-runtime-introspection">Command runtime introspection</h2>
       <ul>
