@@ -1,8 +1,7 @@
 import { Box, Button, Container, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react';
-import { BinaryArtifacts } from '../components/install/BinaryArtifacts';
-import { DockerHub } from '../components/install/DockerHub';
 import { PreviousReleases } from '../components/install/PreviousReleases';
 import { WhatsNew } from '../components/install/WhatsNew';
+import { releaseNotes } from '../data/releaseNotes';
 
 export const Install = () => {
   return (
@@ -22,23 +21,26 @@ export const Install = () => {
                     Release Notes
                   </Heading>
                   <Text size="md" fontWeight={'bold'}>
-                    Version: 1.5.0
+                    Version: {releaseNotes.version}
                   </Text>
-                  <Text>Release Date: January 20, 2025</Text>
+                  <Text>Release Date: {releaseNotes.releaseDate}</Text>
                 </Stack>
 
-                <Button variant="violet">Download Source Code (.zip)</Button>
+                <Button
+                  as="a"
+                  href={releaseNotes.sourceCodeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="violet"
+                >
+                  View Source Code on GitHub
+                </Button>
               </Flex>
             </Box>
 
             {/* What's New Section */}
             <WhatsNew />
 
-            {/* Docker Hub Section */}
-            <DockerHub />
-
-            {/* Binary Artifacts Section */}
-            <BinaryArtifacts />
           </VStack>
         </Container>
       </Box>
