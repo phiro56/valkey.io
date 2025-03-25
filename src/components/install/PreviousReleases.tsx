@@ -11,47 +11,7 @@ import {
   ListItem,
   Text,
 } from '@chakra-ui/react';
-
-export interface Release {
-  version: string;
-  releaseDate: string;
-  url: string;
-}
-
-export interface ReleaseGroup {
-  majorVersion: string;
-  releases: Release[];
-}
-
-export const previousReleases: ReleaseGroup[] = [
-  {
-    majorVersion: '7.X.X',
-    releases: [
-      { version: '7.2.8', releaseDate: '2025-01-07', url: '/releases/7.2.8' },
-      { version: '7.2.7', releaseDate: '2024-10-02', url: '/releases/7.2.7' },
-      { version: '7.2.6', releaseDate: '2024-07-31', url: '/releases/7.2.6' },
-      { version: '7.2.5', releaseDate: '2024-04-15', url: '/releases/7.2.5' },
-    ],
-  },
-  {
-    majorVersion: '6.X.X',
-    releases: [
-      { version: '6.2.8', releaseDate: '2025-01-07', url: '/releases/6.2.8' },
-      { version: '6.2.7', releaseDate: '2024-10-02', url: '/releases/6.2.7' },
-      { version: '6.2.6', releaseDate: '2024-07-31', url: '/releases/6.2.6' },
-      { version: '6.2.5', releaseDate: '2024-04-15', url: '/releases/6.2.5' },
-    ],
-  },
-  {
-    majorVersion: '5.X.X',
-    releases: [
-      { version: '5.2.8', releaseDate: '2025-01-07', url: '/releases/5.2.8' },
-      { version: '5.2.7', releaseDate: '2024-10-02', url: '/releases/5.2.7' },
-      { version: '5.2.6', releaseDate: '2024-07-31', url: '/releases/5.2.6' },
-      { version: '5.2.5', releaseDate: '2024-04-15', url: '/releases/5.2.5' },
-    ],
-  },
-];
+import { previousReleases } from '../../data/releaseNotes';
 
 export const PreviousReleases = () => {
   return (

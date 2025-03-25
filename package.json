@@ -13,9 +13,10 @@
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "process-blog": "tsx scripts/process-blog-posts.ts",
     "process-authors": "tsx scripts/process-authors.ts",
-    "process-content": "pnpm process-authors && pnpm process-blog && pnpm generate-command-reference && pnpm generate-topics",
+    "process-content": "pnpm process-authors && pnpm process-blog && pnpm generate-command-reference && pnpm generate-topics && pnpm fetch-release-notes",
     "generate-command-reference": "tsx scripts/generateCommandReference.ts",
-    "generate-topics": "tsx scripts/generate-topics.ts"
+    "generate-topics": "tsx scripts/generate-topics.ts",
+    "fetch-release-notes": "tsx src/scripts/fetchReleaseNotes.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "2.8.2",
