@@ -1,16 +1,16 @@
 import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  GridItem,
-  Heading,
-  Image,
-  ListItem,
-  SimpleGrid,
-  Text,
-  UnorderedList,
-  VStack,
+    Box,
+    Button,
+    Container,
+    Flex,
+    GridItem,
+    Heading,
+    Image,
+    ListItem,
+    SimpleGrid,
+    Text,
+    UnorderedList,
+    VStack,
 } from '@chakra-ui/react';
 import React from 'react';
 import { blogDigest } from '../../data/blogPosts';
@@ -51,7 +51,7 @@ export const WhatsNew: React.FC = () => {
                 </Box>
                 <Button
                   as="a"
-                  href="/install"
+                  href="/download"
                   size="lg"
                   colorScheme="blue"
                   variant="outline"
