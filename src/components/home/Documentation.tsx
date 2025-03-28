@@ -29,7 +29,7 @@ const docCategories: DocCategory[] = [
     title: 'Install',
     description:
       'Step-by-step instructions on how to install and configure Valkey for first-time users.',
-    link: '/install',
+    link: '/documentation/installation',
     linkLabel: 'See Installation Guide',
   },
   {
