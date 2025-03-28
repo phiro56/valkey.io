@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { Clients } from './pages/Clients';
 import { CommandReference } from './pages/CommandReference';
 import Community from './pages/Community';
 import CodeOfConduct from './pages/Community/CodeOfConduct';
@@ -37,6 +38,7 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/connect" element={<Connect />} />
+            <Route path="/clients" element={<Clients />} />
           </Routes>
         </MainLayout>
       </Router>

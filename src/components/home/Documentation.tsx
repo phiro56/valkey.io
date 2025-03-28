@@ -50,14 +50,15 @@ const docCategories: DocCategory[] = [
   },
   {
     title: 'Clients',
-    description: 'Sed ut perspiciatis unde omnis iste natus error sit::',
+    description: 'Official Valkey client libraries include support for:',
     list: [
-      'voluptatem accusantium doloremque',
-      'Nemo enim ipsam voluptatem',
-      'Eius modi tempora',
-      'Voluptas nulla pariatur',
+      'Python',
+      'Java',
+      'Go',
+      'Node.js',
+      'PHP',
     ],
-    link: '/documentation/clients',
+    link: '/clients',
     linkLabel: 'Learn More',
   },
 ];
