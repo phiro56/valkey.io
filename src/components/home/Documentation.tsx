@@ -37,8 +37,8 @@ const docCategories: DocCategory[] = [
     description:
       'Detailed documentation on the language used within Valkey, including syntax, commands, and examples.',
     list: ['JSON', 'Bloom Filters', 'Vector Search'],
-    link: '/documentation',
-    linkLabel: 'See Command References',
+    link: '/documentation/modules-intro',
+    linkLabel: 'Learn More',
   },
   {
     title: 'Programming with Valkey',
