@@ -3,7 +3,9 @@ title= "Reducing application latency and lowering Cloud bill by setting up your 
 date= 2025-01-08 01:01:01
 description= "By implementing AZ affinity routing in Valkey and using GLIDE, you can achieve lower latency and cost savings by routing requests to replicas in the same AZ as the client."
 authors= [ "asafporatstoler", "adarovadya"]
+trending= true
 +++
+
 How can adjusting your client library help you reduce Cloud costs and improve latency?
 
 In this post, we dive into **Availability Zone (AZ) affinity routing** mechanics, showing how it optimizes your application's performance and cost using **Valkey GLIDE (General Language Independent Driver for the Enterprise)**. We also guide you through how to configure GLIDE to benefit from other key features. 

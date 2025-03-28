@@ -40,7 +40,7 @@ export const blogPostsRaw = [
     "authorUsernames": [
       "niharikabhavaraju"
     ],
-    "trending": false
+    "trending": true
   },
   {
     "title": "Reducing application latency and lowering Cloud bill by setting up your client library",
@@ -54,7 +54,7 @@ export const blogPostsRaw = [
       "asafporatstoler",
       "adarovadya"
     ],
-    "trending": false
+    "trending": true
   },
   {
     "title": "Generally Available: Valkey 8.0.0",
