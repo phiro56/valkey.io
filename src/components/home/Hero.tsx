@@ -28,11 +28,11 @@ export const Hero = () => {
               color={'#ffffff'}
               textTransform={'uppercase'}
             >
-              Lightning fast.
+              FAST.
               <br />
-              Massively Scalable.
+              RELIABLE.
               <br />
-              Truly Open Source
+              OPEN SOURCE, FOREVER.
             </Heading>
             <Heading
               as="h2"
@@ -44,9 +44,9 @@ export const Hero = () => {
               maxW={'720px'}
               mx={'auto'}
             >
-              Accelerate your applications with Valkey, the high-performance, in-memory data store
+              Accelerate your applications with Valkey, the high-performance, in-memory database
               built for speed, scale, and open innovation. Backed by the Linux Foundation, Valkey
-              delivers the real-time capabilities you need – without vendor lock-in
+              delivers the real-time capabilities you need - without vendor lock-in
             </Heading>
           </Stack>
           <Stack
