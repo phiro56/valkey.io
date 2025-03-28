@@ -1,9 +1,9 @@
 import { Box, Button, Container, Flex, Heading, Stack, Text, VStack } from '@chakra-ui/react';
-import { PreviousReleases } from '../components/install/PreviousReleases';
-import { WhatsNew } from '../components/install/WhatsNew';
+import { PreviousReleases } from '../components/download/PreviousReleases';
+import { WhatsNew } from '../components/download/WhatsNew';
 import { releaseNotes } from '../data/releaseNotes';
 
-export const Install = () => {
+export const Download = () => {
   return (
     <>
       <Box pt={20} bgGradient="linear(to-b, #E9EBF8, #ffffff)">

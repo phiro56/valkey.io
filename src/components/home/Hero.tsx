@@ -58,7 +58,7 @@ export const Hero = () => {
           >
             <Button
               as={RouterLink}
-              to="/install"
+              to="/download"
               variant="gradient"
               minW={{ base: 'auto', sm: '380px' }}
             >

@@ -10,8 +10,8 @@ import FAQ from './pages/Community/FAQ';
 import ShowCasePage from './pages/Community/show-case/[slug]';
 import { Connect } from './pages/Connect';
 import { Documentation } from './pages/Documentation';
+import { Download } from './pages/Download';
 import { Home } from './pages/Home';
-import { Install } from './pages/Install';
 import { ParticipantsPage } from './pages/Participants';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
@@ -24,7 +24,7 @@ function App() {
         <MainLayout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/install" element={<Install />} />
+            <Route path="/download" element={<Download />} />
             <Route path="/documentation/*" element={<Documentation />} />
             <Route path="/command-reference" element={<CommandReference />} />
             <Route path="/blog" element={<Blog />} />
