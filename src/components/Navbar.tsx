@@ -15,7 +15,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Documentation', href: '/documentation' },
   { label: 'Command Reference', href: '/command-reference' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Community', href: '/community' },
+  // { label: 'Community', href: '/community' },
   { label: 'Participants', href: '/participants' },
 ];
 

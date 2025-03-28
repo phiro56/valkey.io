@@ -27,6 +27,18 @@ interface TopicCategory {
   items: CommandCategory[];
 }
 
+interface GitHubFile {
+  name: string;
+  path: string;
+  sha: string;
+  size: number;
+  url: string;
+  html_url: string;
+  git_url: string;
+  download_url: string;
+  type: string;
+}
+
 // Function to fetch content from GitHub
 async function fetchFromGitHub(path: string): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -45,23 +57,41 @@ async function fetchFromGitHub(path: string): Promise<string> {
   });
 }
 
+// Function to fetch list of markdown files from GitHub
+async function fetchMarkdownFiles(): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    const url = 'https://api.github.com/repos/valkey-io/valkey-doc/contents/topics';
+    
+    https.get(url, {
+      headers: {
+        'User-Agent': 'Valkey-Doc-Generator'
+      }
+    }, (res) => {
+      if (res.statusCode !== 200) {
+        reject(new Error(`Failed to fetch ${url}: ${res.statusCode}`));
+        return;
+      }
+
+      let data = '';
+      res.on('data', (chunk) => data += chunk);
+      res.on('end', () => {
+        try {
+          const files = JSON.parse(data)
+            .filter((file: GitHubFile) => file.name.endsWith('.md'))
+            .map((file: GitHubFile) => file.name);
+          resolve(files);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }).on('error', reject);
+  });
+}
+
 // Function to process markdown files from GitHub
 async function processMarkdownFiles(): Promise<CommandCategory[]> {
   const topicsPath = 'topics';
-  const files = [
-    'acl.md', 'cli.md', 'valkey.conf.md', 'server.md',
-    'clients.md', 'client-side-caching.md', 'protocol.md',
-    'strings.md', 'lists.md', 'sets.md', 'sorted-sets.md',
-    'hashes.md', 'streams-intro.md', 'geospatial.md',
-    'hyperloglogs.md', 'bitmaps.md', 'bitfields.md',
-    'eval-intro.md', 'lua-api.md', 'functions-intro.md',
-    'programmability.md', 'replication.md', 'sentinel.md',
-    'cluster-tutorial.md', 'cluster-spec.md', 'admin.md',
-    'security.md', 'encryption.md', 'persistence.md',
-    'signals.md', 'memory-optimization.md', 'pipelining.md',
-    'latency-monitor.md', 'performance-on-cpu.md', 'benchmark.md',
-    'problems.md', 'debugging.md', 'ldb.md'
-  ];
+  const files = await fetchMarkdownFiles();
   
   const topics: CommandCategory[] = [];
   
@@ -90,14 +120,94 @@ async function processMarkdownFiles(): Promise<CommandCategory[]> {
 // Function to organize topics by category
 function organizeCategories(topics: CommandCategory[]): TopicCategory[] {
   const categoryMap: { [key: string]: string[] } = {
-    'CONFIGURATION': ['acl', 'cli', 'valkey.conf', 'server'],
-    'CLIENT HANDLING': ['clients', 'client-side-caching', 'protocol'],
-    'DATA TYPES': ['strings', 'lists', 'sets', 'sorted-sets', 'hashes', 'streams-intro', 'geospatial', 'hyperloglogs', 'bitmaps', 'bitfields'],
-    'SCRIPTING': ['eval-intro', 'lua-api', 'functions-intro', 'programmability'],
-    'HIGH AVAILABILITY': ['replication', 'sentinel', 'cluster-tutorial', 'cluster-spec'],
-    'ADMINISTRATION': ['admin', 'security', 'encryption', 'persistence', 'signals', 'memory-optimization'],
-    'PERFORMANCE': ['pipelining', 'latency-monitor', 'performance-on-cpu', 'benchmark'],
-    'TROUBLESHOOTING': ['problems', 'debugging', 'ldb']
+    'GETTING STARTED': [
+      'introduction',
+      'quickstart',
+      'installation',
+      'faq',
+      'history',
+      'license'
+    ],
+    'CONFIGURATION & SETUP': [
+      'acl',
+      'cli',
+      'valkey.conf',
+      'server',
+      'key-specs',
+      'keyspace'
+    ],
+    'CLIENT HANDLING': [
+      'clients',
+      'client-side-caching',
+      'protocol',
+      'sentinel-clients'
+    ],
+    'DATA TYPES': [
+      'data-types',
+      'strings',
+      'lists',
+      'sets',
+      'sorted-sets',
+      'hashes',
+      'streams-intro',
+      'geospatial',
+      'hyperloglogs',
+      'bitmaps',
+      'bitfields'
+    ],
+    'SCRIPTING & PROGRAMMING': [
+      'eval-intro',
+      'lua-api',
+      'functions-intro',
+      'programmability',
+      'command-arguments',
+      'command-tips'
+    ],
+    'MODULES': [
+      'modules-intro',
+      'modules-api-ref',
+      'modules-blocking-ops',
+      'modules-native-types'
+    ],
+    'HIGH AVAILABILITY': [
+      'replication',
+      'sentinel',
+      'cluster-tutorial',
+      'cluster-spec',
+      'distlock'
+    ],
+    'ADMINISTRATION': [
+      'admin',
+      'security',
+      'encryption',
+      'persistence',
+      'signals',
+      'memory-optimization',
+      'migration',
+      'releases'
+    ],
+    'PERFORMANCE & MONITORING': [
+      'pipelining',
+      'latency-monitor',
+      'latency',
+      'performance-on-cpu',
+      'benchmark',
+      'mass-insertion',
+      'lru-cache',
+      'indexing'
+    ],
+    'TROUBLESHOOTING': [
+      'problems',
+      'debugging',
+      'ldb'
+    ],
+    'EXAMPLES & TUTORIALS': [
+      'twitter-clone'
+    ],
+    'HARDWARE & OPTIMIZATION': [
+      'ARM',
+      'RDMA'
+    ]
   };
 
   return Object.entries(categoryMap).map(([title, ids]) => ({
