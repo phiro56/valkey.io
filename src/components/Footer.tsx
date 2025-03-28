@@ -6,8 +6,6 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const FOOTER_ITEMS = [
   { label: 'Code of Conduct', href: '/community/code-of-conduct' },
-  { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Terms of Service', href: '/terms-of-service' },
   { label: 'FAQ', href: '/community/faq' },
 ];
 
@@ -94,6 +92,36 @@ export const Footer = () => {
             ))}
           </Stack>
         </Stack>
+        <Box 
+          mt={8} 
+          pt={4} 
+          pb={4}
+          borderTop="1px solid" 
+          borderColor="whiteAlpha.200"
+          textAlign="center"
+          
+        >
+          <Stack spacing={2} mt={4} maxW={'720px'} mx={'auto'}>
+            <Text color="whiteAlpha.800" fontSize="md">
+              © Valkey contributors, 2024.
+            </Text>
+            <Text color="whiteAlpha.800" fontSize="sm">
+              Valkey and the Valkey logo are trademarks of LF Projects, LLC.
+            </Text>
+            <Text color="whiteAlpha.800" fontSize="sm">
+              <Link href="https://lfprojects.org/policies/trademark-policy/" isExternal color="text.link" _hover={{ color: '#ccc' }}>Trademark Policy</Link>.{' '}
+              <Link href="/privacy-policy" color="text.link" _hover={{ color: '#ccc' }}>Privacy Policy</Link>.{' '}
+              <Link href="/terms-of-service" color="text.link" _hover={{ color: '#ccc' }}>Terms of Use</Link>.{' '}
+              For other policies, please see <Link href="https://lfprojects.org/policies/" isExternal color="text.link" _hover={{ color: '#ccc' }}>lfprojects.org</Link>.
+            </Text>
+            <Text color="whiteAlpha.800" fontSize="sm">
+              Valkey includes certain 3-Clause BSD-licensed Redis code from Redis Ltd. and other source code. Redis Ltd. is not the source of that other source code. Redis is a registered trademark of Redis Ltd.
+            </Text>
+            <Text color="whiteAlpha.800" fontSize="sm">
+              Logo design by <Link href='https://github.com/dizys' isExternal color="text.link">Ziyang.</Link>
+            </Text>
+          </Stack>
+        </Box>
       </Container>
     </Box>
   );
