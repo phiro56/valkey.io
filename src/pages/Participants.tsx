@@ -104,7 +104,7 @@ export const ParticipantsPage = () => {
         {/* Sidebar */}
         <Box 
           w={{ base: '100%', lg: '33%' }}
-          h={{ base: '250px', lg: 'calc(100vh - 60px)' }}
+          h={{ base: '250px', lg: 'calc(100vh - 0px)' }}
           overflowX={'auto'} 
           backgroundColor={'#F2F0FA'}
           backgroundImage={SbHero}

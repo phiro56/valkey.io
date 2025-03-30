@@ -24,7 +24,7 @@ export const CommandReference = () => {
             background="secondary.lavender.100"
             position={{base: 'static', lg: 'sticky'}}
             top={{base: 'auto', lg: '80px'}}
-            h={{base: 'auto', lg: 'calc(100vh - 141px)'}}
+            h={{base: 'auto', lg: 'calc(100vh - 80px)'}}
           >
             <CommandReferenceSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <CommandReferenceSidebar 

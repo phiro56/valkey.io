@@ -22,7 +22,7 @@ export const Clients = () => {
           flex="1"
           background={'#E2E8F0'}
           padding={'4'}
-          h={'calc(100vh - 185px)'}
+          h={'calc(100vh - 120px)'}
           overflowX={'auto'}
         >
           <VStack spacing={6} align="stretch">
@@ -105,7 +105,7 @@ export const Clients = () => {
                 <div>
                     <h2 id="python">Python</h2>
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-glide">valkey GLIDE</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-glide/tree/main/python">valkey GLIDE</a></li>
@@ -115,9 +115,9 @@ export const Clients = () => {
                             <li><strong>Description:</strong> Valkey GLIDE is designed for reliability, optimized performance, and high-availability, for Valkey and Redis OSS based applications. GLIDE is a multi language client library, written in Rust with programming language bindings, such as Java, node.js and Python.</li>
                             <li><strong>License:</strong> Apache-2.0</li>
                         </ul>
-                    </div>                    
+                    </Box>                    
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-py">valkey-py</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-py">valkey-py</a></li>
@@ -127,14 +127,14 @@ export const Clients = () => {
                             <li><strong>Description:</strong> The Python interface to the Valkey key-value store.</li>
                             <li><strong>License:</strong> MIT</li>
                         </ul>
-                    </div>
+                    </Box>
                     
                 </div>
                 
                 <div>
                     <h2 id="node-js">Node.Js</h2>
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-glide">valkey GLIDE</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-glide/tree/main/node">valkey GLIDE</a></li>
@@ -144,9 +144,9 @@ export const Clients = () => {
                             <li><strong>Description:</strong> Valkey GLIDE is designed for reliability, optimized performance, and high-availability, for Valkey and Redis OSS based applications. GLIDE is a multi language client library, written in Rust with programming language bindings, such as Java, node.js and Python.</li>
                             <li><strong>License:</strong> Apache-2.0</li>
                         </ul>
-                    </div>                    
+                    </Box>                    
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="iovalkey">iovalkey</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/iovalkey">iovalkey</a></li>
@@ -156,14 +156,14 @@ export const Clients = () => {
                             <li><strong>Description:</strong> A robust, performance-focused and full-featured Redis client for Node.js.</li>
                             <li><strong>License:</strong> MIT</li>
                         </ul>
-                    </div>
+                    </Box>
                     
                 </div>
                 
                 <div>
                     <h2 id="java">Java</h2>
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-glide">valkey GLIDE</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-glide/tree/main/java">valkey GLIDE</a></li>
@@ -192,9 +192,9 @@ export const Clients = () => {
                             <li><strong>Description:</strong> Valkey GLIDE is designed for reliability, optimized performance, and high-availability, for Valkey and Redis OSS based applications. GLIDE is a multi language client library, written in Rust with programming language bindings, such as Java, node.js and Python.</li>
                             <li><strong>License:</strong> Apache-2.0</li>
                         </ul>
-                    </div>                    
+                    </Box>                    
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-java">valkey-java</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-java">valkey-java</a></li>
@@ -220,14 +220,14 @@ export const Clients = () => {
                             <li><strong>Description:</strong> valkey-java is Valkey's Java client, dedicated to maintaining simplicity and high performance.</li>
                             <li><strong>License:</strong> MIT</li>
                         </ul>
-                    </div>
+                    </Box>
                     
                 </div>
                 
                 <div>
                     <h2 id="go">Go</h2>
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-glide">valkey GLIDE</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-glide/tree/main/python">valkey GLIDE</a></li>
@@ -237,9 +237,9 @@ export const Clients = () => {
                             <li><strong>Description:</strong> Valkey GLIDE is designed for reliability, optimized performance, and high-availability, for Valkey and Redis OSS based applications. GLIDE is a multi language client library, written in Rust with programming language bindings, such as Java, node.js and Python.</li>
                             <li><strong>License:</strong> Apache-2.0</li>
                         </ul>
-                    </div>                    
+                    </Box>                    
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="valkey-go">valkey-go</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/valkey-io/valkey-go">valkey-go</a></li>
@@ -249,14 +249,14 @@ export const Clients = () => {
                             <li><strong>Description:</strong> A fast Golang Valkey client that does auto pipelining and supports server-assisted client-side caching.</li>
                             <li><strong>License:</strong> Apache-2.0</li>
                         </ul>
-                    </div>
+                    </Box>
                     
                 </div>
                 
                 <div>
                     <h2 id="php">PHP</h2>
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="phpredis">phpredis</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/phpredis/phpredis">phpredis</a></li>
@@ -266,9 +266,9 @@ export const Clients = () => {
                             <li><strong>Description:</strong>  A PHP extension for Redis, offering high performance and a native API.</li>
                             <li><strong>License:</strong> PHP-3.01</li>
                         </ul>
-                    </div>                    
+                    </Box>                    
                     
-                    <div>
+                    <Box border='1px solid' borderColor={'rgba(0,0,0,10%)'} p="6" borderRadius={'4'} mb={'6'}>
                         <h3 id="predis">predis</h3>
                         <ul>
                             <li><strong>Repo:</strong> <a href="https://github.com/predis/predis">predis</a></li>
@@ -278,7 +278,7 @@ export const Clients = () => {
                             <li><strong>Description:</strong> A flexible and feature-complete Redis client for PHP.</li>
                             <li><strong>License:</strong> MIT</li>
                         </ul>
-                    </div>
+                    </Box>
                     
                 </div>
             </div>
@@ -657,7 +657,7 @@ export const Clients = () => {
         {/* Sidebar */}
         <Box 
           w={{ base: '100%', md: '25%' }}
-          h={{ base: '250px', md: 'calc(100vh - 185px)' }}
+          h={{ base: '250px', md: 'calc(100vh - 120px)' }}
           overflowX={'auto'} 
           backgroundColor={'#F2F0FA'}
           backgroundImage={SbHero}

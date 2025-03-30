@@ -42,7 +42,7 @@ export const DocumentationSidebar = ({ searchQuery }: DocumentationSidebarProps)
     <VStack
       align="stretch" 
       spacing={6}
-      h={{base: 'auto', md: 'calc(100vh - 220px)'}}
+      h={{base: 'auto', md: 'calc(100vh - 158px)'}}
       overflowX={{base: 'visible', md: 'auto'}}
     >
       <Box>
