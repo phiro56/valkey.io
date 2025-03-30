@@ -43,7 +43,7 @@ export default function CodeOfConduct() {
           flex="1"
           background={'#E2E8F0'}
           padding={'4'}
-          h={'calc(100vh - 185px)'}
+          h={'calc(100vh - 120px)'}
           overflowX={'auto'}
         >
           <Box flex="1" background={'white'} padding={'6'}>
@@ -67,7 +67,7 @@ export default function CodeOfConduct() {
         {/* Sidebar */}
         <Box 
           w={{ base: '100%', md: '33%' }}
-          h={{ base: '250px', md: 'calc(100vh - 185px)' }}
+          h={{ base: '250px', md: 'calc(100vh - 120px)' }}
           overflowX={'auto'} 
           backgroundColor={'#F2F0FA'}
           backgroundImage={SbHero}

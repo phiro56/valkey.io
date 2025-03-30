@@ -2,7 +2,7 @@ import { Box, Container, Icon, Link, Stack, Text } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
 import { SiSlack } from "react-icons/si";
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 const FOOTER_ITEMS = [
   { label: 'Code of Conduct', href: '/community/code-of-conduct' },
@@ -18,8 +18,6 @@ const SOCIAL_LINKS = [
 ];
 
 export const Footer = () => {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
 
   return (
     <Box 
@@ -29,7 +27,6 @@ export const Footer = () => {
       bg={'#1A2026'} 
       position={{ 
         base: 'relative',
-        lg: isHomePage ? "relative" : "sticky"
       }}
       bottom={0} 
       width="100%"
