@@ -25,9 +25,9 @@ export const contributeWays: ContributeWay[] = [
     icon: BsFillQuestionCircleFill,
     title: 'Ask Questions',
     description:
-      'If you have any inquiries about Valkey, feel free to join the conversation on our GitHub discussions or chat with us on Matrix.',
+      'If you have any inquiries about Valkey, feel free to join the conversation on our GitHub discussions or chat with us on Slack.',
     buttons: [
-      { label: 'GitHub Repository', href: 'https://github.com/valkey-xyz/valkey', icon: FiGithub },
+      { label: 'GitHub Repository', href: 'https://github.com/orgs/valkey-io/discussions', icon: FiGithub },
       { label: 'Slack', href: 'https://valkey-oss-developer.slack.com/join/shared_invite/zt-2nxs51chx-EB9hu9Qdch3GMfRcztTSkQ#/shared-invite/email' },
     ],
   },
@@ -39,7 +39,7 @@ export const contributeWays: ContributeWay[] = [
     buttons: [
       {
         label: 'GitHub Repository',
-        href: 'https://github.com/valkey-xyz/valkey/issues',
+        href: 'https://github.com/valkey-io/valkey/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=%5BBUG%5D',
         icon: FiGithub,
       },
     ],
@@ -49,8 +49,8 @@ export const contributeWays: ContributeWay[] = [
     title: 'Connect on Social Media',
     description: 'Stay updated and connect with us on our social media platforms.',
     buttons: [
-      { label: 'LinkedIn', href: 'https://linkedin.com/company/valkey', icon: FiLinkedin },
-      { label: 'Twitter', href: 'https://twitter.com/valkeyxyz', icon: FiTwitter },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/valkey/', icon: FiLinkedin },
+      { label: 'Twitter', href: 'https://x.com/valkey_io', icon: FiTwitter },
     ],
   },
   {
@@ -61,7 +61,7 @@ export const contributeWays: ContributeWay[] = [
     buttons: [
       {
         label: 'GitHub',
-        href: 'https://github.com/valkey-xyz/valkey/issues',
+        href: 'https://github.com/valkey-io/valkey/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=%5BNEW%5D',
         icon: FiGithub,
       },
     ],
@@ -70,7 +70,7 @@ export const contributeWays: ContributeWay[] = [
     icon: BsShieldLockFill,
     title: 'Security Concerns',
     description: 'For any potential security issues, please refer to our Security Policy.',
-    buttons: [{ label: 'Learn more →', href: '/security-policy' }],
+    buttons: [{ label: 'Learn more →', href: 'https://github.com/valkey-io/valkey/blob/unstable/SECURITY.md' }],
   },
   {
     icon: BiSolidBookBookmark,
