@@ -136,6 +136,11 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
         // Always use paths without /src prefix
         const imagePath = href?.replace(/^\/src/, '');
         return `<img src="${imagePath}" alt="${text}"${title ? ` title="${title}"` : ''} />`;
+      },
+      link(href, title, text) {
+        // Remove .md extension from internal links while preserving hash fragments
+        const cleanHref = href?.replace(/\.md($|#)/, '$1');
+        return `<a href="${cleanHref}"${title ? ` title="${title}"` : ''}>${text}</a>`;
       }
     }
   });
