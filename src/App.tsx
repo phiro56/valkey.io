@@ -27,7 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/download" element={<Download />} />
             <Route path="/documentation/*" element={<Documentation />} />
-            <Route path="/command-reference" element={<CommandReference />} />
+            <Route path="/command-reference/:command?" element={<CommandReference />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/community" element={<Community />} />

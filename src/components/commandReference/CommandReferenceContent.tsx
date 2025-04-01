@@ -1,5 +1,6 @@
 import { Box, Flex, Link, Select, Text } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { commandCategories, commandReferences } from '../../data/commandReference';
 import { CommandReference } from '../../types/commandReference';
 
@@ -11,6 +12,7 @@ interface CommandReferenceContentProps {
 
 export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSelect }: CommandReferenceContentProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const navigate = useNavigate();
 
   // Debug: Inspect string contents
   const inspectString = (str: string) => {
@@ -42,14 +44,25 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
     setSelectedCategory(event.target.value);
   };
 
+  const handleCommandSelect = (command: CommandReference) => {
+    onCommandSelect(command);
+    // Convert command to URL-friendly format (lowercase with hyphens)
+    const urlCommand = command.command.toLowerCase().replace(/\s+/g, '-');
+    navigate(`/command-reference/${urlCommand}`);
+  };
+
+  const handleBack = () => {
+    onBack();
+    navigate('/command-reference');
+  };
+
   return (
-    <Box
-    >
+    <Box>
       <Box p={4}>
         {selectedCommand && (
           <Box mb={4} background={'white'} borderRadius={'50px'} px={4} py={2}>
             <Text color="gray.600" fontSize="sm">
-              <Link color={'primary.500'} textDecoration={'underline'} onClick={onBack} cursor="pointer">
+              <Link color={'primary.500'} textDecoration={'underline'} onClick={handleBack} cursor="pointer">
                 {selectedCommand.categories[0].toUpperCase()}
               </Link>
               {' / '}{selectedCommand.command}
@@ -120,7 +133,7 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
                           <Link 
                             color="blue.500" 
                             textDecor={'underline'} 
-                            onClick={() => onCommandSelect(command)}
+                            onClick={() => handleCommandSelect(command)}
                             cursor="pointer"
                           >
                             {command.command}

@@ -1,4 +1,5 @@
 import { Box, Link, Text, VStack } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 import { commandReferences } from '../../data/commandReference';
 
 interface CommandReferenceSidebarProps {
@@ -12,6 +13,8 @@ export const CommandReferenceSidebar = ({
   selectedCommand, 
   onCommandSelect 
 }: CommandReferenceSidebarProps) => {
+  const navigate = useNavigate();
+
   // Trim the search query to handle whitespace
   const trimmedQuery = searchQuery.trim();
 
@@ -37,6 +40,13 @@ export const CommandReferenceSidebar = ({
     );
   }
 
+  const handleCommandSelect = (command: typeof commandReferences[0]) => {
+    onCommandSelect(command);
+    // Convert command to URL-friendly format (lowercase with hyphens)
+    const urlCommand = command.command.toLowerCase().replace(/\s+/g, '-');
+    navigate(`/command-reference/${urlCommand}`);
+  };
+
   // Show filtered results
   return (
     <VStack
@@ -51,7 +61,7 @@ export const CommandReferenceSidebar = ({
             {filteredItems.map(item => (
               <Link
                 key={item.command}
-                onClick={() => onCommandSelect(item)}
+                onClick={() => handleCommandSelect(item)}
                 p={2}
                 background={selectedCommand?.command === item.command ? 'primary.200' : 'primary.100'}
                 _hover={{ bg: 'primary.200' }}

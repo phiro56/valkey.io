@@ -1,5 +1,6 @@
 import { Box, Container } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { CommandReferenceContent } from '../components/commandReference/CommandReferenceContent';
 import { CommandReferenceHeader } from '../components/commandReference/CommandReferenceHeader';
 import { CommandReferenceSearch } from '../components/commandReference/CommandReferenceSearch';
@@ -9,8 +10,26 @@ import { commandReferences } from '../data/commandReference';
 type CommandReferenceType = typeof commandReferences[0];
 
 export const CommandReference = () => {
+  const { command } = useParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCommand, setSelectedCommand] = useState<CommandReferenceType | null>(null);
+
+  useEffect(() => {
+    if (command) {
+      // Convert URL-friendly format back to command format (uppercase with spaces)
+      const commandName = command
+        .split('-')
+        .map(word => word.toUpperCase())
+        .join(' ');
+      
+      const cmd = commandReferences.find(cmd => 
+        cmd.command.toLowerCase() === commandName.toLowerCase()
+      );
+      setSelectedCommand(cmd || null);
+    } else {
+      setSelectedCommand(null);
+    }
+  }, [command]);
 
   return (
     <Box>
@@ -31,7 +50,6 @@ export const CommandReference = () => {
               searchQuery={searchQuery} 
               onCommandSelect={setSelectedCommand}
               selectedCommand={selectedCommand}
-              
             />
           </Box>
           <Box flex={1} background={'rgba(226, 232, 240, 1)'}>

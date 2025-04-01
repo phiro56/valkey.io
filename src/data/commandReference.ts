@@ -53,11 +53,6 @@ export const commandCategories: CommandCategory[] = [
     "description": "Valkey server-side scripting and functions"
   },
   {
-    "id": "sentinel",
-    "categoryName": "Sentinel",
-    "description": "Valkey Sentinel commands"
-  },
-  {
     "id": "server",
     "categoryName": "Server",
     "description": "Server management commands"
