@@ -11,7 +11,7 @@ const FOOTER_ITEMS = [
 
 const SOCIAL_LINKS = [
   { label: 'Slack', href: 'https://valkey-oss-developer.slack.com/join/shared_invite/zt-2nxs51chx-EB9hu9Qdch3GMfRcztTSkQ#/shared-invite/email', icon: SiSlack, isExternal: true },
-  { label: 'GitHub', href: 'https://github.com/orgs/valkey-io/discussions', icon: FaGithub, isExternal: true },
+  { label: 'GitHub', href: 'https://github.com/valkey-io', icon: FaGithub, isExternal: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/valkey/', icon: FaLinkedin, isExternal: true },
   { label: 'Twitter', href: 'https://x.com/valkey_io', icon: FaTwitter, isExternal: true },
   { label: 'Connect', href: '/connect', icon: IoMdMail, isExternal: false },
