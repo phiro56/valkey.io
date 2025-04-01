@@ -81,7 +81,7 @@ export const participants: Participant[] = [
   },
   {
     name: 'Ericsson',
-    desc: 'Founded in 1876, Ericsson is a Swedish communication technology and services provider. The company offers software, services, and infrastructure for information and communications technology used by telecommunications operators, including traditional telecommunications, Internet Protocol networking equipment and business support solutions. Ericsson is headquartered in Stockholm, Sweden.',
+    desc: 'Founded in 1876, Ericsson is a Swedish communication technology and services provider.',
     logo: ericssonLogo,
     content: `
       <div class="participant-content">
