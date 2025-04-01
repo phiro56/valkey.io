@@ -214,7 +214,7 @@ export const previousReleases: ReleaseGroup[] = ${JSON.stringify(previousGroups,
 `;
 
     // Write to the releaseNotes.ts file
-    const filePath = path.join(__dirname, '../data/releaseNotes.ts');
+    const filePath = path.join(__dirname, '../src/data/releaseNotes.ts');
     fs.writeFileSync(filePath, tsContent);
     
     console.log('Release notes updated successfully!');
