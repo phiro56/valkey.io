@@ -93,14 +93,11 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
                 onChange={handleCategoryChange}
               >
                 <option value="all">All</option>
-                {[...sortedCategories].map((category) => {
-                  console.log(`Rendering category: ${category.categoryName}`);
-                  return (
-                    <option key={category.id} value={category.id}>
-                      {category.categoryName.charAt(0).toUpperCase() + category.categoryName.slice(1)}
-                    </option>
-                  );
-                })}
+                {commandsByCategory.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.categoryName.charAt(0).toUpperCase() + category.categoryName.slice(1)}
+                  </option>
+                ))}
               </Select>
             </Flex>
 
