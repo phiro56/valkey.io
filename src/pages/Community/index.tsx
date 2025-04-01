@@ -5,10 +5,10 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
-import { ShowCase } from '../../components/community/ShowCase';
 import { ContributeGrid } from '../../components/home/ContributeGrid';
 import { contributeWays } from '../../data/contributeWays';
-import { mockShowCases } from '../../data/showCase';
+// import { ShowCase } from '../../components/community/ShowCase';
+// import { mockShowCases } from '../../data/showCase';
 
 const CommunityPage = () => {
   return (
@@ -22,7 +22,7 @@ const CommunityPage = () => {
       </Box>
       
       <Stack spacing={8} align="center" background={'#E2E8F0'}>
-        <Container maxW="container.xl">
+        <Container maxW="container.xl" pb={'40px'}>
           <Stack py={'10'} color={'secondary.purple.500'} maxW="7xl">
             <Heading as="h2" size="lg" textAlign="center">
               How to Contribute?
@@ -34,7 +34,7 @@ const CommunityPage = () => {
           </Stack>
         
           <ContributeGrid contributeWays={contributeWays}/>
-          <ShowCase latestShowCase={mockShowCases} />
+          {/* <ShowCase latestShowCase={mockShowCases} /> */}
 
         </Container>
       </Stack>

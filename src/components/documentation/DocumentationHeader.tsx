@@ -9,11 +9,11 @@ export const DocumentationHeader = () => {
         </Heading>
         <Text fontSize="lg">
           The Valkey documentation is managed in markdown files in the{' '}
-          <Link href="#" color="white" textDecoration="underline">
+          <Link href="https://github.com/valkey-io/valkey-doc" color="white" textDecoration="underline">
             valkey-doc repository
           </Link>
           . It is released under the{' '}
-          <Link href="#" color="white" textDecoration="underline">
+          <Link href="https://creativecommons.org/licenses/by-sa/4.0/" color="white" textDecoration="underline">
             Creative Commons Attribution-ShareAlike 4.0 International license
           </Link>
           .

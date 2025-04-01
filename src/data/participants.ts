@@ -1,6 +1,8 @@
 import aivenLogo from '/src/assets/images/aiven.svg';
 import awsLogo from '/src/assets/images/aws.svg';
+import ericssonLogo from '/src/assets/images/ericsson.svg';
 import googleLogo from '/src/assets/images/gcp.svg';
+import oracleLogo from '/src/assets/images/oracle.svg';
 import perconaLogo from '/src/assets/images/percona.svg';
 import upcloudLogo from '/src/assets/images/upcloud.svg';
 
@@ -74,6 +76,30 @@ export const participants: Participant[] = [
         <p>Google Cloud Memorystore is a versatile, fully-managed, in-memory database service for Valkey, offering sub-millisecond data access, scalability, and high availability.</p>
         <h3>About the company:</h3>
         <p>Our mission at Google Cloud is to accelerate every organization's ability to digitally transform its business and industry. We empower our customers to become digital and AI leaders by combining Google's AI innovation with differentiated solutions for compute, app development, data, security, and collaboration — all built on Google's reliable and planet-scale infrastructure.</p>
+      </div>
+    `,
+  },
+  {
+    name: 'Ericsson',
+    desc: 'Founded in 1876, Ericsson is a Swedish communication technology and services provider. The company offers software, services, and infrastructure for information and communications technology used by telecommunications operators, including traditional telecommunications, Internet Protocol networking equipment and business support solutions. Ericsson is headquartered in Stockholm, Sweden.',
+    logo: ericssonLogo,
+    content: `
+      <div class="participant-content">
+        <h3>About the company:</h3>
+        <p>Founded in 1876, Ericsson is a Swedish communication technology and services provider. The company offers software, services, and infrastructure for information and communications technology used by telecommunications operators, including traditional telecommunications, Internet Protocol networking equipment and business support solutions. Ericsson is headquartered in Stockholm, Sweden.</p>
+      </div>
+    `,
+  },
+  {
+    name: 'Oracle',
+    desc: 'Oracle Cloud Infrastructure (OCI) is a deep and broad platform of public cloud services that enables customers to build and run a wide range of applications in a scalable, secure, highly available, fault-tolerant, and high-performance environment.',
+    logo: oracleLogo,
+    content: `
+      <div class="participant-content">
+        <h3>Valkey offering:</h3>
+        <p>Achieve sub-millisecond latency with <a href="https://www.oracle.com/cloud/cache/" target="_blank">Oracle Cloud Infrastructure (OCI) Cache.</a></p>
+        <h3>About the company:</h3>
+        <p>Oracle Cloud Infrastructure (OCI) is a deep and broad platform of public cloud services that enables customers to build and run a wide range of applications in a scalable, secure, highly available, fault-tolerant, and high-performance environment.</p>
       </div>
     `,
   },

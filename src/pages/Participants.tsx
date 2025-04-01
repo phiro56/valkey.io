@@ -91,7 +91,10 @@ export const ParticipantsPage = () => {
                       },
                       'li': {
                         ml: 4
-                      }
+                      },
+                      'a': {
+                        color: '#646cff'
+                      },
                     }}
                     dangerouslySetInnerHTML={{ __html: participant.content }}
                   />

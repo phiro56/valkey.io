@@ -58,7 +58,7 @@ export const Hero = () => {
           >
             <Button
               as={RouterLink}
-              to="/download"
+              to="/documentation/quickstart"
               variant="gradient"
               minW={{ base: 'auto', sm: '380px' }}
             >
