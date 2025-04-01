@@ -7,7 +7,7 @@ interface FaqContentProps {
 }
 
 export const FaqContent = ({ searchQuery }: FaqContentProps) => {
-  const [openIndex, setOpenIndex] = useState<number | undefined>(undefined);
+  const [openIndices, setOpenIndices] = useState<number[]>([]);
 
   // Filter FAQs based on search query and group by category
   const faqsByCategory = faqCategories.map(category => {
@@ -31,10 +31,15 @@ export const FaqContent = ({ searchQuery }: FaqContentProps) => {
   // Check if we have any results
   const hasResults = faqsByCategory.some(category => category.faqs.length > 0);
 
-  // Reset expanded index when search query changes
+  // Reset open indices when search query changes
   useEffect(() => {
-    setOpenIndex(undefined);
+    setOpenIndices([]);
   }, [searchQuery]);
+
+  // Handle accordion changes
+  const handleAccordionChange = (indices: number[]) => {
+    setOpenIndices(indices);
+  };
 
   return (
     <Box p={4}>
@@ -54,9 +59,9 @@ export const FaqContent = ({ searchQuery }: FaqContentProps) => {
             {searchQuery ? `Search Results for "${searchQuery}"` : 'FAQ'}
           </Heading>
           <Accordion 
-            index={openIndex} 
-            onChange={(index) => setOpenIndex(index as number)} 
-            allowToggle
+            index={openIndices}
+            onChange={handleAccordionChange}
+            allowMultiple
           >
             {faqsByCategory.map((category, categoryIndex) => (
               category.faqs.length > 0 && (
@@ -99,7 +104,34 @@ export const FaqContent = ({ searchQuery }: FaqContentProps) => {
                         <AccordionIcon />
                       </AccordionButton>
                       <AccordionPanel pb={4} background={'white'} borderTop={'1px solid'} borderColor={'#EFF4FF'}>
-                        <Text>{faq.answer}</Text>
+                        <Box 
+                          dangerouslySetInnerHTML={{ __html: faq.answer }}
+                          sx={{
+                            '& p': {
+                              mb: 2,
+                              '&:last-child': {
+                                mb: 0
+                              }
+                            },
+                            '& ul': {
+                              mb: 2,
+                              pl: 4,
+                              '& li': {
+                                mb: 1,
+                                '&:last-child': {
+                                  mb: 0
+                                }
+                              }
+                            },
+                            '& a': {
+                              color: 'secondary.purple.500',
+                              textDecoration: 'underline',
+                              '&:hover': {
+                                color: 'secondary.purple.600'
+                              }
+                            }
+                          }}
+                        />
                       </AccordionPanel>
                     </AccordionItem>
                   ))}
