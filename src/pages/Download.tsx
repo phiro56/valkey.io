@@ -11,11 +11,16 @@ export const Download = () => {
           <VStack spacing={8} align="stretch">
             {/* Latest Release Section */}
             <Box>
-              <Heading as="h1" size="3xl" mb={8} textAlign="center" color="secondary.purple.500">
+              <Heading as="h1" fontSize={{ base: "32px", md: "60px" }}mb={8} textAlign="center" color="secondary.purple.500">
                 Get the Latest Release
               </Heading>
 
-              <Flex alignItems="flex-end" justifyContent={'space-between'}>
+              <Flex 
+                alignItems={{ base: 'flex-start', md: 'flex-end' }}
+                justifyContent={{ base: 'flex-start', md: 'space-between' }}
+                direction={{ base: 'column', md: 'row' }}
+                gap={{ base: 4, md: 0 }}
+              >
                 <Stack gap={0} color="secondary.purple.500">
                   <Heading as="h2" size="md">
                     Release Notes

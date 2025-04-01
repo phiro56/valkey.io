@@ -46,7 +46,7 @@ export const Participants = () => {
       <Container maxW="7xl" id="Participants">
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
-            <Heading as="h2" fontSize="60px" color={'#ffffff'}>
+            <Heading as="h2" fontSize={{ base: "32px", md: "60px" }} color={'#ffffff'}>
               Participants
             </Heading>
             <Text fontSize="lg" color="white" maxW="3xl" mx="auto">

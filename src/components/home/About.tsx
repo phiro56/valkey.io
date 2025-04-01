@@ -6,7 +6,7 @@ export const About = () => {
       <Container maxW="7xl">
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
-            <Heading as="h2" fontSize="60px" color={'#6983FF'}>
+            <Heading as="h2" fontSize={{ base: "32px", md: "60px" }} color={'#6983FF'}>
               About
             </Heading>
           </Stack>

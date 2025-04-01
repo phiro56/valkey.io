@@ -87,7 +87,7 @@ export const Documentation = () => {
       <Container maxW="7xl" pos={'relative'} zIndex={'1'}>
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
-            <Heading as="h2" fontSize="60px" color={'#ffffff'}>
+            <Heading as="h2" fontSize={{ base: "32px", md: "60px" }} color={'#ffffff'}>
               Documentation
             </Heading>
             <Text fontSize="lg" color="white" maxW="3xl" mx="auto">

@@ -26,7 +26,7 @@ export const CommandReferenceSidebar = ({
   if (trimmedQuery !== '' && filteredItems.length === 0) {
     return (
       <Box borderRadius={'2px'} p={8} textAlign="center">
-        <Text fontWeight="800" color="secondary.purple.500" mb={1} fontSize={'60px'}>
+        <Text fontWeight="800" color="secondary.purple.500" mb={1} fontSize={{ base: "32px", md: "60px" }}>
           &lt;/&gt;
         </Text>
         <Text fontWeight="medium" color="secondary.purple.500" mb={1}>

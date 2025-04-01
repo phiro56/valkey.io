@@ -24,7 +24,7 @@ const CommunityPage = () => {
       <Stack spacing={8} align="center" background={'#E2E8F0'}>
         <Container maxW="container.xl" pb={'40px'}>
           <Stack py={'10'} color={'secondary.purple.500'} maxW="7xl">
-            <Heading as="h2" size="lg" textAlign="center">
+            <Heading as="h2" fontSize={{ base: "32px", md: "60px" }} textAlign="center">
               How to Contribute?
             </Heading>
             <Text textAlign="center">

@@ -1,16 +1,16 @@
 import {
-    Box,
-    Button,
-    Container,
-    Flex,
-    GridItem,
-    Heading,
-    Image,
-    ListItem,
-    SimpleGrid,
-    Text,
-    UnorderedList,
-    VStack,
+  Box,
+  Button,
+  Container,
+  Flex,
+  GridItem,
+  Heading,
+  Image,
+  ListItem,
+  SimpleGrid,
+  Text,
+  UnorderedList,
+  VStack,
 } from '@chakra-ui/react';
 import React from 'react';
 import { blogDigest } from '../../data/blogPosts';
@@ -23,7 +23,7 @@ export const WhatsNew: React.FC = () => {
   return (
     <Box as="section" pb={{ base: '4rem', md: '8rem' }} bgGradient="linear(to-b, #6983FF, #30176E)">
       <Container maxW={'7xl'}>
-        <Heading textAlign={'center'} fontSize={'5xl'} py={10} fontWeight={'bold'} color={'white'}>
+        <Heading textAlign={'center'} fontSize={{ base: "32px", md: "60px" }} py={10} fontWeight={'bold'} color={'white'}>
           What's New?
         </Heading>
 

@@ -37,7 +37,7 @@ export const Contribute = () => {
       <Container maxW="7xl" position={'relative'} zIndex={'1'}>
         <Stack spacing={12}>
           <Stack spacing={4} textAlign="center">
-            <Heading as="h2" fontSize="60px" color="white">
+            <Heading as="h2" fontSize={{ base: "32px", md: "60px" }} color="white">
               How to contribute?
             </Heading>
             <Text fontSize="lg" color="white" maxW="3xl" mx="auto">
