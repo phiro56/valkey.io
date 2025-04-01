@@ -77,14 +77,19 @@ export const Clients = () => {
               },
               'li': {
                 ml: 4
+              },
+              'pre': {
+                background: '#000',
+                color: '#fff',
+                padding: '10px',
+                borderRadius: '4px',
+                marginBottom: '10px'
               }
             }}
           >
           
             <h1>Client Libraries</h1>
-
             <div>
-                
                 <p>This page offers an overview of recommended Valkey clients for various programming languages. A table of advanced features supported by the respective clients is provided, highlighting the unique advantages of one client over another.</p>
                 <p>This page includes only clients which are regularly tested and recommended. However, it's important to note that other clients that support Redis OSS version 7.2 are compatible with Valkey 7.2 and above. To add your client to the list, please refer to <a href="https://github.com/valkey-io/valkey-doc/blob/main/clients/README.md">this link.</a></p>
 
@@ -172,18 +177,20 @@ export const Clients = () => {
                                 <ul>
                                     <li>
                                         Maven:
-                                        <pre>//Choose the appropriate classifier 
-        &lt;dependency&gt;
-          &lt;groupId&gt;io.valkey&lt;/groupId&gt;
-          &lt;artifactId&gt;valkey-glide&lt;/artifactId&gt;
-          &lt;classifier&gt;osx-aarch_64 OR linux-aarch_64 OR linux-x86_64&lt;/classifier&gt; 
-          &lt;version&gt;[1.0.0,2.0.0)&lt;/version&gt;
-        &lt;/dependency&gt;</pre>
+                                        <pre>{`<dependency>
+  <groupId>io.valkey</groupId>
+  <artifactId>valkey-glide</artifactId>
+  <classifier>osx-aarch_64 OR linux-aarch_64 OR linux-x86_64</classifier> 
+  <version>[1.0.0,2.0.0)</version>
+</dependency>`}</pre>
                                     </li>
                                     <li>
                                         Gradle:
-                                        <pre>//Choose the appropriate classifier 
-        implementation group: 'io.valkey', name: 'valkey-glide', version: '1.+', classifier: 'osx-aarch_64 OR linux-aarch_64 OR linux-x86_64'</pre>
+                                        <pre>{`//Choose the appropriate classifier 
+implementation group: 'io.valkey', 
+    name: 'valkey-glide', 
+    version: '1.+', 
+    classifier: 'osx-aarch_64 OR linux-aarch_64 OR linux-x86_64'`}</pre>
                                     </li>
                                 </ul>
                             </li>
@@ -203,11 +210,11 @@ export const Clients = () => {
                                 <ul>
                                     <li>
                                         Maven:
-                                        <pre>&lt;dependency&gt;
-          &lt;groupId&gt;io.valkey&lt;/groupId&gt;
-          &lt;artifactId&gt;valkey-java&lt;/artifactId&gt;
-          &lt;version&gt;LATEST&lt;/version&gt;
-        &lt;/dependency&gt;</pre>
+                                        <pre>{`<dependency>
+  <groupId>io.valkey</groupId>
+  <artifactId>valkey-java</artifactId>
+  <version>LATEST</version>
+</dependency>`}</pre>
                                     </li>
                                     <li>
                                         Gradle:
@@ -293,7 +300,7 @@ export const Clients = () => {
                         <p><strong>Smart Backoff to Prevent Connection Storm</strong> - A strategy used to prevent connection storms by progressively updating the wait time between retries when attempting to reconnect to a Valkey server. This helps to reduce the load on the server during topology updates, periods of high demand or network instability.</p>
                     </li>
                     <li>
-                        <p><strong>PubSub State Restoration</strong> - The ability to restore the state of Pub/Sub (publish/subscribe) channels after a client reconnects. This feature ensures that clients can continue receiving messages after disconnections or topology updates such as adding or removing shards, for both legacy Pub/Sub and sharded Pub/Sub. The client will automatically resubscribe the connections to the new node. The advantage is that the application code is simplified, and doesn’t have to take care of resubscribing to new nodes during reconnects.</p>
+                        <p><strong>PubSub State Restoration</strong> - The ability to restore the state of Pub/Sub (publish/subscribe) channels after a client reconnects. This feature ensures that clients can continue receiving messages after disconnections or topology updates such as adding or removing shards, for both legacy Pub/Sub and sharded Pub/Sub. The client will automatically resubscribe the connections to the new node. The advantage is that the application code is simplified, and doesn't have to take care of resubscribing to new nodes during reconnects.</p>
                     </li>
                     <li>
                         <p><strong>Cluster Scan</strong> - This feature ensures that the user experience and guarantees for scanning a cluster are identical to those for scanning a single node. The SCAN function operates as a cursor-based iterator. With each command, the server provides an updated cursor, which must be used as the cursor argument in subsequent calls. A complete iteration with SCAN retrieves all elements present in the collection from start to finish. If an element exists in the collection at the beginning and remains until the end of the iteration, SCAN will return it. Conversely, any element removed before the iteration begins and not re-added during the process will not be returned by SCAN. A client supporting this feature ensures the scan iterator remains valid even during failovers or cluster scaling (in or out) during the SCAN operation.</p>
