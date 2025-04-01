@@ -16,7 +16,7 @@
     "process-content": "pnpm process-authors && pnpm process-blog && pnpm generate-command-reference && pnpm generate-topics && pnpm fetch-release-notes",
     "generate-command-reference": "tsx scripts/generateCommandReference.ts",
     "generate-topics": "tsx scripts/generate-topics.ts",
-    "fetch-release-notes": "tsx src/scripts/fetchReleaseNotes.ts"
+    "fetch-release-notes": "tsx scripts/fetchReleaseNotes.ts"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
