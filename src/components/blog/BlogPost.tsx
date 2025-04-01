@@ -4,6 +4,16 @@ import { blogDigest, blogPosts } from '../../data/blogPosts';
 import { BlogPost } from '../../data/types';
 import { Breadcrumbs } from '../common/Breadcrumbs';
 
+// Helper function to format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
 // Import all author images
 const authorImages = import.meta.glob<{ default: string }>('/src/assets/media/authors/*.{jpeg,jpg,png}', { eager: true });
 
@@ -72,7 +82,7 @@ export const BlogPostPage = () => {
             </Heading>
 
             <Text color="gray.500" mb={8}>
-              {post.date}
+              {formatDate(post.date)}
             </Text>
 
             <Box

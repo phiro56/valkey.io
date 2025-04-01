@@ -2,6 +2,16 @@ import { Box, Flex, Link, Text } from '@chakra-ui/react';
 import { blogDigest } from '../../data/blogPosts';
 import { BlogPost } from '../../data/types';
 
+// Helper function to format date
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
 interface BlogContentProps {
   searchQuery: string;
   selectedCategory: BlogPost['category'] | '';
@@ -53,12 +63,12 @@ export const BlogContent = ({ searchQuery, selectedCategory, selectedDate }: Blo
                 <Flex>
                   <Box p={4} flex="1">
                     <Link href={`/blog/${post.slug}`}>
-                      <Text fontSize="1xl" fontWeight="bold" color="secondary.purple.500" mb={2}>
+                      <Text fontSize="1xl" fontWeight="bold" color="secondary.purple.500" mb={0}>
                         {post.title}
                       </Text>
                     </Link>
                     <Text fontSize="sm" color="gray.600" mb={2}>
-                      {post.date}
+                      {formatDate(post.date)}
                     </Text>
                     <Text mb={4}>{post.excerpt}</Text>
                     <Link
