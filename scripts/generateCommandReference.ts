@@ -121,21 +121,29 @@ async function transformCommands(
 ): Promise<CommandReference[]> {
   const commandRefs: CommandReference[] = [];
 
+  // Create a custom markdown renderer
+  const renderer = new marked.Renderer();
+  
+  // Override the link renderer to remove .md extensions
+  renderer.link = (href, title, text) => {
+    if (href && href.endsWith('.md')) {
+      href = href.slice(0, -3); // Remove the .md extension
+    }
+    return `<a href="${href}"${title ? ` title="${title}"` : ''}>${text}</a>`;
+  };
+
   for (const [command, data] of Object.entries(commands)) {
     try {
-      // Convert command name to markdown filename format
       const markdownFileName = getMarkdownFileName(command);
       const markdownUrl = `${baseUrl}/commands/${markdownFileName}.md`;
       
       console.log(`Processing command: ${command} -> ${markdownFileName}`);
       
-      // Fetch markdown content
       const markdownContent = await fetchMarkdown(markdownUrl);
       
-      // Only process if we have content
       if (markdownContent) {
-        // Convert markdown to HTML
-        const htmlContent = await marked.parse(markdownContent);
+        // Use the custom renderer when parsing markdown
+        const htmlContent = await marked.parse(markdownContent, { renderer });
 
         commandRefs.push({
           unid: `cmd-${markdownFileName}`,

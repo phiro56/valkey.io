@@ -15,6 +15,15 @@ marked.setOptions({
   breaks: true, // Convert line breaks to <br>
 });
 
+// Create a custom renderer to handle .md extensions in links
+const renderer = new marked.Renderer();
+renderer.link = (href, title, text) => {
+  if (href && href.endsWith('.md')) {
+    href = href.slice(0, -3); // Remove the .md extension
+  }
+  return `<a href="${href}"${title ? ` title="${title}"` : ''}>${text}</a>`;
+};
+
 interface CommandCategory {
   id: string;
   topicName: string;
@@ -100,8 +109,8 @@ async function processMarkdownFiles(): Promise<CommandCategory[]> {
       const content = await fetchFromGitHub(`${topicsPath}/${file}`);
       const { data, content: markdownContent } = matter(content);
       
-      // Convert markdown to HTML with full formatting
-      const htmlContent = marked.parse(markdownContent) as string;
+      // Convert markdown to HTML with full formatting and custom renderer
+      const htmlContent = marked.parse(markdownContent, { renderer }) as string;
       
       topics.push({
         id: path.basename(file, '.md'),
