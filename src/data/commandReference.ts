@@ -8,6 +8,11 @@ export const commandCategories: CommandCategory[] = [
     "description": "Operations on the Bitmap data type"
   },
   {
+    "id": "bloom",
+    "categoryName": "Bloom filter",
+    "description": "Operations on the Bloom filter data type"
+  },
+  {
     "id": "cluster",
     "categoryName": "Cluster",
     "description": "Valkey Cluster management"
