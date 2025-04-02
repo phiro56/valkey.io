@@ -128,9 +128,16 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
   const content = fs.readFileSync(filePath, 'utf8');
   const { data, content: markdownContent } = parseCustomFrontmatter(content);
   
-  // Get the filename without extension and remove the date prefix if it exists
+  // Get the filename and directory path
   const filename = path.basename(filePath, '.md');
-  const slug = filename.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+  const dirPath = path.dirname(filePath);
+  const dirName = path.basename(dirPath);
+  
+  // If the file is index.md, use the parent folder name as the slug
+  // Otherwise, use the filename without the date prefix
+  const slug = filename === 'index' 
+    ? dirName.replace(/^\d{4}-\d{2}-\d{2}-/, '')
+    : filename.replace(/^\d{4}-\d{2}-\d{2}-/, '');
 
   // Get the author usernames - support both single author and multiple authors
   const authorUsernames = data.authors || (data.author ? [data.author] : ['unknown']);
@@ -148,9 +155,22 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
   marked.use({
     renderer: {
       image(href, title, text) {
-        // Always use paths without /src prefix
-        const imagePath = href?.replace(/^\/src/, '');
-        return `<img src="${imagePath}" alt="${text}"${title ? ` title="${title}"` : ''} />`;
+        // Handle image paths based on whether the post is in a folder
+        let imagePath = href || '';
+        
+        // If the image path is relative (doesn't start with / or http)
+        if (!imagePath.startsWith('/') && !imagePath.startsWith('http')) {
+          // Get the relative path from the post's directory to the image
+          const postDir = path.dirname(filePath);
+          const imageFullPath = path.join(postDir, imagePath);
+          // Convert to URL path relative to the blog root
+          const blogRoot = path.join(process.cwd(), 'public/content/blog');
+          imagePath = path.relative(blogRoot, imageFullPath);
+        }
+        
+        // Remove /src prefix if present
+        imagePath = imagePath.replace(/^\/src/, '');
+        return `<img src="/content/blog/${imagePath}" alt="${text}"${title ? ` title="${title}"` : ''} />`;
       },
       link(href, title, text) {
         // Remove .md extension from internal links while preserving hash fragments
