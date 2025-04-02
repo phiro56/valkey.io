@@ -176,11 +176,28 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
 // Main function to process all blog posts
 function processBlogPosts() {
   const blogDir = path.join(process.cwd(), 'public/content/blog');
-  const files = fs.readdirSync(blogDir);
+  
+  // Recursive function to get all markdown files
+  function getAllMarkdownFiles(dir: string): string[] {
+    const files = fs.readdirSync(dir);
+    const markdownFiles: string[] = [];
+    
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      
+      if (stat.isDirectory()) {
+        markdownFiles.push(...getAllMarkdownFiles(fullPath));
+      } else if (file.endsWith('.md') && !file.startsWith('_')) {
+        markdownFiles.push(fullPath);
+      }
+    }
+    
+    return markdownFiles;
+  }
 
-  const posts = files
-    .filter(file => file.endsWith('.md') && !file.startsWith('_'))
-    .map(file => processMarkdownFile(path.join(blogDir, file)));
+  const markdownFiles = getAllMarkdownFiles(blogDir);
+  const posts = markdownFiles.map(file => processMarkdownFile(file));
 
   // Sort posts by date (newest first)
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

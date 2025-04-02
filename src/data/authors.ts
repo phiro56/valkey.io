@@ -111,5 +111,13 @@ export const authors: Author[] = [
     "imageUrl": "/assets/media/authors/uriyagelnik.png",
     "role": "Contributor",
     "githubUser": "uriyage"
+  },
+  {
+    "name": "Viktor Söderqvist",
+    "username": "zuiderkwast",
+    "bio": "Viktor is an open source developer from Ericsson and one of the maintainers of Valkey.",
+    "imageUrl": "/assets/media/authors/zuiderkwast.jpeg",
+    "role": "Contributor",
+    "githubUser": "zuiderkwast"
   }
 ];
