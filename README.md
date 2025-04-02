@@ -1,6 +1,14 @@
 # Valkey.io
 
-A modern React application built with Vite and TypeScript.
+This repo contains the source for the valkey.io website (build scripts, template, blog posts, stylesheets, etc.).
+The build integrates content from [`valkey-io/valkey-doc`](https://github.com/valkey-io/valkey-doc) and the commands definitions from [`valkey-io/valkey`](https://github.com/valkey-io/valkey) (see [Build Locally](#build-locally) below for more details).
+
+## Contributing
+
+We welcome contributions! Please see our [CONTRIBUTING](CONTRIBUTING.md) page to learn more about how to contribute to the website.
+
+## Security
+If you discover potential security issues, see the reporting instructions on our [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) page for more information.
 
 ## Prerequisites
 
