@@ -26,7 +26,7 @@ export const DocumentationContent = () => {
       {selectedTopic && (
         <Box mb={4} background={'white'} borderRadius={'50px'} px={4} py={2}>
           <Text color="gray.600" fontSize="sm">
-            <RouterLink to="/documentation" style={{ color: '#646cff', textDecoration: 'underline' }}>
+            <RouterLink to="/topics" style={{ color: '#646cff', textDecoration: 'underline' }}>
               Documentation
             </RouterLink>
             {' / '}

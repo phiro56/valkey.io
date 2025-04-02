@@ -44,7 +44,7 @@ export const CommandReferenceSidebar = ({
     onCommandSelect(command);
     // Convert command to URL-friendly format (lowercase with hyphens)
     const urlCommand = command.command.toLowerCase().replace(/\s+/g, '-');
-    navigate(`/command-reference/${urlCommand}`);
+    navigate(`/commands/${urlCommand}`);
   };
 
   // Show filtered results
