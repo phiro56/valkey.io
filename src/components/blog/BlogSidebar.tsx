@@ -21,7 +21,7 @@ export const BlogSidebar = () => {
                 height="auto"
                 width="50%"
                 objectFit="cover"
-                fallbackSrc="/assets/media/blog/default.png"
+                fallbackSrc="/assets/media/blog/default.webp"
               />
               <Box p={4}>
                 <Text fontSize="lg" fontWeight="bold" mb={2} noOfLines={2}>

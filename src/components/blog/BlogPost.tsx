@@ -196,7 +196,7 @@ export const BlogPostPage = () => {
                     height="auto"
                     width="50%"
                     objectFit="cover"
-                    fallbackSrc="/src/assets/media/blog/default.png"
+                    fallbackSrc="/src/assets/media/blog/default.webp"
                   />
                   <Box p={4}>
                     <Text fontSize="lg" fontWeight="bold" mb={2} noOfLines={2}>

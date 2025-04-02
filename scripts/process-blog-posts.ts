@@ -37,6 +37,21 @@ const categories: Category[] = [
 // Add type for valid categories
 type ValidCategory = 'tutorials' | 'news' | 'case-studies';
 
+// Function to get a random default blog image
+function getRandomDefaultImage(): string {
+  const defaultImages = [
+    '/assets/media/blog/default.webp',
+    '/assets/media/blog/random-01.webp',
+    '/assets/media/blog/random-02.webp',
+    '/assets/media/blog/random-03.webp',
+    '/assets/media/blog/random-04.webp',
+    '/assets/media/blog/random-05.webp',
+    '/assets/media/blog/random-06.webp',
+  ];
+  const randomIndex = Math.floor(Math.random() * defaultImages.length);
+  return defaultImages[randomIndex];
+}
+
 // Parse custom frontmatter format
 function parseCustomFrontmatter(content: string): { data: FrontmatterData; content: string } {
   const lines = content.split('\n');
@@ -152,7 +167,7 @@ function processMarkdownFile(filePath: string): Omit<BlogPost, 'authors'> & { au
     content: marked.parse(markdownContent) as string,
     slug,
     category,
-    imageUrl: data.image?.replace(/^\/src/, '') || '/assets/media/blog/default.png',
+    imageUrl: data.image?.replace(/^\/src/, '') || getRandomDefaultImage(),
     authorUsernames,
     trending: data.trending === 'true'
   };
