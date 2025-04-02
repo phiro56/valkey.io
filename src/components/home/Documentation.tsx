@@ -13,7 +13,8 @@ import {
   Text,
   UnorderedList,
 } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import ValkeyIcon from '/src/assets/images/valkey-icon-black.svg';
 
 interface DocCategory {
@@ -64,6 +65,21 @@ const docCategories: DocCategory[] = [
 ];
 
 export const Documentation = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/topics?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <Box
       as="section"
@@ -108,6 +124,9 @@ export const Documentation = () => {
                   pr="0"
                   w={'100%'}
                   _placeholder={{ color: 'gray.400' }}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={handleKeyPress}
                 />
                 <InputRightElement width="100px" h="100%">
                   <Button
@@ -118,6 +137,7 @@ export const Documentation = () => {
                     color="white"
                     width="100px"
                     _hover={{ bg: 'primary.600' }}
+                    onClick={handleSearch}
                   >
                     Search
                   </Button>
