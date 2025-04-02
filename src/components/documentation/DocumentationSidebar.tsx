@@ -58,7 +58,7 @@ export const DocumentationSidebar = ({ searchQuery }: DocumentationSidebarProps)
               {section.items.map(item => (
                 <RouterLink
                   key={item.id}
-                  to={`/documentation/${item.id}`}
+                  to={`/topics/${item.id}`}
                   style={{ textDecoration: 'none' }}
                 >
                   <Box

@@ -51,7 +51,7 @@ export const faqs: Faq[] = [
   {
     id: 'faq_1_2',
     question: 'Why did Linux Foundation start the Valkey project?',
-    answer: 'Read about <a href="/documentation/history">the history of Valkey.</a>',
+    answer: 'Read about <a href="/topics/history">the history of Valkey.</a>',
     categoryId: 'cat_1'
   },
 
@@ -65,19 +65,19 @@ export const faqs: Faq[] = [
   {
     id: 'faq_2_1',
     question: 'Why does Valkey keep its entire dataset in memory?',
-    answer: 'In the past, developers experimented with Virtual Memory and other systems in order to allow larger than RAM datasets, but after all we are very happy if we can do one thing well: data served from memory, disk used for storage. So for now there are no plans to create an on disk backend for Valkey. Most of what Valkey is, after all, a direct result of its current design.</p><p>If your real problem is not the total RAM needed, but the fact that you need to split your data set into multiple Valkey instances, please read the <a href="/documentation/cluster-tutorial/">partitioning page</a> in this documentation for more info.',
+    answer: 'In the past, developers experimented with Virtual Memory and other systems in order to allow larger than RAM datasets, but after all we are very happy if we can do one thing well: data served from memory, disk used for storage. So for now there are no plans to create an on disk backend for Valkey. Most of what Valkey is, after all, a direct result of its current design.</p><p>If your real problem is not the total RAM needed, but the fact that you need to split your data set into multiple Valkey instances, please read the <a href="/topics/cluster-tutorial/">partitioning page</a> in this documentation for more info.',
     categoryId: 'cat_2'
   },
   {
     id: 'faq_2_2',
     question: 'How can I reduce Valkey\'s overall memory usage?',
-    answer: 'A good practice is to consider memory consumption when mapping your logical data model to the physical data model within Valkey. These considerations include using specific data types, key patterns, and normalization.</p><p>Beyond data modeling, there is more info in the <a href="/documentation/memory-optimization/">Memory Optimization page</a>.',
+    answer: 'A good practice is to consider memory consumption when mapping your logical data model to the physical data model within Valkey. These considerations include using specific data types, key patterns, and normalization.</p><p>Beyond data modeling, there is more info in the <a href="/topics/memory-optimization/">Memory Optimization page</a>.',
     categoryId: 'cat_2'
   },
   {
     id: 'faq_2_3',
     question: 'What happens if Valkey runs out of memory?',
-    answer: 'Valkey has built-in protections allowing the users to set a max limit on memory usage, using the maxmemory option in the configuration file to put a limit to the memory Valkey can use. If this limit is reached, Valkey will start to reply with an error to write commands (but will continue to accept read-only commands).</p><p>You can also configure Valkey to evict keys when the max memory limit is reached. See the <a href="/documentation/lru-cache/">eviction policy docs</a> for more information on this.',
+    answer: 'Valkey has built-in protections allowing the users to set a max limit on memory usage, using the maxmemory option in the configuration file to put a limit to the memory Valkey can use. If this limit is reached, Valkey will start to reply with an error to write commands (but will continue to accept read-only commands).</p><p>You can also configure Valkey to evict keys when the max memory limit is reached. See the <a href="/topics/lru-cache/">eviction policy docs</a> for more information on this.',
     categoryId: 'cat_2'
   },
 
@@ -97,7 +97,7 @@ export const faqs: Faq[] = [
   {
     id: 'faq_3_2',
     question: 'How can Valkey use multiple CPUs or cores?',
-    answer: 'Enable I/O threading to offload client communication to threads. In Valkey 8, the I/O threading implementation has been rewritten and greatly improved. Reading commands from clients and writing replies back uses considerable CPU time. By offloading this work to separate threads, the main thread can focus on executing commands.</p><p>You can also start multiple instances of Valkey in the same box and combine them into a <a href="/documentation/cluster-tutorial/">cluster.</a>',
+    answer: 'Enable I/O threading to offload client communication to threads. In Valkey 8, the I/O threading implementation has been rewritten and greatly improved. Reading commands from clients and writing replies back uses considerable CPU time. By offloading this work to separate threads, the main thread can focus on executing commands.</p><p>You can also start multiple instances of Valkey in the same box and combine them into a <a href="/topics/cluster-tutorial/">cluster.</a>',
     categoryId: 'cat_3'
   },
 

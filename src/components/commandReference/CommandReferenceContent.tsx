@@ -48,12 +48,12 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
     onCommandSelect(command);
     // Convert command to URL-friendly format (lowercase with hyphens)
     const urlCommand = command.command.toLowerCase().replace(/\s+/g, '-');
-    navigate(`/command-reference/${urlCommand}`);
+    navigate(`/commands/${urlCommand}`);
   };
 
   const handleBack = () => {
     onBack();
-    navigate('/command-reference');
+    navigate('/commands');
   };
 
   return (
@@ -172,7 +172,7 @@ export const CommandReferenceContent = ({ selectedCommand, onBack, onCommandSele
 
               {selectedCommand.htmlContent && (
                 <Box 
-                  className="command-reference-content"
+                  className="commands-content"
                   dangerouslySetInnerHTML={{ __html: selectedCommand.htmlContent }}
                   sx={{
                     'dl': {

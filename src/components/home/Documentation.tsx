@@ -29,7 +29,7 @@ const docCategories: DocCategory[] = [
     title: 'Install',
     description:
       'Step-by-step instructions on how to install and configure Valkey for first-time users.',
-    link: '/documentation/installation',
+    link: '/topics/installation',
     linkLabel: 'See Installation Guide',
   },
   {
@@ -37,7 +37,7 @@ const docCategories: DocCategory[] = [
     description:
       'Detailed documentation on the language used within Valkey, including syntax, commands, and examples.',
     list: ['JSON', 'Bloom Filters', 'Vector Search'],
-    link: '/documentation/modules-intro',
+    link: '/topics/modules-intro',
     linkLabel: 'Learn More',
   },
   {
@@ -45,7 +45,7 @@ const docCategories: DocCategory[] = [
     description:
       'A detailed section covering commands, data types, pipelining, Pub/Sub, memory optimization, and more.',
     list: ['Full Command List', 'Pipelining', 'Pub/Sub Messaging', 'And more'],
-    link: '/command-reference',
+    link: '/commands',
     linkLabel: 'Command Reference',
   },
   {
