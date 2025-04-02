@@ -18,8 +18,21 @@ marked.setOptions({
 // Create a custom renderer to handle .md extensions in links
 const renderer = new marked.Renderer();
 renderer.link = (href, title, text) => {
-  if (href && href.endsWith('.md')) {
-    href = href.slice(0, -3); // Remove the .md extension
+  if (href) {
+    // Handle relative paths and hash fragments
+    const [path, hash] = href.split('#');
+    const pathParts = path.split('/');
+    
+    // Remove .md from any part of the path
+    const cleanPath = pathParts.map(part => {
+      if (part.endsWith('.md')) {
+        return part.slice(0, -3);
+      }
+      return part;
+    }).join('/');
+    
+    // Reconstruct the href with hash if it exists
+    href = hash ? `${cleanPath}#${hash}` : cleanPath;
   }
   return `<a href="${href}"${title ? ` title="${title}"` : ''}>${text}</a>`;
 };
